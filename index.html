@@ -249,7 +249,13 @@
     margin:0 -16px 6px;padding:8px 16px 10px;
     border-bottom:1px solid var(--hair);
   }
-  .frow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:6px;}
+  .frow{
+    display:flex;gap:6px;align-items:center;flex-wrap:nowrap;margin-top:6px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    padding-bottom:2px;
+  }
+  .frow::-webkit-scrollbar{display:none;}
+  .frow .fchip{flex:0 0 auto;white-space:nowrap;}
   .flabel{font-size:11px;font-weight:800;color:var(--sub);width:56px;flex:0 0 auto;letter-spacing:.02em;}
   .fchip{
     border:1px solid var(--hair);background:#fff;border-radius:999px;
@@ -889,9 +895,9 @@
     <div class="frow">
       <span class="flabel">거점 기준</span>
       <button class="fchip sel" data-b="hotel" onclick="setKBase(this)">🏨 류큐호텔</button>
+      <button class="fchip" data-b="aqua" onclick="setKBase(this)">🐋 수족관</button>
       <button class="fchip" data-b="naha" onclick="setKBase(this)">🏙️ 나하</button>
       <button class="fchip" data-b="airport" onclick="setKBase(this)">🛬 공항</button>
-      <button class="fchip" data-b="aqua" onclick="setKBase(this)">🐋 수족관</button>
     </div>
     <div class="frow">
       <span class="flabel">지역</span>
@@ -918,9 +924,9 @@
     <div class="frow">
       <span class="flabel">거점 기준</span>
       <button class="fchip sel" data-b="hotel" onclick="setLBase(this)">🏨 류큐호텔</button>
+      <button class="fchip" data-b="aqua" onclick="setLBase(this)">🐋 수족관</button>
       <button class="fchip" data-b="naha" onclick="setLBase(this)">🏙️ 나하</button>
       <button class="fchip" data-b="airport" onclick="setLBase(this)">🛬 공항</button>
-      <button class="fchip" data-b="aqua" onclick="setLBase(this)">🐋 수족관</button>
     </div>
     <div class="frow">
       <span class="flabel">카테고리</span>
@@ -1216,7 +1222,7 @@ function fmtReviews(n){
   return n + '+';
 }
 function cardHTML(s, base){
-  const dchips = ['hotel','naha','airport','aqua'].map(b =>
+  const dchips = ['hotel','aqua','naha','airport'].map(b =>
     '<span class="dchip' + (b === base ? ' on' : '') + '">' + BASE_LABEL[b] + ' ' + s.dist[b] + '분</span>'
   ).join('');
   const tags = s.tags.map(t => '<span class="ltag">' + t + '</span>').join('');
