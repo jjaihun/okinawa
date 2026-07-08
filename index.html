@@ -1031,6 +1031,24 @@
 </nav>
 
 <script>
+// 홈화면 저장 URL에 #d19 같은 해시가 박혀 있어도 항상 맨 위에서 시작
+if(location.hash){
+  history.replaceState(null, '', location.pathname + location.search);
+}
+if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.addEventListener('load', () => window.scrollTo(0, 0));
+
+// 날짜 탭: URL 해시 남기지 않고 스크롤만
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('nav.daynav a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if(t) t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+});
+
 function showView(name){
   document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
   document.getElementById('view-' + name).classList.add('on');
