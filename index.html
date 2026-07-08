@@ -203,18 +203,27 @@
   .rbtn:active{background:var(--blue);color:#fff;transform:scale(.95);}
   .srcnote{font-size:10.5px;color:#a5adb5;margin-top:9px;}
 
-  /* weather grid */
-  .wxgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:4px;}
-  .wxday{
-    background:#f4f8fb;border-radius:14px;padding:10px 4px;text-align:center;
+  /* weather cards — 가로 슬라이드 */
+  .wxgrid{
+    display:flex;gap:8px;margin-top:4px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    padding-bottom:4px;
+    scrollbar-width:none;
   }
-  .wxday .wd{font-size:10.5px;font-weight:700;color:var(--sub);}
+  .wxgrid::-webkit-scrollbar{display:none;}
+  .wxday{
+    flex:0 0 100px;min-width:100px;
+    scroll-snap-align:start;
+    background:#f4f8fb;border-radius:14px;padding:12px 8px;text-align:center;
+  }
+  .wxday .wd{font-size:11px;font-weight:700;color:var(--sub);white-space:nowrap;}
   .wxday .wi{font-size:23px;margin:4px 0 2px;}
-  .wxday .wt{font-size:11.5px;font-weight:800;color:var(--ink);letter-spacing:-.03em;margin-top:3px;}
+  .wxday .wt{font-size:12.5px;font-weight:800;color:var(--ink);letter-spacing:-.03em;margin-top:4px;white-space:nowrap;}
   .wxday .wt small{color:var(--sub);font-weight:600;}
   .wxday .wp{font-size:10px;color:#3b82c4;font-weight:700;margin-top:2px;}
-  .wxrow{display:flex;align-items:center;justify-content:center;gap:3px;font-size:9px;color:var(--sub);font-weight:700;margin-top:3px;}
-  .wxrow .ic{font-size:14px;}
+  .wxrow{display:flex;align-items:center;justify-content:center;gap:3px;font-size:10px;color:var(--sub);font-weight:700;margin-top:4px;white-space:nowrap;}
+  .wxrow .ic{font-size:15px;}
   .wxstate{font-size:11.5px;color:var(--sub);margin-top:8px;}
 
   /* fx */
@@ -810,6 +819,7 @@
   <div class="place"><div class="pbody"><div class="pname">유난기 <span class="tag food">식사</span></div><div class="pnote">오키나와 가정식 노포 — 라후테(돼지조림) 명물, 웨이팅 필수</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ゆうなんぎい+那覇" target="_blank" aria-label="구글맵"></a></div>
   <div class="place"><div class="pbody"><div class="pname">포크타마고 오니기리 본점 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">스팸계란 주먹밥 — 아침 대용, 회전 빠름</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ポークたまごおにぎり本店" target="_blank" aria-label="구글맵"></a></div>
   <div class="place"><div class="pbody"><div class="pname">스테이크하우스88 국제거리점 <span class="tag food">식사</span></div><div class="pnote">얏빠리와 함께 국제거리 스테이크 양대산맥</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ステーキハウス88+国際通り" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">국제거리 야타이무라 <span class="tag food">식사</span></div><div class="pnote">포장마차 골목 — 20여 개 미니 이자카야, 저녁 분위기 최고 · 최근 후기 언급 많음</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=国際通り屋台村" target="_blank" aria-label="구글맵"></a></div>
   <div class="place"><div class="pbody"><div class="pname">C&C Breakfast Okinawa <span class="tag cafe">카페</span><span class="tag inplan">일정 포함</span></div><div class="pnote">과일 프렌치토스트 아침 — 9시 전 도착</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=C%26C+BREAKFAST+OKINAWA" target="_blank" aria-label="구글맵"></a></div>
   <div class="place"><div class="pbody"><div class="pname">oHacorte 마츠오점 <span class="tag cafe">카페</span><span class="tag inplan">일정 포함</span></div><div class="pnote">과일 타르트 — 골목 안 정원 매장</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=oHacorte+松尾店" target="_blank" aria-label="구글맵"></a></div>
   <div class="place"><div class="pbody"><div class="pname">센니치 <span class="tag cafe">카페</span></div><div class="pnote">젠자이(금시빙수) 노포 — 더운 오후 최고의 피난처</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=千日+那覇+ぜんざい" target="_blank" aria-label="구글맵"></a></div>
@@ -865,7 +875,8 @@
   <div class="place"><div class="pbody"><div class="pname">코우리대교 · 코우리섬 <span class="tag tour">관광</span></div><div class="pnote">2km 바다 위 드라이브 + 하트록 — 시간 여유 있으면 추가</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=古宇利大橋" target="_blank" aria-label="구글맵"></a></div>
   <div class="place"><div class="pbody"><div class="pname">나키진 성터 <span class="tag tour">관광</span></div><div class="pnote">세계유산 성곽 — 성벽 위 바다 전망</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=今帰仁城跡" target="_blank" aria-label="구글맵"></a></div>
   <div class="place"><div class="pbody"><div class="pname">오리온 해피파크 <span class="tag tour">관광</span></div><div class="pnote">오리온 맥주공장 견학(시음 포함, 운전자는 논알콜) — 나고</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=オリオンハッピーパーク" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">키시모토식당 본점 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">1905년 모토부 소바 원조 — 웨이팅 필수</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=きしもと食堂本店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">키시모토식당 본점 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">1905년 모토부 소바 원조 — 웨이팅 필수 · 최근 후기 호불호 갈림(전통 가츠오 육수)</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=きしもと食堂本店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">얀바루소바 <span class="tag food">식사</span></div><div class="pnote">40년 전통 소바 — 키시모토 웨이팅 길거나 호불호 걱정되면 이쪽 (본부 소바가도)</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=山原そば+本部町" target="_blank" aria-label="구글맵"></a></div>
   <div class="place"><div class="pbody"><div class="pname">카진호우 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">언덕 위 고민가 피자 — 바다뷰 테라스</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=花人逢" target="_blank" aria-label="구글맵"></a></div>
   <div class="place"><div class="pbody"><div class="pname">우후야 (백년고가) <span class="tag food">식사</span></div><div class="pnote">100년 고민가에서 아구돼지 샤브 — 나고, 분위기 갑</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=百年古家大家" target="_blank" aria-label="구글맵"></a></div>
   <div class="place"><div class="pbody"><div class="pname">Fuu Cafe (세소코섬) <span class="tag cafe">카페</span></div><div class="pnote">정글 속 숨은 카페 — 세소코대교 건너 5분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=fuu+cafe+瀬底島" target="_blank" aria-label="구글맵"></a></div>
