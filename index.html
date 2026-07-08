@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<!-- saved from url=(0232)file:///Users/jaypark/Library/Application%20Support/Claude/local-agent-mode-sessions/1bb16730-4711-4967-ae71-396fe3496720/10e40a9a-d102-49b8-b2dd-1ae980c87054/local_0294b504-c21c-42eb-8b34-410a8cf2286d/outputs/okinawa_itinerary.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오키나와 가족여행 2026.7.16–7.20</title>
+<style>
+  :root{
+    --blue:#0a84ff;
+    --cyan:#32ade6;
+    --teal:#30b0c7;
+    --mint:#00c7be;
+    --coral:#ff6b5e;
+    --orange:#ff9f0a;
+    --purple:#af7aff;
+    --slate:#7d94a3;
+    --ink:#1d1d1f;
+    --sub:#86868b;
+    --paper:#f5f7f9;
+    --card:#ffffff;
+    --hair:rgba(0,0,0,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro KR","Apple SD Gothic Neo","Pretendard","Segoe UI","Malgun Gothic",sans-serif;
+    background:var(--paper);color:var(--ink);line-height:1.55;
+    -webkit-text-size-adjust:100%;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px 72px;}
+
+  /* ── header ── */
+  header{
+    background:linear-gradient(150deg,#0a84ff 0%,#32ade6 55%,#5ce1e6 100%);
+    color:#fff;border-radius:0 0 32px 32px;
+    padding:44px 24px 26px;margin:0 -16px 20px;
+    position:relative;overflow:hidden;
+  }
+  header .glow{
+    position:absolute;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.28),transparent 70%);
+    top:-160px;right:-90px;pointer-events:none;
+  }
+  header .eyebrow{
+    font-size:11px;letter-spacing:.28em;color:rgba(255,255,255,.8);
+    margin-bottom:8px;font-weight:600;
+  }
+  header h1{font-size:30px;font-weight:800;letter-spacing:-.03em;}
+  header .dates{font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;font-weight:500;}
+  .infogrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px;position:relative;z-index:1;}
+  .infocard{
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.28);
+    border-radius:16px;padding:13px 14px;font-size:13px;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  }
+  .infocard b{display:block;font-size:11px;color:rgba(255,255,255,.75);letter-spacing:.04em;margin-bottom:3px;font-weight:600;}
+  .infocard span{color:#fff;font-weight:700;letter-spacing:-.01em;}
+  .infocard .hbtn{
+    display:inline-flex;align-items:center;gap:4px;margin-top:9px;
+    text-decoration:none;font-size:11.5px;font-weight:700;
+    padding:5px 12px;border-radius:999px;
+    background:rgba(255,255,255,.92);color:#0a84ff;
+    box-shadow:0 1px 4px rgba(0,40,90,.18);
+  }
+  .infocard .hbtn:active{transform:scale(.96);}
+
+  /* ── legend ── */
+  .legend{display:flex;flex-wrap:wrap;gap:6px;margin:16px 2px 22px;}
+  .legend .tag{cursor:default;}
+
+  /* ── day nav ── */
+  nav.daynav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,247,249,.88);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    display:flex;gap:6px;padding:10px 0;overflow-x:auto;
+    margin:0 -16px 4px;padding-left:16px;padding-right:16px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+    border-bottom:1px solid var(--hair);
+  }
+  nav.daynav::-webkit-scrollbar{display:none;}
+  nav.daynav a{
+    flex:0 0 auto;text-decoration:none;color:var(--ink);
+    background:#fff;border-radius:999px;border:1px solid var(--hair);
+    font-size:12.5px;font-weight:700;padding:8px 15px;white-space:nowrap;
+    box-shadow:0 1px 2px rgba(0,0,0,.04);
+  }
+  nav.daynav a:active{background:var(--blue);color:#fff;}
+
+  /* ── day section ── */
+  section.day{margin-top:36px;scroll-margin-top:66px;}
+  .dayhead{display:flex;align-items:center;gap:12px;padding:0 4px;margin-bottom:2px;}
+  .daychip{
+    color:#fff;font-size:13px;font-weight:800;letter-spacing:-.01em;
+    padding:6px 14px;border-radius:999px;white-space:nowrap;
+    box-shadow:0 3px 10px rgba(0,0,0,.12);
+  }
+  #d16 .daychip{background:linear-gradient(120deg,#0a84ff,#32ade6);}
+  #d17 .daychip{background:linear-gradient(120deg,#00c7be,#34d39d);}
+  #d18 .daychip{background:linear-gradient(120deg,#0a84ff,#30b0c7);}
+  #d19 .daychip{background:linear-gradient(120deg,#ff6b5e,#ff9f0a);}
+  #d20 .daychip{background:linear-gradient(120deg,#7d94a3,#a9bcc9);}
+  .dayhead h2{font-size:20px;font-weight:800;letter-spacing:-.03em;}
+  .daysub{font-size:12.5px;color:var(--sub);margin:6px 6px 14px;}
+
+  /* ── timeline items ── */
+  .item{
+    display:grid;grid-template-columns:54px 1fr;gap:12px;
+    background:var(--card);border-radius:20px;
+    padding:15px 16px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(20,60,100,.05);
+  }
+  .item + .item{margin-top:10px;}
+  .item .time{
+    font-size:13.5px;font-weight:800;color:var(--blue);
+    padding-top:1px;letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+  }
+  .item .body .title{font-size:15px;font-weight:700;letter-spacing:-.02em;}
+  .item .body .note{font-size:12.5px;color:var(--sub);margin-top:3px;letter-spacing:-.01em;}
+  .item .tags{margin-top:9px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;}
+
+  .tag{
+    display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.02em;
+    padding:3.5px 10px;border-radius:999px;
+  }
+  .tag.tour{background:rgba(10,132,255,.1);color:#0a6de0;}
+  .tag.food{background:rgba(255,107,94,.12);color:#e8503f;}
+  .tag.shop{background:rgba(175,122,255,.13);color:#8e5ce0;}
+  .tag.cafe{background:rgba(255,159,10,.13);color:#d9820a;}
+  .tag.move{background:rgba(125,148,163,.13);color:#5f7684;}
+  .tag.swim{background:rgba(0,199,190,.12);color:#00958e;}
+  .tag.stay{background:rgba(48,176,199,.12);color:#1f8ea3;}
+  .tag.air{background:rgba(29,29,31,.08);color:#1d1d1f;}
+  .tag.opt{background:transparent;color:var(--sub);border:1px dashed rgba(0,0,0,.18);}
+
+  /* map / link buttons — iOS tinted pill */
+  .btn{
+    display:inline-flex;align-items:center;gap:4px;text-decoration:none;
+    font-size:11px;font-weight:700;padding:4.5px 12px;border-radius:999px;
+    background:rgba(10,132,255,.1);color:var(--blue);
+  }
+  .btn:active{background:var(--blue);color:#fff;transform:scale(.96);}
+
+  /* connector between items = 이동 */
+  .go{
+    display:flex;align-items:center;gap:9px;
+    padding:8px 0 8px 24px;font-size:11.5px;color:var(--sub);
+    letter-spacing:-.01em;
+  }
+  .go::before{content:"";display:block;width:2px;height:20px;background:rgba(10,132,255,.22);border-radius:2px;margin-right:5px;}
+  .go b{color:#3c5566;font-weight:700;}
+
+  /* memo box */
+  .memo{
+    background:var(--card);border-radius:20px;
+    padding:18px 20px;margin-top:34px;font-size:12.5px;color:#4a5560;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(20,60,100,.05);
+  }
+  .memo h3{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:10px;letter-spacing:-.02em;}
+  .memo p{margin:0 0 8px;}
+  .memo p:last-child{margin-bottom:0;}
+  .memo b{color:var(--blue);font-weight:700;}
+
+  footer{margin-top:40px;text-align:center;font-size:11px;color:#b0b8bf;letter-spacing:.02em;}
+
+  @media(max-width:480px){
+    header h1{font-size:25px;}
+    .item{grid-template-columns:47px 1fr;padding:13px 13px;}
+    .item .time{font-size:12.5px;}
+    .dayhead h2{font-size:17px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="glow"></div>
+  <div class="eyebrow">FAMILY TRIP · OKINAWA</div>
+  <h1>오키나와 가족여행</h1>
+  <div class="dates">2026. 7. 16 목 — 7. 20 월 · 4박 5일 · 렌터카</div>
+  <div class="infogrid">
+    <div class="infocard"><b>가는 편 · LJ341</b><span>ICN 09:45 → OKA 12:05</span></div>
+    <div class="infocard"><b>오는 편 · LJ342</b><span>OKA 13:15 → ICN 15:30</span></div>
+    <div class="infocard">
+      <b>렌터카 픽업 · 오달렌터카</b><span>7/16 (목) 13:00</span><br>
+      <a class="hbtn" href="https://odal.co.kr/document/reference/206" target="_blank">픽업 방법 →</a>
+    </div>
+    <div class="infocard">
+      <b>렌터카 반납</b><span>7/20 (월) 10:00</span><br>
+      <a class="hbtn" href="https://odal.co.kr/document/reference/212" target="_blank">반납 방법 →</a>
+    </div>
+  </div>
+</header>
+
+<div class="legend">
+  <span class="tag air">항공</span>
+  <span class="tag move">이동</span>
+  <span class="tag stay">숙박</span>
+  <span class="tag swim">물놀이</span>
+  <span class="tag tour">관광</span>
+  <span class="tag food">식사</span>
+  <span class="tag cafe">카페·간식</span>
+  <span class="tag shop">쇼핑</span>
+  <span class="tag opt">선택</span>
+</div>
+
+<nav class="daynav">
+  <a href="file:///Users/jaypark/Library/Application%20Support/Claude/local-agent-mode-sessions/1bb16730-4711-4967-ae71-396fe3496720/10e40a9a-d102-49b8-b2dd-1ae980c87054/local_0294b504-c21c-42eb-8b34-410a8cf2286d/outputs/okinawa_itinerary.html#d16">7/16 목</a>
+  <a href="file:///Users/jaypark/Library/Application%20Support/Claude/local-agent-mode-sessions/1bb16730-4711-4967-ae71-396fe3496720/10e40a9a-d102-49b8-b2dd-1ae980c87054/local_0294b504-c21c-42eb-8b34-410a8cf2286d/outputs/okinawa_itinerary.html#d17">7/17 금</a>
+  <a href="file:///Users/jaypark/Library/Application%20Support/Claude/local-agent-mode-sessions/1bb16730-4711-4967-ae71-396fe3496720/10e40a9a-d102-49b8-b2dd-1ae980c87054/local_0294b504-c21c-42eb-8b34-410a8cf2286d/outputs/okinawa_itinerary.html#d18">7/18 토</a>
+  <a href="file:///Users/jaypark/Library/Application%20Support/Claude/local-agent-mode-sessions/1bb16730-4711-4967-ae71-396fe3496720/10e40a9a-d102-49b8-b2dd-1ae980c87054/local_0294b504-c21c-42eb-8b34-410a8cf2286d/outputs/okinawa_itinerary.html#d19">7/19 일</a>
+  <a href="file:///Users/jaypark/Library/Application%20Support/Claude/local-agent-mode-sessions/1bb16730-4711-4967-ae71-396fe3496720/10e40a9a-d102-49b8-b2dd-1ae980c87054/local_0294b504-c21c-42eb-8b34-410a8cf2286d/outputs/okinawa_itinerary.html#d20">7/20 월</a>
+</nav>
+
+<!-- ══════════ DAY 1 ══════════ -->
+<section class="day" id="d16">
+  <div class="dayhead"><span class="daychip">7/16 목</span><h2>출국 → 장보기 → 물놀이</h2></div>
+  <div class="daysub">숙소 · 류큐호텔&amp;리조트 나시로비치 (이토만)</div>
+
+  <div class="item">
+    <div class="time">09:45</div>
+    <div class="body">
+      <div class="title">인천공항 T2 출발 — LJ341</div>
+      <div class="note">2시간 20분 비행</div>
+      <div class="tags"><span class="tag air">항공</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">12:05</div>
+    <div class="body">
+      <div class="title">나하공항 도착 · 입국수속</div>
+      <div class="note">국제선 터미널 · Visit Japan Web 미리 등록해두면 빠름</div>
+      <div class="tags"><span class="tag air">항공</span></div>
+    </div>
+  </div>
+
+  <div class="go">셔틀 <b>약 10분</b> · 렌터카 사무소로 이동</div>
+
+  <div class="item">
+    <div class="time">13:00</div>
+    <div class="body">
+      <div class="title">오달렌터카 픽업</div>
+      <div class="note">차량 상태 사진 촬영 · 내비 목적지: 산에이 시오자키시티 · 픽업 가이드는 상단 카드 참고</div>
+      <div class="tags"><span class="tag move">이동</span></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 20분</b> · 이토만 방면</div>
+
+  <div class="item">
+    <div class="time">13:40</div>
+    <div class="body">
+      <div class="title">산에이 시오자키시티 — 장보기</div>
+      <div class="note">이틀치 물·간식·과일·주류 한 번에 · 식품관 9:00–22:00 · 푸드코트에서 간단히 늦은 점심 가능</div>
+      <div class="tags"><span class="tag shop">쇼핑</span><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B5%E3%83%B3%E3%82%A8%E3%83%BC%E3%81%97%E3%81%8A%E3%81%96%E3%81%8D%E3%82%B7%E3%83%86%E3%82%A3" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 7분</b></div>
+
+  <div class="item">
+    <div class="time">15:00</div>
+    <div class="body">
+      <div class="title">류큐호텔&amp;리조트 나시로비치 체크인</div>
+      <div class="note">짐 풀고 바로 수영복 환복</div>
+      <div class="tags"><span class="tag stay">숙박</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%90%89%E7%90%83%E3%83%9B%E3%83%86%E3%83%AB%EF%BC%86%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%E5%90%8D%E5%9F%8E%E3%83%93%E3%83%BC%E3%83%81" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">15:30</div>
+    <div class="body">
+      <div class="title">풀 &amp; 나시로비치 물놀이</div>
+      <div class="note">7월 일몰 19:25 전후 · 저녁 전까지 여유 있게</div>
+      <div class="tags"><span class="tag swim">물놀이</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">18:30</div>
+    <div class="body">
+      <div class="title">저녁 — 호텔 뷔페 / 레스토랑</div>
+      <div class="note">도착 첫날은 이동 없이 호텔에서 해결이 편함</div>
+      <div class="tags"><span class="tag food">식사</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DAY 2 ══════════ -->
+<section class="day" id="d17">
+  <div class="dayhead"><span class="daychip">7/17 금</span><h2>올데이 수영 DAY</h2></div>
+  <div class="daysub">숙소 · 류큐호텔&amp;리조트 나시로비치 · 하루 종일 리조트, 저녁만 외출</div>
+
+  <div class="item">
+    <div class="time">09:30</div>
+    <div class="body">
+      <div class="title">올데이 수영 — 수영장 + 프라이빗 비치</div>
+      <div class="note">오전 풀 → 낮 비치 → 오후 풀, 마음 가는 대로 · 자외선 차단 필수, 수시로 그늘 휴식</div>
+      <div class="tags"><span class="tag swim">물놀이</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">12:30</div>
+    <div class="body">
+      <div class="title">점심 — 호텔 풀사이드 / 레스토랑</div>
+      <div class="note">수영 중간에 간단히 · 전날 장 본 간식으로 때워도 OK</div>
+      <div class="tags"><span class="tag food">식사</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">14:00</div>
+    <div class="body">
+      <div class="title">오후 수영 계속 → 비치 선셋 산책</div>
+      <div class="note">낮잠·스파 등 각자 휴식 타임 섞어서</div>
+      <div class="tags"><span class="tag swim">물놀이</span></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 7분</b> · 저녁만 외출</div>
+
+  <div class="item">
+    <div class="time">18:30</div>
+    <div class="body">
+      <div class="title">저녁 외식 — 와후테이 (시오자키시티)</div>
+      <div class="note">일식 패밀리레스토랑 · 같은 건물 산에이에서 부족한 것 추가 장보기 가능</div>
+      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%92%8C%E9%A2%A8%E4%BA%AD%E3%81%97%E3%81%8A%E3%81%96%E3%81%8D%E3%82%B7%E3%83%86%E3%82%A3%E5%BA%97" target="_blank">지도</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DAY 3 ══════════ -->
+<section class="day" id="d18">
+  <div class="dayhead"><span class="daychip">7/18 토</span><h2>츄라우미 + 해안 드라이브 → 나하</h2></div>
+  <div class="daysub">숙소 · 나하 시내 호텔 (미정) · 이동 많은 날 — 아침 일찍 출발이 핵심</div>
+
+  <div class="item">
+    <div class="time">08:00</div>
+    <div class="body">
+      <div class="title">체크아웃 · 북부로 출발</div>
+      <div class="note">짐은 전날 밤 정리해두기</div>
+      <div class="tags"><span class="tag move">이동</span></div>
+    </div>
+  </div>
+
+  <div class="go">차량 · 고속도로 <b>약 1시간 20분</b> · 교다(許田) IC까지</div>
+
+  <div class="item">
+    <div class="time">09:30</div>
+    <div class="body">
+      <div class="title">449번 해안도로 드라이브</div>
+      <div class="note">교다 IC → 모토부 서해안 · 에메랄드빛 바다 끼고 약 30분</div>
+      <div class="tags"><span class="tag tour">관광</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">10:00</div>
+    <div class="body">
+      <div class="title">세소코대교 포토스톱</div>
+      <div class="note">5분 우회 · 다리 위 바다색이 하이라이트</div>
+      <div class="tags"><span class="tag tour">관광</span><span class="tag opt">선택</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%80%AC%E5%BA%95%E5%A4%A7%E6%A9%8B" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 15분</b></div>
+
+  <div class="item">
+    <div class="time">10:30</div>
+    <div class="body">
+      <div class="title">츄라우미 수족관</div>
+      <div class="note">고래상어 대수조 · 오키짱 돌고래쇼 시간 현장 확인 · 약 2.5시간</div>
+      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 10분</b></div>
+
+  <div class="item">
+    <div class="time">13:10</div>
+    <div class="body">
+      <div class="title">점심 — 카진호우(花人逢) or 키시모토식당</div>
+      <div class="note">카진호우: 언덕 위 바다뷰 피자 · 키시모토: 모토부 소바 원조 · 둘 다 웨이팅 감안</div>
+      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%8A%B1%E4%BA%BA%E9%80%A2" target="_blank">카진호우</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8D%E3%81%97%E3%82%82%E3%81%A8%E9%A3%9F%E5%A0%82%E6%9C%AC%E5%BA%97" target="_blank">키시모토</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 10분</b></div>
+
+  <div class="item">
+    <div class="time">14:30</div>
+    <div class="body">
+      <div class="title">비세 후쿠기 가로수길</div>
+      <div class="note">그늘진 나무터널 산책 30분 · 소달구지 체험도 있음</div>
+      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%82%99%E7%80%AC%E3%81%AE%E3%83%95%E3%82%AF%E3%82%AE%E4%B8%A6%E6%9C%A8" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 50분</b> · 58번 국도 온나 해안 드라이브 구간</div>
+
+  <div class="item">
+    <div class="time">16:00</div>
+    <div class="body">
+      <div class="title">만자모</div>
+      <div class="note">코끼리 절벽 절경 · 30분이면 충분</div>
+      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%87%E5%BA%A7%E6%AF%9B" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 10분</b></div>
+
+  <div class="item">
+    <div class="time">17:00</div>
+    <div class="body">
+      <div class="title">온나노에키 나카유쿠이 시장</div>
+      <div class="note">망고빙수·사탕수수주스 간식 타임</div>
+      <div class="tags"><span class="tag cafe">카페·간식</span><span class="tag opt">선택</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8A%E3%82%93%E3%81%AA%E3%81%AE%E9%A7%85%E3%81%AA%E3%81%8B%E3%82%86%E3%81%8F%E3%81%84%E5%B8%82%E5%A0%B4" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 40분</b> · 58번 해안도로 계속</div>
+
+  <div class="item">
+    <div class="time">18:00</div>
+    <div class="body">
+      <div class="title">아메리칸빌리지 — 선셋 + 저녁</div>
+      <div class="note">선셋비치 노을(19:25 전후) · 관람차 포토존 · 저녁식사 후 출발</div>
+      <div class="tags"><span class="tag tour">관광</span><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%BE%8E%E6%B5%9C%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E3%83%B3%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 40분</b></div>
+
+  <div class="item">
+    <div class="time">20:40</div>
+    <div class="body">
+      <div class="title">나하 시내 호텔 체크인</div>
+      <div class="note">호텔 미정 — 국제거리 도보권으로 잡으면 내일 동선 최적</div>
+      <div class="tags"><span class="tag stay">숙박</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DAY 4 ══════════ -->
+<section class="day" id="d19">
+  <div class="dayhead"><span class="daychip">7/19 일</span><h2>나하 시내 투어 → 우미카지 선셋</h2></div>
+  <div class="daysub">숙소 · 나하 시내 호텔 (미정) · 시내는 도보, 오모로마치·우미카지만 차량</div>
+
+  <div class="item">
+    <div class="time">08:40</div>
+    <div class="body">
+      <div class="title">아침 — C&amp;C Breakfast Okinawa</div>
+      <div class="note">마키시 시장 골목 · 과일 프렌치토스트 · 9시 전 도착해야 웨이팅 짧음</div>
+      <div class="tags"><span class="tag food">식사</span><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=C%26C+BREAKFAST+OKINAWA" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">도보 <b>약 3분</b></div>
+
+  <div class="item">
+    <div class="time">10:00</div>
+    <div class="body">
+      <div class="title">마키시 공설시장 · 아케이드 상점가</div>
+      <div class="note">1층 시장 구경 · 포크타마고 오니기리 본점도 근처</div>
+      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">도보 <b>약 5분</b></div>
+
+  <div class="item">
+    <div class="time">11:00</div>
+    <div class="body">
+      <div class="title">츠보야 야치문 거리</div>
+      <div class="note">도자기 골목 — 그릇·소품 쇼핑 · 골목 찻집에서 부쿠부쿠차(거품차) 체험</div>
+      <div class="tags"><span class="tag tour">관광</span><span class="tag shop">쇼핑</span><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A3%BA%E5%B1%8B%E3%82%84%E3%81%A1%E3%82%80%E3%82%93%E9%80%9A%E3%82%8A" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">도보 <b>약 7분</b> · 국제거리 방면</div>
+
+  <div class="item">
+    <div class="time">12:30</div>
+    <div class="body">
+      <div class="title">점심 — 국제거리 스테이크 or 시장 2층 해산물</div>
+      <div class="note">얏빠리 스테이크 / 스테이크하우스88 · 시장 2층은 1층에서 산 해산물 조리 가능</div>
+      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%84%E3%81%A3%E3%81%B1%E3%82%8A%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">13:30</div>
+    <div class="body">
+      <div class="title">국제거리 쇼핑 스트리트</div>
+      <div class="note">Calbee+(갓 튀긴 포테리코) → 후쿠기야(바움쿠헨) → Splash Okinawa(감성 소품·시사 굿즈) → 블루씰 / 시오야 소금아이스크림</div>
+      <div class="tags"><span class="tag shop">쇼핑</span><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%AB%E3%83%AB%E3%83%93%E3%83%BC%E3%83%97%E3%83%A9%E3%82%B9%E6%B2%96%E7%B8%84%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank">Calbee+</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%B5%E3%81%8F%E3%81%8E%E3%82%84%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank">후쿠기야</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Splash+okinawa+%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank">Splash</a></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">15:00</div>
+    <div class="body">
+      <div class="title">카페 — oHacorte 마츠오점</div>
+      <div class="note">과일 타르트 · 골목 안 정원 딸린 매장 — 쉬어가기 좋음</div>
+      <div class="tags"><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=oHacorte+%E6%9D%BE%E5%B0%BE%E5%BA%97" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">16:00</div>
+    <div class="body">
+      <div class="title">위스키 — 리쿼마운틴 국제거리점 → 돈키호테</div>
+      <div class="note">리쿼마운틴 먼저 보고 돈키호테(24h·면세)와 가격 비교 · 돈키에 산리오 잡화도 있음</div>
+      <div class="tags"><span class="tag shop">쇼핑</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AA%E3%82%AB%E3%83%BC%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%86%E3%83%B3%E9%82%A3%E8%A6%87%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank">리쿼마운틴</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%B3%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank">돈키호테</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 10분</b> · 오모로마치 방면</div>
+
+  <div class="item">
+    <div class="time">17:00</div>
+    <div class="body">
+      <div class="title">오모로마치 — 산리오 기프트게이트 + 야마야</div>
+      <div class="note">산에이 나하 메인플레이스 2층(10:00–22:00) · 야마야 신도심점 = 위스키 최종 비교 · 시간 없으면 돈키로 대체</div>
+      <div class="tags"><span class="tag shop">쇼핑</span><span class="tag opt">선택</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B5%E3%83%B3%E3%82%A8%E3%83%BC%E9%82%A3%E8%A6%87%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9" target="_blank">메인플레이스</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%84%E3%81%BE%E3%82%84%E9%82%A3%E8%A6%87%E6%96%B0%E9%83%BD%E5%BF%83%E5%BA%97" target="_blank">야마야</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 15분</b></div>
+
+  <div class="item">
+    <div class="time">18:15</div>
+    <div class="body">
+      <div class="title">세나가지마 우미카지테라스</div>
+      <div class="note">하얀 테라스 상점 구경 → 19:25 선셋 → 저녁(판케이크·타코라이스·BBQ) · 비행기 이착륙 뷰</div>
+      <div class="tags"><span class="tag tour">관광</span><span class="tag food">식사</span><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%80%AC%E9%95%B7%E5%B3%B6%E3%82%A6%E3%83%9F%E3%82%AB%E3%82%B8%E3%83%86%E3%83%A9%E3%82%B9" target="_blank">지도</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 15분</b></div>
+
+  <div class="item">
+    <div class="time">21:00</div>
+    <div class="body">
+      <div class="title">호텔 복귀 · 캐리어 정리</div>
+      <div class="note">내일 아침이 타이트하니 짐은 오늘 밤에</div>
+      <div class="tags"><span class="tag stay">숙박</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DAY 5 ══════════ -->
+<section class="day" id="d20">
+  <div class="dayhead"><span class="daychip">7/20 월</span><h2>렌터카 반납 → 귀국</h2></div>
+  <div class="daysub">반납 10:00 · 출발 13:15 — 아침은 여유 없이 움직이기</div>
+
+  <div class="item">
+    <div class="time">08:30</div>
+    <div class="body">
+      <div class="title">체크아웃 · 지정 주유소에서 만땅 주유</div>
+      <div class="note">오달 근처 지정 주유소 이용 · 레귤러(빨간 노즐) · 일부 주유소 카드 불가 — 현금 준비 · 영수증 반납 시 확인함</div>
+      <div class="tags"><span class="tag move">이동</span><a class="btn" href="https://maps.app.goo.gl/vRdJVk4t3JaWi6cz9" target="_blank">오달 근처 주유소</a><a class="btn" href="https://maps.app.goo.gl/x3qimRQ2yk4NkJCg6" target="_blank">일요일 영업 주유소</a></div>
+    </div>
+  </div>
+
+  <div class="go">차량 <b>약 15분</b> + 주유 10분</div>
+
+  <div class="item">
+    <div class="time">10:00</div>
+    <div class="body">
+      <div class="title">오달렌터카 반납 → 셔틀로 공항</div>
+      <div class="note">주유 영수증 지참 · 미주유 반납 시 시중가보다 높은 대행 요금 청구 · 셔틀 수시 운행(공항까지 약 20분)</div>
+      <div class="tags"><span class="tag move">이동</span><a class="btn" href="https://maps.app.goo.gl/vw4Y8VV1enuQXEhr5" target="_blank">반납 장소</a></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">10:40</div>
+    <div class="body">
+      <div class="title">체크인 · 수하물 위탁 · 출국수속</div>
+      <div class="note">위스키는 반드시 위탁수하물로 (완충 포장)</div>
+      <div class="tags"><span class="tag air">항공</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">11:30</div>
+    <div class="body">
+      <div class="title">Air 빅카메라 나하공항점 · 면세점</div>
+      <div class="note">출발 로비 2층 · 놓친 쇼핑 마지막 찬스 · 오카시고텐 홍임자타르트도 공항에서 구매 가능</div>
+      <div class="tags"><span class="tag shop">쇼핑</span><span class="tag opt">선택</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">12:00</div>
+    <div class="body">
+      <div class="title">점심 — 공항 푸드코트</div>
+      <div class="note">마지막 오키나와 소바 한 그릇</div>
+      <div class="tags"><span class="tag food">식사</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="time">13:15</div>
+    <div class="body">
+      <div class="title">나하공항 출발 — LJ342</div>
+      <div class="note">15:30 인천 T2 도착</div>
+      <div class="tags"><span class="tag air">항공</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── memo ── -->
+<div class="memo">
+  <h3>메모 · 백업 플랜</h3>
+  <p><b>위스키 동선</b> — ① 리쿼마운틴 국제거리점 → ② 돈키호테 국제거리(면세) → ③ 야마야 신도심점 순으로 가격 비교. 리쿼마운틴 마츠야마점도 있음.</p>
+  <p><b>빅카메라</b> — 국제거리에 소형 셀렉트 매장, 아자(安謝)에 코지마×빅카메라 풀매장(차 10분), 공항 2층에 Air빅카메라. 가전 살 게 있을 때만.</p>
+  <p><b>사시미 포장</b> — 미치노에키 이토만 수산센터(호텔에서 차 10분, 18시 전 마감). 호캉스 중 회가 당기면 낮에 잠깐.</p>
+  <p><b>우천 시</b> — 7/19 오전을 오키나와월드+교쿠센도 종유동굴(차 30분, 실내)로 교체. 7월 스콜은 금방 지나가니 시내 일정은 아케이드(지붕 있음) 중심으로.</p>
+  <p><b>슈리성</b> — 정전 복원 2026년 가을 완공 예정이라 내부 관람 불가. 이번 여행에선 제외.</p>
+  <p><b>아시비나 아울렛</b> — 10시 오픈이라 귀국일 렌터카 반납(10시)과 겹쳐 불가. 필요 시 7/16 도착날 장보기 전에 잠깐(호텔 가는 길 9분).</p>
+</div>
+
+<footer>Okinawa Family Trip · 2026. 7. 16 – 7. 20 · LJ341 / LJ342 · 오달렌터카</footer>
+
+</div>
+
+
+</body></html>
