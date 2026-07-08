@@ -2,8 +2,15 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>오키나와 가족여행 2026.7.16–7.20</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>오키나와 가족여행</title>
+<link rel="apple-touch-icon" href="okinawa_icon.png">
+<link rel="icon" type="image/png" href="okinawa_icon_180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="오키나와">
+<meta name="theme-color" content="#0a84ff">
 <style>
   :root{
     --blue:#0a84ff;
@@ -19,6 +26,7 @@
     --paper:#f5f7f9;
     --card:#ffffff;
     --hair:rgba(0,0,0,.06);
+    --navh:78px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -27,27 +35,29 @@
     background:var(--paper);color:var(--ink);line-height:1.55;
     -webkit-text-size-adjust:100%;
     -webkit-font-smoothing:antialiased;
+    padding-bottom:calc(var(--navh) + env(safe-area-inset-bottom));
   }
-  .wrap{max-width:760px;margin:0 auto;padding:0 16px 72px;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px 40px;}
 
-  /* ── header ── */
-  header{
-    background:linear-gradient(150deg,#0a84ff 0%,#32ade6 55%,#5ce1e6 100%);
+  /* ── heroes ── */
+  .hero{
     color:#fff;border-radius:0 0 32px 32px;
-    padding:44px 24px 26px;margin:0 -16px 20px;
+    padding:calc(40px + env(safe-area-inset-top)) 24px 26px;margin:0 -16px 20px;
     position:relative;overflow:hidden;
   }
-  header .glow{
+  .hero .glow{
     position:absolute;width:340px;height:340px;border-radius:50%;
     background:radial-gradient(circle,rgba(255,255,255,.28),transparent 70%);
     top:-160px;right:-90px;pointer-events:none;
   }
-  header .eyebrow{
-    font-size:11px;letter-spacing:.28em;color:rgba(255,255,255,.8);
-    margin-bottom:8px;font-weight:600;
-  }
-  header h1{font-size:30px;font-weight:800;letter-spacing:-.03em;}
-  header .dates{font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;font-weight:500;}
+  .hero .eyebrow{font-size:11px;letter-spacing:.28em;color:rgba(255,255,255,.8);margin-bottom:8px;font-weight:600;}
+  .hero h1{font-size:30px;font-weight:800;letter-spacing:-.03em;}
+  .hero .dates{font-size:14px;color:rgba(255,255,255,.85);margin-top:6px;font-weight:500;}
+  #view-plan .hero{background:linear-gradient(150deg,#0a84ff 0%,#32ade6 55%,#5ce1e6 100%);}
+  #view-places .hero{background:linear-gradient(150deg,#ff6b5e 0%,#ff9f0a 90%);padding-bottom:24px;}
+  #view-info .hero{background:linear-gradient(150deg,#00b3a6 0%,#30b0c7 60%,#5ce1e6 100%);padding-bottom:24px;}
+  #view-places .hero h1,#view-info .hero h1{font-size:26px;}
+
   .infogrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px;position:relative;z-index:1;}
   .infocard{
     background:rgba(255,255,255,.18);
@@ -75,8 +85,8 @@
     position:sticky;top:0;z-index:50;
     background:rgba(245,247,249,.88);
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-    display:flex;gap:6px;padding:10px 0;overflow-x:auto;
-    margin:0 -16px 4px;padding-left:16px;padding-right:16px;
+    display:flex;gap:6px;padding:10px 16px;overflow-x:auto;
+    margin:0 -16px 4px;
     -webkit-overflow-scrolling:touch;scrollbar-width:none;
     border-bottom:1px solid var(--hair);
   }
@@ -134,8 +144,9 @@
   .tag.stay{background:rgba(48,176,199,.12);color:#1f8ea3;}
   .tag.air{background:rgba(29,29,31,.08);color:#1d1d1f;}
   .tag.opt{background:transparent;color:var(--sub);border:1px dashed rgba(0,0,0,.18);}
+  .tag.inplan{background:rgba(52,199,89,.12);color:#1f9d43;}
 
-  /* map / link buttons — white pill + pin icon (구분되게) */
+  /* map / link buttons — white pill + pin icon */
   .btn{
     display:inline-flex;align-items:center;gap:4.5px;text-decoration:none;
     font-size:11px;font-weight:700;padding:4.5px 11px;border-radius:999px;
@@ -149,11 +160,10 @@
     -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E") center/contain no-repeat;
     mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E") center/contain no-repeat;
   }
-  .btn:empty{
-    width:27px;height:27px;padding:0;justify-content:center;border-radius:50%;
-  }
+  .btn:empty{width:27px;height:27px;padding:0;justify-content:center;border-radius:50%;}
   .btn:empty::before{width:13px;height:13px;}
   .btn:active{background:var(--blue);color:#fff;border-color:var(--blue);transform:scale(.94);}
+  .btn.plain::before{display:none;}
 
   /* connector between items = 이동 */
   .go{
@@ -164,21 +174,134 @@
   .go::before{content:"";display:block;width:2px;height:20px;background:rgba(10,132,255,.22);border-radius:2px;margin-right:5px;}
   .go b{color:#3c5566;font-weight:700;}
 
-  /* memo box */
-  .memo{
+  /* ── cards (memo / info) ── */
+  .card{
     background:var(--card);border-radius:20px;
-    padding:18px 20px;margin-top:34px;font-size:12.5px;color:#4a5560;
+    padding:18px 20px;margin-top:16px;font-size:12.5px;color:#4a5560;
     box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(20,60,100,.05);
   }
-  .memo h3{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:10px;letter-spacing:-.02em;}
-  .memo p{margin:0 0 8px;}
-  .memo p:last-child{margin-bottom:0;}
-  .memo b{color:var(--blue);font-weight:700;}
+  .card h3{
+    font-size:14.5px;font-weight:800;color:var(--ink);margin-bottom:10px;letter-spacing:-.02em;
+    display:flex;align-items:center;gap:8px;
+  }
+  .card h3 .spacer{flex:1;}
+  .card p{margin:0 0 8px;}
+  .card p:last-child{margin-bottom:0;}
+  .card b{color:var(--blue);font-weight:700;}
+  .card ul{list-style:none;}
+  .card li{padding:7px 0;border-bottom:1px solid var(--hair);display:flex;gap:8px;align-items:baseline;}
+  .card li:last-child{border-bottom:none;}
+  .card li .k{font-weight:700;color:var(--ink);flex:0 0 auto;}
 
-  footer{margin-top:40px;text-align:center;font-size:11px;color:#b0b8bf;letter-spacing:.02em;}
+  /* refresh button */
+  .rbtn{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:11px;font-weight:700;padding:5px 12px;border-radius:999px;
+    background:rgba(10,132,255,.1);color:var(--blue);border:none;cursor:pointer;
+    font-family:inherit;
+  }
+  .rbtn:active{background:var(--blue);color:#fff;transform:scale(.95);}
+  .srcnote{font-size:10.5px;color:#a5adb5;margin-top:9px;}
+
+  /* weather grid */
+  .wxgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:4px;}
+  .wxday{
+    background:#f4f8fb;border-radius:14px;padding:10px 4px;text-align:center;
+  }
+  .wxday .wd{font-size:10.5px;font-weight:700;color:var(--sub);}
+  .wxday .wi{font-size:23px;margin:4px 0 2px;}
+  .wxday .wt{font-size:11.5px;font-weight:800;color:var(--ink);letter-spacing:-.03em;margin-top:3px;}
+  .wxday .wt small{color:var(--sub);font-weight:600;}
+  .wxday .wp{font-size:10px;color:#3b82c4;font-weight:700;margin-top:2px;}
+  .wxrow{display:flex;align-items:center;justify-content:center;gap:3px;font-size:9px;color:var(--sub);font-weight:700;margin-top:3px;}
+  .wxrow .ic{font-size:14px;}
+  .wxstate{font-size:11.5px;color:var(--sub);margin-top:8px;}
+
+  /* fx */
+  .fxbig{font-size:24px;font-weight:800;letter-spacing:-.03em;color:var(--ink);margin:2px 0 8px;}
+  .fxbig small{font-size:13px;color:var(--sub);font-weight:600;}
+  .fxtable{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+  .fxcell{background:#f4f8fb;border-radius:12px;padding:9px 6px;text-align:center;}
+  .fxcell .y{font-size:11px;color:var(--sub);font-weight:700;}
+  .fxcell .k{font-size:13px;font-weight:800;color:var(--ink);letter-spacing:-.02em;}
+
+  /* ── places filter bar ── */
+  .fbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,247,249,.88);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    margin:0 -16px 6px;padding:8px 16px 10px;
+    border-bottom:1px solid var(--hair);
+  }
+  .frow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:6px;}
+  .flabel{font-size:11px;font-weight:800;color:var(--sub);width:56px;flex:0 0 auto;letter-spacing:.02em;}
+  .fchip{
+    border:1px solid var(--hair);background:#fff;border-radius:999px;
+    padding:6px 13px;font-size:12px;font-weight:700;color:var(--ink);
+    cursor:pointer;font-family:inherit;box-shadow:0 1px 2px rgba(0,0,0,.04);
+    transition:transform .06s;
+  }
+  .fchip:active{transform:scale(.94);}
+  .fchip.sel{color:#fff;border-color:transparent;}
+  .fchip.sel[data-v="naha"]{background:linear-gradient(120deg,#ff6b5e,#ff9f0a);}
+  .fchip.sel[data-v="south"]{background:linear-gradient(120deg,#00c7be,#34d39d);}
+  .fchip.sel[data-v="mid"]{background:linear-gradient(120deg,#af7aff,#d98cff);}
+  .fchip.sel[data-v="north"]{background:linear-gradient(120deg,#0a84ff,#32ade6);}
+  .fchip.sel[data-v="tour"]{background:#0a84ff;}
+  .fchip.sel[data-v="food"]{background:#ff6b5e;}
+  .fchip.sel[data-v="cafe"]{background:#ff9f0a;}
+  .fchip.sel[data-v="shop"]{background:#af7aff;}
+  .fempty{display:none;text-align:center;color:var(--sub);font-size:13px;padding:44px 0;}
+
+  /* ── places view ── */
+  .rgroup{margin-top:28px;}
+  .rhead{display:flex;align-items:center;gap:10px;padding:0 4px;margin-bottom:10px;}
+  .rchip{
+    color:#fff;font-size:12.5px;font-weight:800;padding:5px 13px;border-radius:999px;
+    box-shadow:0 3px 10px rgba(0,0,0,.12);white-space:nowrap;
+  }
+  .rgroup.r-naha .rchip{background:linear-gradient(120deg,#ff6b5e,#ff9f0a);}
+  .rgroup.r-south .rchip{background:linear-gradient(120deg,#00c7be,#34d39d);}
+  .rgroup.r-mid .rchip{background:linear-gradient(120deg,#af7aff,#d98cff);}
+  .rgroup.r-north .rchip{background:linear-gradient(120deg,#0a84ff,#32ade6);}
+  .rhead h2{font-size:17px;font-weight:800;letter-spacing:-.02em;}
+  .rhead .rsub{font-size:11.5px;color:var(--sub);margin-left:auto;}
+  .place{
+    display:flex;align-items:center;gap:10px;
+    background:var(--card);border-radius:18px;padding:13px 15px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(20,60,100,.05);
+  }
+  .place + .place{margin-top:8px;}
+  .place .pbody{flex:1;min-width:0;}
+  .place .pname{font-size:14px;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .place .pnote{font-size:12px;color:var(--sub);margin-top:2px;letter-spacing:-.01em;}
+  .place .btn{flex:0 0 auto;}
+
+  /* ── bottom tab bar ── */
+  .tabbar{
+    position:fixed;left:0;right:0;bottom:0;z-index:100;
+    background:rgba(250,251,252,.85);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border-top:1px solid var(--hair);
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom));
+    display:flex;justify-content:space-around;
+  }
+  .tabbar button{
+    flex:1;max-width:180px;border:none;background:none;cursor:pointer;
+    display:flex;flex-direction:column;align-items:center;gap:3px;
+    font-family:inherit;font-size:10.5px;font-weight:700;color:#9aa4ac;
+    padding:4px 0;
+  }
+  .tabbar button svg{width:23px;height:23px;fill:currentColor;}
+  .tabbar button.on{color:var(--blue);}
+  .view{display:none;}
+  .view.on{display:block;}
+
+  footer{margin-top:40px;text-align:center;font-size:11px;color:#b0b8bf;letter-spacing:.02em;line-height:1.8;}
 
   @media(max-width:480px){
-    header h1{font-size:25px;}
+    .hero h1{font-size:25px;}
+    #view-places .hero h1,#view-info .hero h1{font-size:22px;}
     .item{grid-template-columns:47px 1fr;padding:13px 13px;}
     .item .time{font-size:12.5px;}
     .dayhead h2{font-size:17px;}
@@ -186,9 +309,12 @@
 </style>
 </head>
 <body>
+
+<!-- ═══════════════════ VIEW 1 · 세부 일정 ═══════════════════ -->
+<div class="view on" id="view-plan">
 <div class="wrap">
 
-<header>
+<div class="hero">
   <div class="glow"></div>
   <div class="eyebrow">FAMILY TRIP · OKINAWA</div>
   <h1>오키나와 가족여행</h1>
@@ -205,7 +331,7 @@
       <a class="hbtn" href="https://odal.co.kr/document/reference/212" target="_blank">반납 방법 →</a>
     </div>
   </div>
-</header>
+</div>
 
 <div class="legend">
   <span class="tag air">항공</span>
@@ -227,7 +353,7 @@
   <a href="#d20">7/20 월</a>
 </nav>
 
-<!-- ══════════ DAY 1 ══════════ -->
+<!-- DAY 1 -->
 <section class="day" id="d16">
   <div class="dayhead"><span class="daychip">7/16 목</span><h2>출국 → 장보기 → 물놀이</h2></div>
   <div class="daysub">숙소 · 류큐호텔&리조트 나시로비치 (이토만)</div>
@@ -268,7 +394,7 @@
     <div class="body">
       <div class="title">산에이 시오자키시티 — 장보기</div>
       <div class="note">이틀치 물·간식·과일·주류 한 번에 · 식품관 9:00–22:00 · 푸드코트에서 간단히 늦은 점심 가능</div>
-      <div class="tags"><span class="tag shop">쇼핑</span><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B5%E3%83%B3%E3%82%A8%E3%83%BC%E3%81%97%E3%81%8A%E3%81%96%E3%81%8D%E3%82%B7%E3%83%86%E3%82%A3" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag shop">쇼핑</span><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=サンエーしおざきシティ" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -279,7 +405,7 @@
     <div class="body">
       <div class="title">류큐호텔&리조트 나시로비치 체크인</div>
       <div class="note">짐 풀고 바로 수영복 환복</div>
-      <div class="tags"><span class="tag stay">숙박</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E7%90%89%E7%90%83%E3%83%9B%E3%83%86%E3%83%AB%EF%BC%86%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%E5%90%8D%E5%9F%8E%E3%83%93%E3%83%BC%E3%83%81" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag stay">숙박</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=琉球ホテル＆リゾート名城ビーチ" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -302,7 +428,7 @@
   </div>
 </section>
 
-<!-- ══════════ DAY 2 ══════════ -->
+<!-- DAY 2 -->
 <section class="day" id="d17">
   <div class="dayhead"><span class="daychip">7/17 금</span><h2>올데이 수영 DAY</h2></div>
   <div class="daysub">숙소 · 류큐호텔&리조트 나시로비치 · 하루 종일 리조트, 저녁만 외출</div>
@@ -341,12 +467,12 @@
     <div class="body">
       <div class="title">저녁 외식 — 와후테이 (시오자키시티)</div>
       <div class="note">일식 패밀리레스토랑 · 같은 건물 산에이에서 부족한 것 추가 장보기 가능</div>
-      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%92%8C%E9%A2%A8%E4%BA%AD%E3%81%97%E3%81%8A%E3%81%96%E3%81%8D%E3%82%B7%E3%83%86%E3%82%A3%E5%BA%97" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=和風亭しおざきシティ店" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ DAY 3 ══════════ -->
+<!-- DAY 3 -->
 <section class="day" id="d18">
   <div class="dayhead"><span class="daychip">7/18 토</span><h2>츄라우미 + 해안 드라이브 → 나하</h2></div>
   <div class="daysub">숙소 · 나하 시내 호텔 (미정) · 이동 많은 날 — 아침 일찍 출발이 핵심</div>
@@ -376,7 +502,7 @@
     <div class="body">
       <div class="title">세소코대교 포토스톱</div>
       <div class="note">5분 우회 · 다리 위 바다색이 하이라이트</div>
-      <div class="tags"><span class="tag tour">관광</span><span class="tag opt">선택</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E7%80%AC%E5%BA%95%E5%A4%A7%E6%A9%8B" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag tour">관광</span><span class="tag opt">선택</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=瀬底大橋" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -387,7 +513,7 @@
     <div class="body">
       <div class="title">츄라우미 수족관</div>
       <div class="note">고래상어 대수조 · 오키짱 돌고래쇼 시간 현장 확인 · 약 2.5시간</div>
-      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=沖縄美ら海水族館" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -398,7 +524,7 @@
     <div class="body">
       <div class="title">점심 — 카진호우(花人逢) or 키시모토식당</div>
       <div class="note">카진호우: 언덕 위 바다뷰 피자 · 키시모토: 모토부 소바 원조 · 둘 다 웨이팅 감안</div>
-      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E4%BA%BA%E9%80%A2" target="_blank">카진호우</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8D%E3%81%97%E3%82%82%E3%81%A8%E9%A3%9F%E5%A0%82%E6%9C%AC%E5%BA%97" target="_blank">키시모토</a></div>
+      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=花人逢" target="_blank">카진호우</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=きしもと食堂本店" target="_blank">키시모토</a></div>
     </div>
   </div>
 
@@ -409,7 +535,7 @@
     <div class="body">
       <div class="title">비세 후쿠기 가로수길</div>
       <div class="note">그늘진 나무터널 산책 30분 · 소달구지 체험도 있음</div>
-      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%82%99%E7%80%AC%E3%81%AE%E3%83%95%E3%82%AF%E3%82%AE%E4%B8%A6%E6%9C%A8" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=備瀬のフクギ並木" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -420,7 +546,7 @@
     <div class="body">
       <div class="title">만자모</div>
       <div class="note">코끼리 절벽 절경 · 30분이면 충분</div>
-      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%87%E5%BA%A7%E6%AF%9B" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=万座毛" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -431,7 +557,7 @@
     <div class="body">
       <div class="title">온나노에키 나카유쿠이 시장</div>
       <div class="note">망고빙수·사탕수수주스 간식 타임</div>
-      <div class="tags"><span class="tag cafe">카페·간식</span><span class="tag opt">선택</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8A%E3%82%93%E3%81%AA%E3%81%AE%E9%A7%85%E3%81%AA%E3%81%8B%E3%82%86%E3%81%8F%E3%81%84%E5%B8%82%E5%A0%B4" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag cafe">카페·간식</span><span class="tag opt">선택</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=おんなの駅なかゆくい市場" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -442,7 +568,7 @@
     <div class="body">
       <div class="title">아메리칸빌리지 — 선셋 + 저녁</div>
       <div class="note">선셋비치 노을(19:25 전후) · 관람차 포토존 · 저녁식사 후 출발</div>
-      <div class="tags"><span class="tag tour">관광</span><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E7%BE%8E%E6%B5%9C%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E3%83%B3%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag tour">관광</span><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=美浜アメリカンビレッジ" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -458,7 +584,7 @@
   </div>
 </section>
 
-<!-- ══════════ DAY 4 ══════════ -->
+<!-- DAY 4 -->
 <section class="day" id="d19">
   <div class="dayhead"><span class="daychip">7/19 일</span><h2>나하 시내 투어 → 우미카지 선셋</h2></div>
   <div class="daysub">숙소 · 나하 시내 호텔 (미정) · 시내는 도보, 오모로마치·우미카지만 차량</div>
@@ -479,7 +605,7 @@
     <div class="body">
       <div class="title">마키시 공설시장 · 아케이드 상점가</div>
       <div class="note">1층 시장 구경 · 포크타마고 오니기리 본점도 근처</div>
-      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag tour">관광</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=第一牧志公設市場" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -490,7 +616,7 @@
     <div class="body">
       <div class="title">츠보야 야치문 거리</div>
       <div class="note">도자기 골목 — 그릇·소품 쇼핑 · 골목 찻집에서 부쿠부쿠차(거품차) 체험</div>
-      <div class="tags"><span class="tag tour">관광</span><span class="tag shop">쇼핑</span><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%A3%BA%E5%B1%8B%E3%82%84%E3%81%A1%E3%82%80%E3%82%93%E9%80%9A%E3%82%8A" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag tour">관광</span><span class="tag shop">쇼핑</span><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=壺屋やちむん通り" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -501,7 +627,7 @@
     <div class="body">
       <div class="title">점심 — 국제거리 스테이크 or 시장 2층 해산물</div>
       <div class="note">얏빠리 스테이크 / 스테이크하우스88 · 시장 2층은 1층에서 산 해산물 조리 가능</div>
-      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%82%84%E3%81%A3%E3%81%B1%E3%82%8A%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=やっぱりステーキ国際通り" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -510,7 +636,7 @@
     <div class="body">
       <div class="title">국제거리 쇼핑 스트리트</div>
       <div class="note">Calbee+(갓 튀긴 포테리코) → 후쿠기야(바움쿠헨) → Splash Okinawa(감성 소품·시사 굿즈) → 블루씰 / 시오야 소금아이스크림</div>
-      <div class="tags"><span class="tag shop">쇼핑</span><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%83%AB%E3%83%93%E3%83%BC%E3%83%97%E3%83%A9%E3%82%B9%E6%B2%96%E7%B8%84%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank">Calbee+</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%81%B5%E3%81%8F%E3%81%8E%E3%82%84%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank">후쿠기야</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Splash+okinawa+%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank">Splash</a></div>
+      <div class="tags"><span class="tag shop">쇼핑</span><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=カルビープラス沖縄国際通り店" target="_blank">Calbee+</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ふくぎや国際通り店" target="_blank">후쿠기야</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Splash+okinawa+国際通り" target="_blank">Splash</a></div>
     </div>
   </div>
 
@@ -519,7 +645,7 @@
     <div class="body">
       <div class="title">카페 — oHacorte 마츠오점</div>
       <div class="note">과일 타르트 · 골목 안 정원 딸린 매장 — 쉬어가기 좋음</div>
-      <div class="tags"><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=oHacorte+%E6%9D%BE%E5%B0%BE%E5%BA%97" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=oHacorte+松尾店" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -528,7 +654,7 @@
     <div class="body">
       <div class="title">위스키 — 리쿼마운틴 국제거리점 → 돈키호테</div>
       <div class="note">리쿼마운틴 먼저 보고 돈키호테(24h·면세)와 가격 비교 · 돈키에 산리오 잡화도 있음</div>
-      <div class="tags"><span class="tag shop">쇼핑</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%83%AA%E3%82%AB%E3%83%BC%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%86%E3%83%B3%E9%82%A3%E8%A6%87%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank">리쿼마운틴</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%83%89%E3%83%B3%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank">돈키호테</a></div>
+      <div class="tags"><span class="tag shop">쇼핑</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=リカーマウンテン那覇国際通り店" target="_blank">리쿼마운틴</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ドン・キホーテ国際通り店" target="_blank">돈키호테</a></div>
     </div>
   </div>
 
@@ -539,7 +665,7 @@
     <div class="body">
       <div class="title">오모로마치 — 산리오 기프트게이트 + 야마야</div>
       <div class="note">산에이 나하 메인플레이스 2층(10:00–22:00) · 야마야 신도심점 = 위스키 최종 비교 · 시간 없으면 돈키로 대체</div>
-      <div class="tags"><span class="tag shop">쇼핑</span><span class="tag opt">선택</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B5%E3%83%B3%E3%82%A8%E3%83%BC%E9%82%A3%E8%A6%87%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9" target="_blank">메인플레이스</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%82%84%E3%81%BE%E3%82%84%E9%82%A3%E8%A6%87%E6%96%B0%E9%83%BD%E5%BF%83%E5%BA%97" target="_blank">야마야</a></div>
+      <div class="tags"><span class="tag shop">쇼핑</span><span class="tag opt">선택</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=サンエー那覇メインプレイス" target="_blank">메인플레이스</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=やまや那覇新都心店" target="_blank">야마야</a></div>
     </div>
   </div>
 
@@ -550,7 +676,7 @@
     <div class="body">
       <div class="title">세나가지마 우미카지테라스</div>
       <div class="note">하얀 테라스 상점 구경 → 19:25 선셋 → 저녁(판케이크·타코라이스·BBQ) · 비행기 이착륙 뷰</div>
-      <div class="tags"><span class="tag tour">관광</span><span class="tag food">식사</span><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E7%80%AC%E9%95%B7%E5%B3%B6%E3%82%A6%E3%83%9F%E3%82%AB%E3%82%B8%E3%83%86%E3%83%A9%E3%82%B9" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="tags"><span class="tag tour">관광</span><span class="tag food">식사</span><span class="tag cafe">카페·간식</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=瀬長島ウミカジテラス" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
 
@@ -566,7 +692,7 @@
   </div>
 </section>
 
-<!-- ══════════ DAY 5 ══════════ -->
+<!-- DAY 5 -->
 <section class="day" id="d20">
   <div class="dayhead"><span class="daychip">7/20 월</span><h2>렌터카 반납 → 귀국</h2></div>
   <div class="daysub">반납 10:00 · 출발 13:15 — 아침은 여유 없이 움직이기</div>
@@ -628,8 +754,7 @@
   </div>
 </section>
 
-<!-- ── memo ── -->
-<div class="memo">
+<div class="card">
   <h3>메모 · 백업 플랜</h3>
   <p><b>위스키 동선</b> — ① 리쿼마운틴 국제거리점 → ② 돈키호테 국제거리(면세) → ③ 야마야 신도심점 순으로 가격 비교. 리쿼마운틴 마츠야마점도 있음.</p>
   <p><b>빅카메라</b> — 국제거리에 소형 셀렉트 매장, 아자(安謝)에 코지마×빅카메라 풀매장(차 10분), 공항 2층에 Air빅카메라. 가전 살 게 있을 때만.</p>
@@ -639,8 +764,373 @@
   <p><b>아시비나 아울렛</b> — 10시 오픈이라 귀국일 렌터카 반납(10시)과 겹쳐 불가. 필요 시 7/16 도착날 장보기 전에 잠깐(호텔 가는 길 9분).</p>
 </div>
 
-<footer>Okinawa Family Trip · 2026. 7. 16 – 7. 20 · LJ341 / LJ342 · 오달렌터카</footer>
-
+<footer>Okinawa Family Trip · 2026. 7. 16 – 7. 20<br>© jjaihun</footer>
 </div>
+</div>
+
+<!-- ═══════════════════ VIEW 2 · 추천 장소 ═══════════════════ -->
+<div class="view" id="view-places">
+<div class="wrap">
+
+<div class="hero">
+  <div class="glow"></div>
+  <div class="eyebrow">PLACES · SPOT BOOK</div>
+  <h1>추천 장소</h1>
+  <div class="dates">지역별 · 카테고리별 스팟 북 — 일정에 없는 곳도 즉흥으로!</div>
+</div>
+
+<div class="fbar">
+  <div class="frow">
+    <span class="flabel">지역</span>
+    <button class="fchip" data-t="region" data-v="naha" onclick="toggleF(this)">나하</button>
+    <button class="fchip" data-t="region" data-v="south" onclick="toggleF(this)">남부</button>
+    <button class="fchip" data-t="region" data-v="mid" onclick="toggleF(this)">중부</button>
+    <button class="fchip" data-t="region" data-v="north" onclick="toggleF(this)">북부</button>
+  </div>
+  <div class="frow">
+    <span class="flabel">카테고리</span>
+    <button class="fchip" data-t="cat" data-v="tour" onclick="toggleF(this)">관광</button>
+    <button class="fchip" data-t="cat" data-v="food" onclick="toggleF(this)">식사</button>
+    <button class="fchip" data-t="cat" data-v="cafe" onclick="toggleF(this)">카페</button>
+    <button class="fchip" data-t="cat" data-v="shop" onclick="toggleF(this)">쇼핑</button>
+  </div>
+</div>
+<div class="fempty" id="fempty">조건에 맞는 장소가 없어요 — 필터를 조절해보세요.</div>
+
+<!-- 나하 -->
+<div class="rgroup r-naha">
+  <div class="rhead"><span class="rchip">나하 시내</span><h2>국제거리 · 시장 · 신도심</h2><span class="rsub">7/19 메인</span></div>
+
+  <div class="place"><div class="pbody"><div class="pname">국제거리 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">나하의 메인 스트리트 1.6km — 쇼핑·먹거리 총집합</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=那覇国際通り" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">마키시 공설시장 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">나하의 부엌 — 1층 시장, 2층 조리 식당</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=第一牧志公設市場" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">츠보야 야치문 거리 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">도자기 골목 — 그릇 쇼핑 + 부쿠부쿠차</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=壺屋やちむん通り" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">나미노우에 비치 · 신사 <span class="tag tour">관광</span></div><div class="pnote">나하 유일 도심 비치 — 절벽 위 신사와 세트, 아침 산책용</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=波の上ビーチ" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">후쿠슈엔 <span class="tag tour">관광</span></div><div class="pnote">중국식 정원 — 조용하고 사진 잘 나옴, 30분 코스</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=福州園" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">잭스 스테이크하우스 <span class="tag food">식사</span></div><div class="pnote">1953년 노포 — 오키나와 스테이크의 원조 감성</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ジャッキーステーキハウス" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">유난기 <span class="tag food">식사</span></div><div class="pnote">오키나와 가정식 노포 — 라후테(돼지조림) 명물, 웨이팅 필수</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ゆうなんぎい+那覇" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">포크타마고 오니기리 본점 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">스팸계란 주먹밥 — 아침 대용, 회전 빠름</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ポークたまごおにぎり本店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">스테이크하우스88 국제거리점 <span class="tag food">식사</span></div><div class="pnote">얏빠리와 함께 국제거리 스테이크 양대산맥</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ステーキハウス88+国際通り" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">C&C Breakfast Okinawa <span class="tag cafe">카페</span><span class="tag inplan">일정 포함</span></div><div class="pnote">과일 프렌치토스트 아침 — 9시 전 도착</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=C%26C+BREAKFAST+OKINAWA" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">oHacorte 마츠오점 <span class="tag cafe">카페</span><span class="tag inplan">일정 포함</span></div><div class="pnote">과일 타르트 — 골목 안 정원 매장</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=oHacorte+松尾店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">센니치 <span class="tag cafe">카페</span></div><div class="pnote">젠자이(금시빙수) 노포 — 더운 오후 최고의 피난처</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=千日+那覇+ぜんざい" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">T&M Coffee <span class="tag cafe">카페</span></div><div class="pnote">우드톤 감성 로스터리 — 커피가 진심인 집</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=T%26M+Coffee+那覇" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">와시타숍 본점 <span class="tag shop">쇼핑</span></div><div class="pnote">오키나와 특산품 총집합 — 기념품 한 번에 끝내기</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=わしたショップ国際通り本店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">돈키호테 국제거리점 <span class="tag shop">쇼핑</span><span class="tag inplan">일정 포함</span></div><div class="pnote">24시간 · 면세 — 위스키·산리오 잡화·과자 몰아사기</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ドン・キホーテ国際通り店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">리쿼마운틴 국제거리점 <span class="tag shop">쇼핑</span><span class="tag inplan">일정 포함</span></div><div class="pnote">주류 전문 — 위스키 1순위 체크</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=リカーマウンテン那覇国際通り店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">산에이 메인플레이스 (산리오) <span class="tag shop">쇼핑</span><span class="tag inplan">일정 포함</span></div><div class="pnote">오모로마치 대형몰 — 2층 산리오 기프트게이트</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=サンエー那覇メインプレイス" target="_blank" aria-label="구글맵"></a></div>
+</div>
+
+<!-- 남부 -->
+<div class="rgroup r-south">
+  <div class="rhead"><span class="rchip">남부</span><h2>이토만 · 세나가지마 · 난조</h2><span class="rsub">7/16–17 · 19 저녁</span></div>
+
+  <div class="place"><div class="pbody"><div class="pname">세나가지마 우미카지테라스 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">일본의 아말피 — 선셋 + 비행기 이착륙 뷰</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=瀬長島ウミカジテラス" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">니라이카나이 다리 <span class="tag tour">관광</span></div><div class="pnote">바다로 빨려드는 드라이브 — 전망대에서 내려다보기</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ニライカナイ橋" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">치넨미사키 공원 <span class="tag tour">관광</span></div><div class="pnote">270도 바다 파노라마 곶 — 니라이카나이와 세트</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=知念岬公園" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">오키나와월드 · 교쿠센도 <span class="tag tour">관광</span></div><div class="pnote">대형 종유동굴 + 류큐 문화촌 — 우천 시 1순위 대체</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=おきなわワールド" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">간가라 계곡 <span class="tag tour">관광</span></div><div class="pnote">동굴 카페 + 가이드 투어(예약제) — 신비로운 정글 트레킹</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ガンガラーの谷" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">류큐가라스무라 <span class="tag tour">관광</span></div><div class="pnote">류큐유리 공방 — 유리컵 만들기 체험, 호텔 차 5분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=琉球ガラス村" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">이토만 어협 오사카나센터 <span class="tag food">식사</span></div><div class="pnote">수산시장 — 사시미·해산덮밥, 포장해서 호텔에서</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=糸満漁業協同組合お魚センター" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">와후테이 시오자키시티점 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">일식 패밀리레스토랑 — 가족 저녁 무난 픽</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=和風亭しおざきシティ店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">카페 쿠루쿠마 <span class="tag cafe">카페</span></div><div class="pnote">절벽 위 오션뷰 테라스 + 태국 커리 — 난조 드라이브 코스</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=カフェくるくま" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">하마베노차야 <span class="tag cafe">카페</span></div><div class="pnote">바다에 붙은 창가 좌석 — 밀물 시간에 가면 물 위에 뜬 기분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=浜辺の茶屋" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">산에이 시오자키시티 <span class="tag shop">쇼핑</span><span class="tag inplan">일정 포함</span></div><div class="pnote">호텔 근처 대형마트 — 장보기 베이스캠프</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=サンエーしおざきシティ" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">미치노에키 이토만 <span class="tag shop">쇼핑</span></div><div class="pnote">농산물 직판 + 수산센터 — 과일·사시미는 여기 (18시 전)</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=道の駅いとまん" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">아시비나 아울렛 <span class="tag shop">쇼핑</span></div><div class="pnote">공항 15분 아울렛 — 이번 일정엔 도착날 잠깐만 가능</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=沖縄アウトレットモールあしびなー" target="_blank" aria-label="구글맵"></a></div>
+</div>
+
+<!-- 중부 -->
+<div class="rgroup r-mid">
+  <div class="rhead"><span class="rchip">중부</span><h2>차탄 · 요미탄 · 온나</h2><span class="rsub">7/18 복귀길</span></div>
+
+  <div class="place"><div class="pbody"><div class="pname">아메리칸빌리지 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">미군기지 감성 쇼핑타운 — 선셋비치 노을 필수</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=美浜アメリカンビレッジ" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">만자모 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">코끼리 코 절벽 — 오키나와 대표 절경</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=万座毛" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">잔파곶 <span class="tag tour">관광</span></div><div class="pnote">하얀 등대 + 절벽 — 요미탄 서쪽 끝, 노을 명소</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=残波岬" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">야치문노사토 <span class="tag tour">관광</span></div><div class="pnote">요미탄 도자기 마을 — 츠보야보다 한적, 가마 구경</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=やちむんの里" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">부세나 해중공원 <span class="tag tour">관광</span></div><div class="pnote">해중전망탑 + 유리보트 — 젖지 않고 바닷속 구경</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ブセナ海中公園" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">킹타코스 킨 본점 <span class="tag food">식사</span></div><div class="pnote">타코라이스 원조 — B급 감성 로컬 맛집</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=キングタコス金武本店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">지바고 커피 <span class="tag cafe">카페</span></div><div class="pnote">아메리칸빌리지 씨사이드 — 바다 앞 브루클린 감성</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ZHYVAGO+COFFEE+WORKS+OKINAWA" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">온나노에키 나카유쿠이 시장 <span class="tag cafe">카페</span><span class="tag inplan">일정 포함</span></div><div class="pnote">휴게소 시장 — 망고빙수·사탕수수주스·튀김</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=おんなの駅なかゆくい市場" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">이온몰 오키나와 라이캄 <span class="tag shop">쇼핑</span></div><div class="pnote">오키나와 최대 몰 — 비 오는 날 반나절 대체 코스</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=イオンモール沖縄ライカム" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">파르코시티 (우라소에) <span class="tag shop">쇼핑</span></div><div class="pnote">산에이 초대형 몰 — 나하에서 차 20분, 캐릭터·패션 다양</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=サンエー浦添西海岸パルコシティ" target="_blank" aria-label="구글맵"></a></div>
+</div>
+
+<!-- 북부 -->
+<div class="rgroup r-north">
+  <div class="rhead"><span class="rchip">북부</span><h2>모토부 · 나고</h2><span class="rsub">7/18 메인</span></div>
+
+  <div class="place"><div class="pbody"><div class="pname">츄라우미 수족관 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">고래상어 대수조 — 오전 방문이 한산</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=沖縄美ら海水族館" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">비세 후쿠기 가로수길 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">초록 나무터널 — 수족관에서 차 5분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=備瀬のフクギ並木" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">세소코대교 · 세소코비치 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">투명한 바다 위 다리 — 포토스톱 5분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=瀬底大橋" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">코우리대교 · 코우리섬 <span class="tag tour">관광</span></div><div class="pnote">2km 바다 위 드라이브 + 하트록 — 시간 여유 있으면 추가</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=古宇利大橋" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">나키진 성터 <span class="tag tour">관광</span></div><div class="pnote">세계유산 성곽 — 성벽 위 바다 전망</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=今帰仁城跡" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">오리온 해피파크 <span class="tag tour">관광</span></div><div class="pnote">오리온 맥주공장 견학(시음 포함, 운전자는 논알콜) — 나고</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=オリオンハッピーパーク" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">키시모토식당 본점 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">1905년 모토부 소바 원조 — 웨이팅 필수</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=きしもと食堂本店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">카진호우 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">언덕 위 고민가 피자 — 바다뷰 테라스</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=花人逢" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">우후야 (백년고가) <span class="tag food">식사</span></div><div class="pnote">100년 고민가에서 아구돼지 샤브 — 나고, 분위기 갑</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=百年古家大家" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">Fuu Cafe (세소코섬) <span class="tag cafe">카페</span></div><div class="pnote">정글 속 숨은 카페 — 세소코대교 건너 5분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=fuu+cafe+瀬底島" target="_blank" aria-label="구글맵"></a></div>
+  <div class="place"><div class="pbody"><div class="pname">오카시고텐 나고점 <span class="tag cafe">카페</span></div><div class="pnote">홍임자 타르트 본가 — 바다뷰 카페 병설</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=御菓子御殿名護店" target="_blank" aria-label="구글맵"></a></div>
+</div>
+
+<footer>Okinawa Family Trip · Spot Book<br>© jjaihun</footer>
+</div>
+</div>
+
+<!-- ═══════════════════ VIEW 3 · 정보 ═══════════════════ -->
+<div class="view" id="view-info">
+<div class="wrap">
+
+<div class="hero">
+  <div class="glow"></div>
+  <div class="eyebrow">INFO · LIVE</div>
+  <h1>여행 정보</h1>
+  <div class="dates">날씨 · 환율 · 운전 · 체크리스트 — 조회 버튼으로 실시간 갱신</div>
+</div>
+
+<!-- 날씨 -->
+<div class="card">
+  <h3>나하 날씨 <span style="font-size:11px;color:var(--sub);font-weight:600;">7/16 – 7/20</span><span class="spacer"></span><button class="rbtn" onclick="loadWeather()">↻ 조회</button></h3>
+  <div class="wxgrid" id="wxgrid">
+    <div class="wxday"><div class="wd">7/16 목</div><div class="wi">–</div><div class="wt">–</div><div class="wp"></div></div>
+    <div class="wxday"><div class="wd">7/17 금</div><div class="wi">–</div><div class="wt">–</div><div class="wp"></div></div>
+    <div class="wxday"><div class="wd">7/18 토</div><div class="wi">–</div><div class="wt">–</div><div class="wp"></div></div>
+    <div class="wxday"><div class="wd">7/19 일</div><div class="wi">–</div><div class="wt">–</div><div class="wp"></div></div>
+    <div class="wxday"><div class="wd">7/20 월</div><div class="wi">–</div><div class="wt">–</div><div class="wp"></div></div>
+  </div>
+  <div class="wxstate" id="wxstate">조회 버튼을 눌러 최신 예보를 불러오세요.</div>
+  <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;">
+    <a class="btn plain" href="https://weather.yahoo.co.jp/weather/jp/47/9110/47201.html" target="_blank">Yahoo!재팬 날씨 (나하) ↗</a>
+    <a class="btn plain" href="https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=471000" target="_blank">일본 기상청 ↗</a>
+  </div>
+  <div class="srcnote">실시간 조회: Open-Meteo (나하 기준) · 정밀 확인은 Yahoo!재팬·일본 기상청 링크 이용 · 7월은 스콜·태풍 가능성 체크</div>
+</div>
+
+<!-- 환율 -->
+<div class="card">
+  <h3>환율 JPY → KRW<span class="spacer"></span><button class="rbtn" onclick="loadFx()">↻ 조회</button></h3>
+  <div class="fxbig" id="fxbig">– <small>원 / 100엔</small></div>
+  <div class="fxtable">
+    <div class="fxcell"><div class="y">1,000엔</div><div class="k" id="fx1000">–</div></div>
+    <div class="fxcell"><div class="y">5,000엔</div><div class="k" id="fx5000">–</div></div>
+    <div class="fxcell"><div class="y">10,000엔</div><div class="k" id="fx10000">–</div></div>
+  </div>
+  <div class="wxstate" id="fxstate">조회 버튼을 눌러 최신 환율을 불러오세요.</div>
+  <div class="srcnote">기준환율(ER-API) — 실제 카드 결제·환전 환율과 다를 수 있음 · 트래블카드는 대부분 기준환율 근접</div>
+</div>
+
+<!-- 기본 정보 -->
+<div class="card">
+  <h3>기본 정보</h3>
+  <ul>
+    <li><span class="k">시차</span>한국과 시차 없음</li>
+    <li><span class="k">일몰</span>7월 중순 나하 기준 약 19:25 — 선셋 일정 기준점</li>
+    <li><span class="k">전압</span>100V · A타입(11자) — 한국 제품은 돼지코 어댑터 필요</li>
+    <li><span class="k">기후</span>7월 평균 27–32℃, 습도 높음 · 오후 스콜 잦지만 금방 갬</li>
+    <li><span class="k">태풍</span>7월은 태풍 시즌 — 출발 3일 전부터 경로 체크</li>
+  </ul>
+</div>
+
+<!-- 운전 팁 -->
+<div class="card">
+  <h3>운전 팁 (좌측통행!)</h3>
+  <ul>
+    <li><span class="k">좌측통행</span>핸들 오른쪽 · 깜빡이/와이퍼 위치 반대 — 첫 10분만 집중하면 금방 적응</li>
+    <li><span class="k">우회전 주의</span>우회전이 한국의 좌회전 — 반대편 직진차 먼저</li>
+    <li><span class="k">속도</span>시내 40–50km/h, 고속도로 80km/h — 단속 카메라 많음</li>
+    <li><span class="k">고속도로</span>나하공항도로·오키나와도 — 현금/ETC, 요금소 일반 차로는 현금</li>
+    <li><span class="k">주차</span>코인파킹 — 출차 전 정산기에서 번호 입력 후 결제</li>
+    <li><span class="k">필수 지참</span>국제운전면허증 + 한국면허증 + 여권 3종 세트</li>
+    <li><span class="k">버스전용</span>나하 시내 국도 58호 등 평일 아침·저녁 버스전용차로 단속 주의</li>
+  </ul>
+</div>
+
+<!-- 결제/쇼핑 팁 -->
+<div class="card">
+  <h3>결제 · 쇼핑 팁</h3>
+  <ul>
+    <li><span class="k">면세</span>같은 매장 5,000엔 이상 + 여권 제시 (돈키·빅카메라·산에이 등)</li>
+    <li><span class="k">현금</span>소바집·시장·주유소 등 현금 온리 존재 — 1–2만엔 현금 권장</li>
+    <li><span class="k">ATM</span>세븐일레븐 ATM에서 해외카드 엔화 출금 가능 (24시간)</li>
+    <li><span class="k">카드</span>트래블월렛/트래블로그 등 엔화 충전카드가 환율 유리</li>
+    <li><span class="k">주류 반입</span>한국 입국 시 주류 2병(총 2L·400달러 이하) 면세 — 초과분 자진신고</li>
+  </ul>
+</div>
+
+<!-- 물놀이 팁 -->
+<div class="card">
+  <h3>물놀이 · 아이 동반 팁</h3>
+  <ul>
+    <li><span class="k">자외선</span>7월 오키나와 자외선 매우 강함 — 래시가드 + 선크림 수시 덧바르기</li>
+    <li><span class="k">해파리</span>하브쿠라게 주의 — 해파리 방지 그물망 안에서만 수영</li>
+    <li><span class="k">시간대</span>10–14시 자외선 피크 — 오전 일찍·늦은 오후가 쾌적</li>
+    <li><span class="k">음료</span>수분 보충 자주 — 자판기·컨비니 스포츠음료 활용</li>
+  </ul>
+</div>
+
+<!-- 긴급 연락처 -->
+<div class="card">
+  <h3>긴급 연락처</h3>
+  <ul>
+    <li><span class="k">경찰</span>110</li>
+    <li><span class="k">구급 · 화재</span>119</li>
+    <li><span class="k">해상 사고</span>118 (해상보안청)</li>
+    <li><span class="k">영사콜센터</span>+82-2-3210-0404 (24시간, 외교부)</li>
+    <li><span class="k">오달렌터카</span>24시간 한국어 대응 — <a href="https://odal.co.kr" target="_blank" style="color:var(--blue);font-weight:700;">odal.co.kr ↗</a></li>
+  </ul>
+</div>
+
+<!-- 체크리스트 -->
+<div class="card">
+  <h3>짐 체크리스트</h3>
+  <ul>
+    <li><span class="k">서류</span>여권 · 국제운전면허증 + 한국면허증 · Visit Japan Web QR</li>
+    <li><span class="k">물놀이</span>수영복 · 래시가드 · 물안경 · 아쿠아슈즈 · 방수팩</li>
+    <li><span class="k">더위</span>선크림(SPF50+) · 모자 · 선글라스 · 휴대 선풍기</li>
+    <li><span class="k">전자</span>돼지코 어댑터 · 보조배터리 · 차량용 충전 케이블</li>
+    <li><span class="k">기타</span>상비약(해열·소화·멀미) · 우산(스콜) · 에코백(장보기)</li>
+  </ul>
+</div>
+
+<footer>Okinawa Family Trip · Info<br>© jjaihun</footer>
+</div>
+</div>
+
+<!-- ═══════════════════ BOTTOM TAB BAR ═══════════════════ -->
+<nav class="tabbar">
+  <button id="tab-plan" class="on" onclick="showView('plan')">
+    <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5zm3 5h3v3H8v-3z"/></svg>
+    세부 일정
+  </button>
+  <button id="tab-places" onclick="showView('places')">
+    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+    추천 장소
+  </button>
+  <button id="tab-info" onclick="showView('info')">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+    정보
+  </button>
+</nav>
+
+<script>
+function showView(name){
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+  document.getElementById('view-' + name).classList.add('on');
+  document.querySelectorAll('.tabbar button').forEach(b => b.classList.remove('on'));
+  document.getElementById('tab-' + name).classList.add('on');
+  window.scrollTo(0, 0);
+  if(name === 'info' && !window.__infoLoaded){
+    window.__infoLoaded = true;
+    loadWeather();
+    loadFx();
+  }
+}
+
+const WX_ICON = c => {
+  if(c === 0) return '☀️';
+  if(c <= 2) return '🌤️';
+  if(c === 3) return '☁️';
+  if(c <= 48) return '🌫️';
+  if(c <= 57) return '🌦️';
+  if(c <= 67) return '🌧️';
+  if(c <= 82) return '🌧️';
+  if(c >= 95) return '⛈️';
+  return '🌤️';
+};
+const WX_LABEL = ['7/16 목','7/17 금','7/18 토','7/19 일','7/20 월'];
+
+async function loadWeather(){
+  const st = document.getElementById('wxstate');
+  st.textContent = '불러오는 중…';
+  try{
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=26.2124&longitude=127.6809'
+      + '&daily=temperature_2m_max,temperature_2m_min'
+      + '&hourly=weather_code,precipitation_probability'
+      + '&timezone=Asia%2FTokyo&start_date=2026-07-16&end_date=2026-07-20';
+    const r = await fetch(url);
+    const j = await r.json();
+    if(j.error) throw new Error(j.reason || 'api error');
+    const d = j.daily, h = j.hourly;
+    const hcodes = h.weather_code || h.weathercode || [];
+    const hprec = h.precipitation_probability || [];
+    // 오전 06–12시 / 오후 12–19시 구간 요약 (대표코드: 구간 내 최악 날씨, 강수확률: 구간 최대)
+    const seg = (dayIdx, from, to) => {
+      let code = 0, prec = 0;
+      for(let hh = from; hh < to; hh++){
+        const idx = dayIdx * 24 + hh;
+        if(hcodes[idx] !== undefined && hcodes[idx] > code) code = hcodes[idx];
+        if(hprec[idx] !== undefined && hprec[idx] > prec) prec = hprec[idx];
+      }
+      return {code, prec};
+    };
+    const grid = document.getElementById('wxgrid');
+    grid.innerHTML = '';
+    for(let i = 0; i < d.time.length; i++){
+      const am = seg(i, 6, 12), pm = seg(i, 12, 19);
+      const el = document.createElement('div');
+      el.className = 'wxday';
+      el.innerHTML = '<div class="wd">' + (WX_LABEL[i] || d.time[i].slice(5)) + '</div>'
+        + '<div class="wxrow">오전 <span class="ic">' + WX_ICON(am.code) + '</span>' + am.prec + '%</div>'
+        + '<div class="wxrow">오후 <span class="ic">' + WX_ICON(pm.code) + '</span>' + pm.prec + '%</div>'
+        + '<div class="wt">' + Math.round(d.temperature_2m_max[i]) + '°<small>/' + Math.round(d.temperature_2m_min[i]) + '°</small></div>';
+      grid.appendChild(el);
+    }
+    st.textContent = '업데이트: ' + new Date().toLocaleString('ko-KR', {month:'numeric', day:'numeric', hour:'2-digit', minute:'2-digit'}) + ' · %는 강수확률';
+  }catch(e){
+    st.textContent = '조회 실패 — 네트워크 확인 후 다시 시도하거나 Yahoo!재팬 링크를 이용하세요.';
+  }
+}
+
+/* ── places filter ── */
+const FSEL = {region:new Set(), cat:new Set()};
+function toggleF(btn){
+  const s = FSEL[btn.dataset.t];
+  s.has(btn.dataset.v) ? s.delete(btn.dataset.v) : s.add(btn.dataset.v);
+  btn.classList.toggle('sel');
+  applyFilter();
+}
+function placeCat(p){
+  if(p.querySelector('.tag.tour')) return 'tour';
+  if(p.querySelector('.tag.food')) return 'food';
+  if(p.querySelector('.tag.cafe')) return 'cafe';
+  if(p.querySelector('.tag.shop')) return 'shop';
+  return '';
+}
+function applyFilter(){
+  let total = 0;
+  document.querySelectorAll('#view-places .rgroup').forEach(g => {
+    const region = [...g.classList].find(c => c.startsWith('r-')).slice(2);
+    const regionOk = FSEL.region.size === 0 || FSEL.region.has(region);
+    let any = false;
+    g.querySelectorAll('.place').forEach(p => {
+      const catOk = FSEL.cat.size === 0 || FSEL.cat.has(placeCat(p));
+      const show = regionOk && catOk;
+      p.style.display = show ? '' : 'none';
+      if(show) any = true;
+    });
+    g.style.display = any ? '' : 'none';
+    if(any) total++;
+  });
+  document.getElementById('fempty').style.display = total === 0 ? 'block' : 'none';
+}
+
+async function loadFx(){
+  const st = document.getElementById('fxstate');
+  st.textContent = '불러오는 중…';
+  try{
+    const r = await fetch('https://open.er-api.com/v6/latest/JPY');
+    const j = await r.json();
+    const krw = j.rates.KRW;
+    const f = n => Math.round(n).toLocaleString('ko-KR');
+    document.getElementById('fxbig').innerHTML = f(krw * 100) + ' <small>원 / 100엔</small>';
+    document.getElementById('fx1000').textContent = f(krw * 1000) + '원';
+    document.getElementById('fx5000').textContent = f(krw * 5000) + '원';
+    document.getElementById('fx10000').textContent = f(krw * 10000) + '원';
+    st.textContent = '업데이트: ' + new Date().toLocaleString('ko-KR', {month:'numeric', day:'numeric', hour:'2-digit', minute:'2-digit'});
+  }catch(e){
+    st.textContent = '조회 실패 — 네트워크 확인 후 다시 시도하세요.';
+  }
+}
+</script>
+
 </body>
 </html>
