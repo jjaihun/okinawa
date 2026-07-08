@@ -269,6 +269,89 @@
   .fchip.sel[data-v="shop"]{background:#af7aff;}
   .fempty{display:none;text-align:center;color:var(--sub);font-size:13px;padding:44px 0;}
 
+  /* ── 한국인/현지인 세그먼트 ── */
+  .seg{
+    display:flex;background:#e9edf1;border-radius:14px;padding:3px;
+    margin:14px 2px 4px;
+  }
+  .seg button{
+    flex:1;border:none;background:none;cursor:pointer;font-family:inherit;
+    font-size:13.5px;font-weight:700;color:var(--sub);padding:9px 0;border-radius:11px;
+    transition:all .15s;
+  }
+  .seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+
+  /* ── 현지인 추천 ── */
+  .lbar{
+    position:sticky;top:env(safe-area-inset-top);z-index:50;
+    background:rgba(245,247,249,.88);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    margin:0 -16px 6px;padding:8px 16px 10px;
+    border-bottom:1px solid var(--hair);
+  }
+  .fchip.sel[data-v="scenery"]{background:#0a84ff;}
+  .fchip.sel[data-v="food"]{background:#ff6b5e;}
+  .fchip.sel[data-v="exp"]{background:#af7aff;}
+  .fchip.sel[data-b]{background:#1d1d1f;}
+  .lcard{
+    background:var(--card);border-radius:18px;padding:14px 15px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(20,60,100,.05);
+  }
+  .lcard + .lcard{margin-top:10px;}
+  .lhead{display:flex;align-items:flex-start;gap:10px;}
+  .licon{font-size:22px;line-height:1.2;flex:0 0 auto;}
+  .lt{flex:1;min-width:0;}
+  .lname{font-size:14.5px;font-weight:800;letter-spacing:-.02em;}
+  .ljp{font-size:11px;color:var(--sub);margin-top:1px;}
+  .lrate{flex:0 0 auto;text-align:right;font-size:13px;font-weight:800;color:#f5a623;letter-spacing:-.02em;}
+  .lrate small{display:block;font-size:10px;color:var(--sub);font-weight:600;}
+  .ldesc{font-size:12.5px;color:#4a5560;margin-top:8px;letter-spacing:-.01em;}
+  .ldist{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap;}
+  .dchip{
+    font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:999px;
+    background:#f0f4f7;color:var(--sub);white-space:nowrap;
+  }
+  .dchip.on{background:#1d1d1f;color:#fff;}
+  .lfoot{display:flex;align-items:center;gap:5px;margin-top:10px;flex-wrap:wrap;}
+  .ltag{font-size:10px;font-weight:700;color:#8e5ce0;background:rgba(175,122,255,.1);padding:3px 8px;border-radius:999px;}
+  .lbtns{margin-left:auto;display:flex;gap:5px;}
+  .rvbtn{
+    border:none;cursor:pointer;font-family:inherit;
+    display:inline-flex;align-items:center;gap:4px;
+    font-size:11px;font-weight:700;padding:4.5px 11px;border-radius:999px;
+    background:rgba(10,132,255,.1);color:var(--blue);
+  }
+  .rvbtn:active{background:var(--blue);color:#fff;}
+
+  /* ── 리뷰 요약 바텀시트 ── */
+  .lovl{
+    position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:120;
+    opacity:0;pointer-events:none;transition:opacity .2s;
+  }
+  .lovl.on{opacity:1;pointer-events:auto;}
+  .lsheet{
+    position:fixed;left:0;right:0;bottom:0;z-index:121;
+    background:#fff;border-radius:24px 24px 0 0;
+    padding:20px 22px calc(24px + env(safe-area-inset-bottom));
+    transform:translateY(105%);transition:transform .25s cubic-bezier(.3,.9,.4,1);
+    max-width:760px;margin:0 auto;max-height:70vh;overflow-y:auto;
+  }
+  .lsheet.on{transform:translateY(0);}
+  .lsheet .grab{width:38px;height:4.5px;border-radius:3px;background:#dfe4e8;margin:0 auto 14px;}
+  .lsheet h4{font-size:17px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;}
+  .lsheet .srate{font-size:12.5px;font-weight:700;color:#f5a623;margin-top:4px;}
+  .lsheet .srate small{color:var(--sub);font-weight:600;}
+  .lsheet .stxt{
+    font-size:13.5px;color:#3d4854;line-height:1.7;margin-top:12px;
+    background:#f6f9fb;border-radius:14px;padding:14px 15px;
+  }
+  .lsheet .sbtns{display:flex;gap:8px;margin-top:16px;}
+  .lsheet .sbtns .btn{flex:1;justify-content:center;padding:11px 0;font-size:13px;}
+  .lsheet .close{
+    flex:1;border:none;cursor:pointer;font-family:inherit;border-radius:999px;
+    background:#eef1f4;color:var(--ink);font-size:13px;font-weight:700;
+  }
+
   /* ── places view ── */
   .rgroup{margin-top:28px;}
   .rhead{display:flex;align-items:center;gap:10px;padding:0 4px;margin-bottom:10px;}
@@ -796,99 +879,58 @@
   <div class="dates">지역별 · 카테고리별 스팟 북 — 일정에 없는 곳도 즉흥으로!</div>
 </div>
 
-<div class="fbar">
-  <div class="frow">
-    <span class="flabel">지역</span>
-    <button class="fchip" data-t="region" data-v="naha" onclick="toggleF(this)">나하</button>
-    <button class="fchip" data-t="region" data-v="south" onclick="toggleF(this)">남부</button>
-    <button class="fchip" data-t="region" data-v="mid" onclick="toggleF(this)">중부</button>
-    <button class="fchip" data-t="region" data-v="north" onclick="toggleF(this)">북부</button>
+<div class="seg">
+  <button id="seg-korean" class="on" onclick="showPk('korean')">🇰🇷 한국인 추천</button>
+  <button id="seg-local" onclick="showPk('local')">🇯🇵 현지인 추천</button>
+</div>
+
+<div id="pk-korean">
+  <div class="lbar">
+    <div class="frow">
+      <span class="flabel">거점 기준</span>
+      <button class="fchip sel" data-b="hotel" onclick="setKBase(this)">🏨 류큐호텔</button>
+      <button class="fchip" data-b="naha" onclick="setKBase(this)">🏙️ 나하</button>
+      <button class="fchip" data-b="airport" onclick="setKBase(this)">🛬 공항</button>
+      <button class="fchip" data-b="aqua" onclick="setKBase(this)">🐋 수족관</button>
+    </div>
+    <div class="frow">
+      <span class="flabel">지역</span>
+      <button class="fchip" data-v="naha" onclick="toggleKRegion(this)">나하</button>
+      <button class="fchip" data-v="south" onclick="toggleKRegion(this)">남부</button>
+      <button class="fchip" data-v="mid" onclick="toggleKRegion(this)">중부</button>
+      <button class="fchip" data-v="north" onclick="toggleKRegion(this)">북부</button>
+    </div>
+    <div class="frow">
+      <span class="flabel">카테고리</span>
+      <button class="fchip" data-v="tour" onclick="toggleKCat(this)">관광</button>
+      <button class="fchip" data-v="food" onclick="toggleKCat(this)">식사</button>
+      <button class="fchip" data-v="cafe" onclick="toggleKCat(this)">카페</button>
+      <button class="fchip" data-v="shop" onclick="toggleKCat(this)">쇼핑</button>
+    </div>
   </div>
-  <div class="frow">
-    <span class="flabel">카테고리</span>
-    <button class="fchip" data-t="cat" data-v="tour" onclick="toggleF(this)">관광</button>
-    <button class="fchip" data-t="cat" data-v="food" onclick="toggleF(this)">식사</button>
-    <button class="fchip" data-t="cat" data-v="cafe" onclick="toggleF(this)">카페</button>
-    <button class="fchip" data-t="cat" data-v="shop" onclick="toggleF(this)">쇼핑</button>
+  <div class="srcnote" style="margin:2px 6px 10px;">한국인 여행자들에게 검증된 스팟 · 선택한 거점에서 가까운 순 정렬 · 소요시간·평점·리뷰 수는 대략치 — 최신 수치는 지도 버튼으로 확인</div>
+  <div class="fempty" id="fempty">조건에 맞는 장소가 없어요 — 필터를 조절해보세요.</div>
+  <div id="kgrid"></div>
+</div><!-- /pk-korean -->
+
+<div id="pk-local" style="display:none;">
+  <div class="lbar">
+    <div class="frow">
+      <span class="flabel">거점 기준</span>
+      <button class="fchip sel" data-b="hotel" onclick="setLBase(this)">🏨 류큐호텔</button>
+      <button class="fchip" data-b="naha" onclick="setLBase(this)">🏙️ 나하</button>
+      <button class="fchip" data-b="airport" onclick="setLBase(this)">🛬 공항</button>
+      <button class="fchip" data-b="aqua" onclick="setLBase(this)">🐋 수족관</button>
+    </div>
+    <div class="frow">
+      <span class="flabel">카테고리</span>
+      <button class="fchip" data-v="scenery" onclick="toggleLCat(this)">🌅 경치</button>
+      <button class="fchip" data-v="food" onclick="toggleLCat(this)">🍜 음식</button>
+      <button class="fchip" data-v="exp" onclick="toggleLCat(this)">🎨 체험</button>
+    </div>
   </div>
-</div>
-<div class="fempty" id="fempty">조건에 맞는 장소가 없어요 — 필터를 조절해보세요.</div>
-
-<!-- 나하 -->
-<div class="rgroup r-naha">
-  <div class="rhead"><span class="rchip">나하 시내</span><h2>국제거리 · 시장 · 신도심</h2><span class="rsub">7/19 메인</span></div>
-
-  <div class="place"><div class="pbody"><div class="pname">국제거리 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">나하의 메인 스트리트 1.6km — 쇼핑·먹거리 총집합</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=那覇国際通り" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">마키시 공설시장 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">나하의 부엌 — 1층 시장, 2층 조리 식당</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=第一牧志公設市場" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">츠보야 야치문 거리 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">도자기 골목 — 그릇 쇼핑 + 부쿠부쿠차</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=壺屋やちむん通り" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">나미노우에 비치 · 신사 <span class="tag tour">관광</span></div><div class="pnote">나하 유일 도심 비치 — 절벽 위 신사와 세트, 아침 산책용</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=波の上ビーチ" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">후쿠슈엔 <span class="tag tour">관광</span></div><div class="pnote">중국식 정원 — 조용하고 사진 잘 나옴, 30분 코스</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=福州園" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">잭스 스테이크하우스 <span class="tag food">식사</span></div><div class="pnote">1953년 노포 — 오키나와 스테이크의 원조 감성</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ジャッキーステーキハウス" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">유난기 <span class="tag food">식사</span></div><div class="pnote">오키나와 가정식 노포 — 라후테(돼지조림) 명물, 웨이팅 필수</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ゆうなんぎい+那覇" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">포크타마고 오니기리 본점 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">스팸계란 주먹밥 — 아침 대용, 회전 빠름</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ポークたまごおにぎり本店" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">스테이크하우스88 국제거리점 <span class="tag food">식사</span></div><div class="pnote">얏빠리와 함께 국제거리 스테이크 양대산맥</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ステーキハウス88+国際通り" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">국제거리 야타이무라 <span class="tag food">식사</span></div><div class="pnote">포장마차 골목 — 20여 개 미니 이자카야, 저녁 분위기 최고 · 최근 후기 언급 많음</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=国際通り屋台村" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">C&C Breakfast Okinawa <span class="tag cafe">카페</span><span class="tag inplan">일정 포함</span></div><div class="pnote">과일 프렌치토스트 아침 — 9시 전 도착</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=C%26C+BREAKFAST+OKINAWA" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">oHacorte 마츠오점 <span class="tag cafe">카페</span><span class="tag inplan">일정 포함</span></div><div class="pnote">과일 타르트 — 골목 안 정원 매장</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=oHacorte+松尾店" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">센니치 <span class="tag cafe">카페</span></div><div class="pnote">젠자이(금시빙수) 노포 — 더운 오후 최고의 피난처</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=千日+那覇+ぜんざい" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">T&M Coffee <span class="tag cafe">카페</span></div><div class="pnote">우드톤 감성 로스터리 — 커피가 진심인 집</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=T%26M+Coffee+那覇" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">와시타숍 본점 <span class="tag shop">쇼핑</span></div><div class="pnote">오키나와 특산품 총집합 — 기념품 한 번에 끝내기</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=わしたショップ国際通り本店" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">돈키호테 국제거리점 <span class="tag shop">쇼핑</span><span class="tag inplan">일정 포함</span></div><div class="pnote">24시간 · 면세 — 위스키·산리오 잡화·과자 몰아사기</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ドン・キホーテ国際通り店" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">리쿼마운틴 국제거리점 <span class="tag shop">쇼핑</span><span class="tag inplan">일정 포함</span></div><div class="pnote">주류 전문 — 위스키 1순위 체크</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=リカーマウンテン那覇国際通り店" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">산에이 메인플레이스 (산리오) <span class="tag shop">쇼핑</span><span class="tag inplan">일정 포함</span></div><div class="pnote">오모로마치 대형몰 — 2층 산리오 기프트게이트</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=サンエー那覇メインプレイス" target="_blank" aria-label="구글맵"></a></div>
-</div>
-
-<!-- 남부 -->
-<div class="rgroup r-south">
-  <div class="rhead"><span class="rchip">남부</span><h2>이토만 · 세나가지마 · 난조</h2><span class="rsub">7/16–17 · 19 저녁</span></div>
-
-  <div class="place"><div class="pbody"><div class="pname">세나가지마 우미카지테라스 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">일본의 아말피 — 선셋 + 비행기 이착륙 뷰</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=瀬長島ウミカジテラス" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">니라이카나이 다리 <span class="tag tour">관광</span></div><div class="pnote">바다로 빨려드는 드라이브 — 전망대에서 내려다보기</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ニライカナイ橋" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">치넨미사키 공원 <span class="tag tour">관광</span></div><div class="pnote">270도 바다 파노라마 곶 — 니라이카나이와 세트</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=知念岬公園" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">오키나와월드 · 교쿠센도 <span class="tag tour">관광</span></div><div class="pnote">대형 종유동굴 + 류큐 문화촌 — 우천 시 1순위 대체</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=おきなわワールド" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">간가라 계곡 <span class="tag tour">관광</span></div><div class="pnote">동굴 카페 + 가이드 투어(예약제) — 신비로운 정글 트레킹</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ガンガラーの谷" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">류큐가라스무라 <span class="tag tour">관광</span></div><div class="pnote">류큐유리 공방 — 유리컵 만들기 체험, 호텔 차 5분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=琉球ガラス村" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">이토만 어협 오사카나센터 <span class="tag food">식사</span></div><div class="pnote">수산시장 — 사시미·해산덮밥, 포장해서 호텔에서</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=糸満漁業協同組合お魚センター" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">와후테이 시오자키시티점 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">일식 패밀리레스토랑 — 가족 저녁 무난 픽</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=和風亭しおざきシティ店" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">카페 쿠루쿠마 <span class="tag cafe">카페</span></div><div class="pnote">절벽 위 오션뷰 테라스 + 태국 커리 — 난조 드라이브 코스</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=カフェくるくま" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">하마베노차야 <span class="tag cafe">카페</span></div><div class="pnote">바다에 붙은 창가 좌석 — 밀물 시간에 가면 물 위에 뜬 기분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=浜辺の茶屋" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">산에이 시오자키시티 <span class="tag shop">쇼핑</span><span class="tag inplan">일정 포함</span></div><div class="pnote">호텔 근처 대형마트 — 장보기 베이스캠프</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=サンエーしおざきシティ" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">미치노에키 이토만 <span class="tag shop">쇼핑</span></div><div class="pnote">농산물 직판 + 수산센터 — 과일·사시미는 여기 (18시 전)</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=道の駅いとまん" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">아시비나 아울렛 <span class="tag shop">쇼핑</span></div><div class="pnote">공항 15분 아울렛 — 이번 일정엔 도착날 잠깐만 가능</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=沖縄アウトレットモールあしびなー" target="_blank" aria-label="구글맵"></a></div>
-</div>
-
-<!-- 중부 -->
-<div class="rgroup r-mid">
-  <div class="rhead"><span class="rchip">중부</span><h2>차탄 · 요미탄 · 온나</h2><span class="rsub">7/18 복귀길</span></div>
-
-  <div class="place"><div class="pbody"><div class="pname">아메리칸빌리지 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">미군기지 감성 쇼핑타운 — 선셋비치 노을 필수</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=美浜アメリカンビレッジ" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">만자모 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">코끼리 코 절벽 — 오키나와 대표 절경</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=万座毛" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">잔파곶 <span class="tag tour">관광</span></div><div class="pnote">하얀 등대 + 절벽 — 요미탄 서쪽 끝, 노을 명소</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=残波岬" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">야치문노사토 <span class="tag tour">관광</span></div><div class="pnote">요미탄 도자기 마을 — 츠보야보다 한적, 가마 구경</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=やちむんの里" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">부세나 해중공원 <span class="tag tour">관광</span></div><div class="pnote">해중전망탑 + 유리보트 — 젖지 않고 바닷속 구경</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ブセナ海中公園" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">킹타코스 킨 본점 <span class="tag food">식사</span></div><div class="pnote">타코라이스 원조 — B급 감성 로컬 맛집</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=キングタコス金武本店" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">지바고 커피 <span class="tag cafe">카페</span></div><div class="pnote">아메리칸빌리지 씨사이드 — 바다 앞 브루클린 감성</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=ZHYVAGO+COFFEE+WORKS+OKINAWA" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">온나노에키 나카유쿠이 시장 <span class="tag cafe">카페</span><span class="tag inplan">일정 포함</span></div><div class="pnote">휴게소 시장 — 망고빙수·사탕수수주스·튀김</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=おんなの駅なかゆくい市場" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">이온몰 오키나와 라이캄 <span class="tag shop">쇼핑</span></div><div class="pnote">오키나와 최대 몰 — 비 오는 날 반나절 대체 코스</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=イオンモール沖縄ライカム" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">파르코시티 (우라소에) <span class="tag shop">쇼핑</span></div><div class="pnote">산에이 초대형 몰 — 나하에서 차 20분, 캐릭터·패션 다양</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=サンエー浦添西海岸パルコシティ" target="_blank" aria-label="구글맵"></a></div>
-</div>
-
-<!-- 북부 -->
-<div class="rgroup r-north">
-  <div class="rhead"><span class="rchip">북부</span><h2>모토부 · 나고</h2><span class="rsub">7/18 메인</span></div>
-
-  <div class="place"><div class="pbody"><div class="pname">츄라우미 수족관 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">고래상어 대수조 — 오전 방문이 한산</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=沖縄美ら海水族館" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">비세 후쿠기 가로수길 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">초록 나무터널 — 수족관에서 차 5분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=備瀬のフクギ並木" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">세소코대교 · 세소코비치 <span class="tag tour">관광</span><span class="tag inplan">일정 포함</span></div><div class="pnote">투명한 바다 위 다리 — 포토스톱 5분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=瀬底大橋" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">코우리대교 · 코우리섬 <span class="tag tour">관광</span></div><div class="pnote">2km 바다 위 드라이브 + 하트록 — 시간 여유 있으면 추가</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=古宇利大橋" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">나키진 성터 <span class="tag tour">관광</span></div><div class="pnote">세계유산 성곽 — 성벽 위 바다 전망</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=今帰仁城跡" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">오리온 해피파크 <span class="tag tour">관광</span></div><div class="pnote">오리온 맥주공장 견학(시음 포함, 운전자는 논알콜) — 나고</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=オリオンハッピーパーク" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">키시모토식당 본점 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">1905년 모토부 소바 원조 — 웨이팅 필수 · 최근 후기 호불호 갈림(전통 가츠오 육수)</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=きしもと食堂本店" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">얀바루소바 <span class="tag food">식사</span></div><div class="pnote">40년 전통 소바 — 키시모토 웨이팅 길거나 호불호 걱정되면 이쪽 (본부 소바가도)</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=山原そば+本部町" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">카진호우 <span class="tag food">식사</span><span class="tag inplan">일정 포함</span></div><div class="pnote">언덕 위 고민가 피자 — 바다뷰 테라스</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=花人逢" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">우후야 (백년고가) <span class="tag food">식사</span></div><div class="pnote">100년 고민가에서 아구돼지 샤브 — 나고, 분위기 갑</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=百年古家大家" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">Fuu Cafe (세소코섬) <span class="tag cafe">카페</span></div><div class="pnote">정글 속 숨은 카페 — 세소코대교 건너 5분</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=fuu+cafe+瀬底島" target="_blank" aria-label="구글맵"></a></div>
-  <div class="place"><div class="pbody"><div class="pname">오카시고텐 나고점 <span class="tag cafe">카페</span></div><div class="pnote">홍임자 타르트 본가 — 바다뷰 카페 병설</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&query=御菓子御殿名護店" target="_blank" aria-label="구글맵"></a></div>
+  <div class="srcnote" style="margin:2px 6px 10px;">일본 현지 블로그·구글 리뷰 기반 스팟 중 이번 동선에 현실적으로 들어갈 수 있는 곳만 선별 · 선택한 거점에서 가까운 순 정렬 · 소요시간·리뷰 수는 수집 시점 기준 대략치</div>
+  <div id="lgrid"></div>
 </div>
 
 <footer>Okinawa Family Trip · Spot Book<br>© jjaihun</footer>
@@ -1014,6 +1056,19 @@
 </div>
 </div>
 
+<!-- 리뷰 요약 바텀시트 -->
+<div class="lovl" id="lovl" onclick="closeSheet()"></div>
+<div class="lsheet" id="lsheet">
+  <div class="grab"></div>
+  <h4 id="sh-name"></h4>
+  <div class="srate" id="sh-rate"></div>
+  <div class="stxt" id="sh-txt"></div>
+  <div class="sbtns">
+    <button class="close" onclick="closeSheet()">닫기</button>
+    <a class="btn" id="sh-map" href="#" target="_blank">구글맵 열기</a>
+  </div>
+</div>
+
 <!-- ═══════════════════ BOTTOM TAB BAR ═══════════════════ -->
 <nav class="tabbar">
   <button id="tab-plan" class="on" onclick="showView('plan')">
@@ -1117,38 +1172,192 @@ async function loadWeather(){
   }
 }
 
-/* ── places filter ── */
-const FSEL = {region:new Set(), cat:new Set()};
-function toggleF(btn){
-  const s = FSEL[btn.dataset.t];
-  s.has(btn.dataset.v) ? s.delete(btn.dataset.v) : s.add(btn.dataset.v);
+/* ── 한국인/현지인 서브탭 ── */
+function showPk(which){
+  document.getElementById('pk-korean').style.display = which === 'korean' ? '' : 'none';
+  document.getElementById('pk-local').style.display = which === 'local' ? '' : 'none';
+  document.getElementById('seg-korean').classList.toggle('on', which === 'korean');
+  document.getElementById('seg-local').classList.toggle('on', which === 'local');
+}
+
+/* ── 현지인 추천 데이터 (동선 내 선별 19곳) ── */
+const LOCAL_SPOTS = [
+{id:3,cat:"scenery",icon:"🌄",name:"지넨미사키 공원",jp:"知念岬公園 · 난조시",desc:"태평양과 신의 섬 구다카섬을 마주보는 남부 대표 절경 포인트. 조명이 없어 밤엔 은하수 관측 명소로도 유명하다.",review:"이른 아침 일출 명소로 인기가 높고, 넓은 잔디밭이 있어 아이와 산책하기 좋다는 평이 많습니다. 반려견 동반 방문객도 많아요.",rating:4.4,reviews:6225,dist:{airport:50,hotel:35,naha:40,aqua:110},tags:["일출","별빛","잔디밭"],lat:26.167338,lng:127.828924,placeId:"ChIJGRP4dcBx5TQR2fy_PziIymI"},
+{id:5,cat:"scenery",icon:"🐚",name:"미바루 비치",jp:"新原ビーチ · 난조시",desc:"리조트 개발이 되지 않은 천연 해변. 조개껍데기와 산호 조각이 섞인 독특한 모래사장이 특징이다.",review:"한적하고, 해변 바로 앞 식당·화장실이 있어 가족 단위 방문에 편리하다는 평가입니다. 글라스보트 체험도 가능해요.",rating:4.2,reviews:1765,dist:{airport:40,hotel:30,naha:35,aqua:110},tags:["천연해변","글라스보트"],lat:26.134499,lng:127.791337,placeId:"ChIJVXBnnepv5TQRdDAwNwK8kVg"},
+{id:7,cat:"scenery",icon:"⛪",name:"미션비치",jp:"ミッションビーチ · 온나손",desc:"미국 선교회가 소유했던 사유 해변으로, 언덕 위 교회가 이름의 유래. 곱고 새하얀 모래와 높은 수질로 유명하다.",review:"관리가 잘 된 프라이빗 비치라는 평이 많고, 유료지만 그만큼 쾌적하다는 반응입니다. 아이 동반 방문 후기도 다수 있어요.",rating:4.3,reviews:302,dist:{airport:70,hotel:60,naha:60,aqua:45},tags:["프라이빗비치","유료","스노클링"],lat:26.518808,lng:127.907292,placeId:"ChIJSb4mInYB5TQRhJ1Xzj_Nhcs"},
+{id:10,cat:"scenery",icon:"🗼",name:"잔파곶",jp:"残波岬 · 요미탄손",desc:"본섬 중부를 대표하는 절벽 명소로 하얀 등대가 상징. 일몰 명소이자 밤에는 별빛 관측지로도 손꼽힌다.",review:"해질 무렵 하늘빛의 드라마틱한 변화에 대한 찬사가 많고 웨딩 촬영지로도 인기예요. 절벽 근처라 안전에 유의해야 한다는 조언도 있습니다.",rating:4.4,reviews:1845,dist:{airport:50,hotel:55,naha:45,aqua:60},tags:["일몰","별빛","등대"],lat:26.441543,lng:127.712930,placeId:"ChIJ6y12xkcX5TQRX4pAIu5g0I8"},
+{id:11,cat:"food",icon:"🌶️",name:"카페 쿠루쿠마",jp:"カフェくるくま · 난조시",desc:"지넨 언덕 위에 자리한 태국 퓨전 레스토랑. 탁 트인 오션뷰와 제대로 매콤한 그린커리로 입소문이 났다.",review:"매운맛을 확실히 낸다는 평이 많고 아이용 메뉴도 준비돼 가족 방문에 좋다는 후기입니다. 인기가 많아 대기시간은 감안해야 해요.",rating:4.3,reviews:2748,dist:{airport:35,hotel:35,naha:30,aqua:110},tags:["오션뷰","태국음식"],lat:26.162122,lng:127.812378,placeId:"ChIJryHIzt5x5TQRbtaIW7AS-WU"},
+{id:12,cat:"food",icon:"☕",name:"하마베노차야",jp:"浜辺の茶屋 · 난조시",desc:"미바루 해변 바위 위에 자리한 오션뷰 카페. 이른 아침부터 문을 열어 조식 명소로도 유명하다.",review:"탁 트인 바다 전망과 여유로운 분위기에 대한 만족도가 높고, 사장님의 친절한 응대에 대한 후기도 눈에 띕니다. 밀물 시간에 가면 물 위에 뜬 기분이에요.",rating:4.4,reviews:2290,dist:{airport:40,hotel:30,naha:35,aqua:110},tags:["오션뷰카페","조식"],lat:26.133531,lng:127.784646,placeId:"ChIJAQCB-chv5TQRr3JnMK-hXcE"},
+{id:13,cat:"food",icon:"🍤",name:"카리카 식당",jp:"食堂かりか · 난조시",desc:"미바루 해변 바로 앞의 작은 식당으로 현지인 추천 맛집. 네팔식 커리 등 이색 메뉴도 함께 즐길 수 있다.",review:"해변 바로 앞 입지와 정성스러운 음식에 대한 호평이 많고, 파라솔 대여도 가능해 해변 나들이와 함께 즐기기 좋습니다.",rating:4.3,reviews:345,dist:{airport:40,hotel:30,naha:35,aqua:110},tags:["해변맛집","이색메뉴"],lat:26.133841,lng:127.788522,placeId:"ChIJCQIEpOpv5TQReYRSdYYJ9IM"},
+{id:15,cat:"food",icon:"🍲",name:"모토부 소바",jp:"本部そば · 모토부초",desc:"모토부항 근처 소박한 소바 식당으로, 사시미 정식 등 알찬 세트 메뉴가 현지인들 사이에서 인기다.",review:"가성비와 맛 모두 만족스럽다는 후기가 압도적이며, 현지인들로 붐비는 모습을 직접 목격했다는 리뷰가 많습니다. 키시모토 대기가 길 때 대안으로도 좋아요.",rating:4.2,reviews:387,dist:{airport:90,hotel:100,naha:85,aqua:10},tags:["소바","가성비","현지인맛집"],lat:26.639594,lng:127.881416,placeId:"ChIJd6zDow_85DQRs0P_A9QYv6Y"},
+{id:16,cat:"food",icon:"🏮",name:"사카에마치 시장",jp:"栄町市場 · 나하시",desc:"1955년부터 이어진 나하의 오래된 시장 골목. 낮에는 채소·정육점, 밤에는 이자카야 거리로 변신한다.",review:"영어 메뉴는 없지만 정겨운 분위기 속에서 현지인처럼 골목 술집 순례를 즐길 수 있다는 평이 많습니다.",rating:4.1,reviews:789,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["로컬시장","이자카야"],lat:26.217275,lng:127.696747,placeId:"ChIJAQDsBmRp5TQR9e89nmOJv8g"},
+{id:17,cat:"food",icon:"🍚",name:"하나가사 식당",jp:"花笠食堂 · 나하시",desc:"국제거리 인근 아케이드에 위치한 정겨운 정식집. 할머니들이 직접 만드는 가정식이 특징이다.",review:"가성비 좋은 세트메뉴와 정겨운 서비스에 대한 호평이 많으며, 영어 메뉴도 있어 외국인 방문객도 편하게 이용할 수 있어요.",rating:3.8,reviews:1372,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["가정식","가성비","국제거리"],lat:26.214984,lng:127.688860,placeId:"ChIJL_vfgXBp5TQRwCFC1lgW07A"},
+{id:19,cat:"food",icon:"🐟",name:"아군차",jp:"あぐん茶 · 나하 마에지마",desc:"마에지마의 이자카야로 그날그날 잡은 신선한 활어회와 오키나와 향토요리가 자랑거리다.",review:"신선도 높은 회와 향토 요리에 대한 만족도가 높고, 친절한 서비스에 대한 후기도 눈에 띕니다. 예약 없이도 방문 가능했다는 평이 있어요.",rating:4.4,reviews:401,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["이자카야","활어회"],lat:26.222193,lng:127.684378,placeId:"ChIJ2U-C235p5TQRSkthzGaXzN4"},
+{id:20,cat:"food",icon:"🍥",name:"킨치치 소바",jp:"きんちちそば · 요미탄손",desc:"요미탄의 작은 쇼핑몰 안에 숨어있는 소바 맛집으로 현지인과 여행자 모두에게 사랑받는다.",review:"진한 육수와 쫄깃한 면발에 대한 극찬이 이어지며, 아기 의자 등 아이 동반 손님을 위한 배려도 잘 되어 있다는 후기입니다.",rating:4.4,reviews:95,dist:{airport:50,hotel:55,naha:45,aqua:60},tags:["소바","숨은맛집","아이동반OK"],lat:26.408720,lng:127.716521,placeId:"ChIJu2LYZHIX5TQRsLwUtN_UjFk"},
+{id:21,cat:"exp",icon:"🕳️",name:"간가라 계곡",jp:"ガンガラーの谷 · 난조시",desc:"종유동굴이 무너져 생긴 계곡을 가이드와 함께 탐험하는 투어(예약제). 오키나와 최고(最古)의 인류 화석이 발견된 장소이기도 하다.",review:"가이드 투어가 일본어로만 진행되지만 영문 자료가 잘 준비되어 있어 큰 불편이 없다는 평이 많고, 신비로운 분위기에 대한 만족도가 높습니다.",rating:4.5,reviews:4131,dist:{airport:30,hotel:20,naha:25,aqua:100},tags:["가이드투어","호텔근처","자연동굴"],lat:26.141889,lng:127.746906,placeId:"ChIJmamfTmlv5TQR1kOHmcbH0Ao"},
+{id:22,cat:"exp",icon:"🐱",name:"오지마섬",jp:"奥武島 · 난조시",desc:"다리로 연결된 작은 섬으로, 곳곳을 자유롭게 돌아다니는 고양이들과 신선한 튀김(天ぷら) 맛집으로 유명하다.",review:"규모는 작지만 정겨운 어촌 분위기와 맛있는 튀김에 대한 후기가 많고, 아이와 가볍게 산책하기 좋은 곳으로 꼽힙니다.",rating:4.4,reviews:456,dist:{airport:30,hotel:25,naha:25,aqua:105},tags:["고양이섬","튀김맛집","호텔근처"],lat:26.129321,lng:127.772455,placeId:"ChIJfz4dP5tv5TQRR7i-2XFu5bw"},
+{id:23,cat:"exp",icon:"🏺",name:"야치문의 마을",jp:"やちむんの里 · 요미탄손",desc:"요미탄 마을에 자리한 도예촌으로, 19개의 공방과 갤러리가 모여 있는 오키나와 전통 도자기 마을이다.",review:"장인들의 작업 과정을 가까이서 볼 수 있어 특별하다는 평이 많고, 곳곳에 숨어있는 고양이를 찾는 재미도 있다는 후기가 있습니다.",rating:4.2,reviews:2559,dist:{airport:50,hotel:55,naha:45,aqua:60},tags:["도예마을","공방투어","기념품"],lat:26.407682,lng:127.754049,placeId:"ChIJk-6fnD0R5TQR6rFMH_YRWgc"},
+{id:26,cat:"exp",icon:"🔮",name:"류큐 글라스무라",jp:"琉球ガラス村 · 이토만시",desc:"이토만시의 류큐 유리 공방 겸 박물관으로, 직접 유리공예를 체험할 수 있는 체험형 관광지다. 류큐호텔에서 차 5분.",review:"예상보다 훨씬 알찬 구성에 놀랐다는 후기가 많고, 6세 이상부터 체험이 가능해 가족 단위 방문에 적합하다는 평입니다.",rating:4.0,reviews:4159,dist:{airport:20,hotel:5,naha:25,aqua:105},tags:["유리공예체험","6세부터","호텔근처"],lat:26.097623,lng:127.677175,placeId:"ChIJqwNytRxn5TQRfL7OFx6hlYk"},
+{id:27,cat:"exp",icon:"🎨",name:"시사 색칠 체험 히데보",jp:"手作り工房History · 요미탄손",desc:"무라사키무라 테마파크 내 공방으로, 나만의 시사(수호신 조각상)를 직접 색칠하는 체험이 인기다.",review:"아이들이 특히 좋아한다는 후기가 많고, 완성된 시사는 여행의 특별한 기념품이 된다는 평이 많습니다.",rating:4.5,reviews:24,dist:{airport:50,hotel:55,naha:45,aqua:60},tags:["시사페인팅","아이체험","기념품제작"],lat:26.407355,lng:127.718431,placeId:"ChIJl1d0-80W5TQRRmxhD7jgEOg"},
+{id:29,cat:"exp",icon:"✈️",name:"우미카지테라스 세나가지마",jp:"ウミカジテラス · 도미구스쿠시",desc:"공항 바로 옆 세나가섬에 조성된 하얀 지중해풍 상업지구로, 노을과 함께 이착륙하는 비행기를 가까이서 볼 수 있다.",review:"산토리니를 연상시키는 새하얀 건물과 노을 풍경에 대한 감탄이 많고, 여행 마지막 날 공항 가기 전 들르기 좋은 곳으로 인기입니다.",rating:4.3,reviews:22415,dist:{airport:10,hotel:15,naha:20,aqua:95},tags:["쇼핑거리","노을명소","일정포함"],lat:26.176660,lng:127.640437,placeId:"ChIJTXE7iR5o5TQRuIMt_jUINqU"},
+{id:30,cat:"exp",icon:"🐯",name:"츠보야 야치문 시사 체험",jp:"壺屋やちむん通り · 나하시",desc:"나하 시내 츠보야 야치문 거리, 400년 역사를 가진 도예 마을에서 즐기는 시사(수호신) 만들기 체험.",review:"일본어를 못해도 친절한 강사의 안내로 무리 없이 완성할 수 있었다는 후기가 많고, 오키나와 대표 기념품으로 최고라는 평이 많습니다.",rating:4.6,reviews:46,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["시사만들기","나하시내","400년역사"],lat:26.213535,lng:127.692120,placeId:"ChIJS77g529p5TQRrGKByeYu8Tw"}
+];
+
+const LSTATE = {base:'hotel', cats:new Set()};
+const BASE_LABEL = {hotel:'🏨 호텔', naha:'🏙️ 나하', airport:'🛬 공항', aqua:'🐋 수족관'};
+
+function lMapUrl(s){
+  if(s.q) return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(s.q);
+  return 'https://www.google.com/maps/search/?api=1&query=' + s.lat + '%2C' + s.lng + '&query_place_id=' + s.placeId;
+}
+function fmtReviews(n){
+  if(n >= 10000) return (Math.round(n/1000)/10) + '만+';
+  if(n >= 1000) return (Math.round(n/100)*100).toLocaleString() + '+';
+  return n + '+';
+}
+function cardHTML(s, base){
+  const dchips = ['hotel','naha','airport','aqua'].map(b =>
+    '<span class="dchip' + (b === base ? ' on' : '') + '">' + BASE_LABEL[b] + ' ' + s.dist[b] + '분</span>'
+  ).join('');
+  const tags = s.tags.map(t => '<span class="ltag">' + t + '</span>').join('');
+  const rsub = '리뷰 ' + fmtReviews(s.reviews);
+  return '<div class="lcard">'
+    + '<div class="lhead"><span class="licon">' + s.icon + '</span>'
+    + '<div class="lt"><div class="lname">' + s.name + '</div><div class="ljp">' + s.jp + '</div></div>'
+    + '<div class="lrate">★' + s.rating.toFixed(1) + '<small>' + rsub + '</small></div></div>'
+    + '<div class="ldesc">' + s.desc + '</div>'
+    + '<div class="ldist">' + dchips + '</div>'
+    + '<div class="lfoot">' + tags
+    + '<div class="lbtns"><button class="rvbtn" onclick="openSheet(' + s.id + ')">리뷰 요약</button>'
+    + '<a class="btn" href="' + lMapUrl(s) + '" target="_blank" aria-label="구글맵"></a></div></div>'
+    + '</div>';
+}
+function setLBase(btn){
+  LSTATE.base = btn.dataset.b;
+  document.querySelectorAll('#pk-local .lbar [data-b]').forEach(b => b.classList.toggle('sel', b === btn));
+  renderLocal();
+}
+function toggleLCat(btn){
+  const v = btn.dataset.v;
+  LSTATE.cats.has(v) ? LSTATE.cats.delete(v) : LSTATE.cats.add(v);
   btn.classList.toggle('sel');
-  applyFilter();
+  renderLocal();
 }
-function placeCat(p){
-  if(p.querySelector('.tag.tour')) return 'tour';
-  if(p.querySelector('.tag.food')) return 'food';
-  if(p.querySelector('.tag.cafe')) return 'cafe';
-  if(p.querySelector('.tag.shop')) return 'shop';
-  return '';
+function renderLocal(){
+  const list = LOCAL_SPOTS
+    .filter(s => LSTATE.cats.size === 0 || LSTATE.cats.has(s.cat))
+    .sort((a, b) => a.dist[LSTATE.base] - b.dist[LSTATE.base]);
+  document.getElementById('lgrid').innerHTML = list.map(s => cardHTML(s, LSTATE.base)).join('');
 }
-function applyFilter(){
-  let total = 0;
-  document.querySelectorAll('#view-places .rgroup').forEach(g => {
-    const region = [...g.classList].find(c => c.startsWith('r-')).slice(2);
-    const regionOk = FSEL.region.size === 0 || FSEL.region.has(region);
-    let any = false;
-    g.querySelectorAll('.place').forEach(p => {
-      const catOk = FSEL.cat.size === 0 || FSEL.cat.has(placeCat(p));
-      const show = regionOk && catOk;
-      p.style.display = show ? '' : 'none';
-      if(show) any = true;
-    });
-    g.style.display = any ? '' : 'none';
-    if(any) total++;
-  });
-  document.getElementById('fempty').style.display = total === 0 ? 'block' : 'none';
+
+/* ── 한국인 추천 데이터 ── */
+const KSTATE = {base:'hotel', regions:new Set(), cats:new Set()};
+const KOREAN_SPOTS = [
+// 나하
+{id:101,region:"naha",cat:"tour",icon:"🛍️",name:"국제거리",jp:"国際通り · 나하시",desc:"나하의 메인 스트리트 1.6km — 쇼핑·먹거리·기념품 총집합. 밤늦게까지 활기.",review:"볼거리·먹거리가 밀집해 있어 반나절은 순삭이라는 평. 관광지 물가라 기념품은 가격 비교 후 구매하라는 조언이 많습니다.",reviews:45000,approx:true,rating:4.2,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["메인스트리트","일정포함"],q:"那覇国際通り"},
+{id:102,region:"naha",cat:"tour",icon:"🐟",name:"마키시 공설시장",jp:"第一牧志公設市場 · 나하시",desc:"나하의 부엌 — 1층 시장 구경, 2층에서 1층에서 산 해산물 조리 가능.",review:"리뉴얼 후 쾌적해졌다는 평. 2층 조리는 편리하지만 조리비가 따로 있으니 가격 확인 후 이용하라는 후기가 많습니다.",reviews:12000,approx:true,rating:4.0,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["재래시장","일정포함"],q:"第一牧志公設市場"},
+{id:103,region:"naha",cat:"tour",icon:"🏺",name:"츠보야 야치문 거리",jp:"壺屋やちむん通り · 나하시",desc:"400년 역사 도자기 골목 — 그릇·소품 쇼핑과 골목 찻집 부쿠부쿠차 체험.",review:"국제거리 바로 옆인데 분위기가 확 달라져 산책 코스로 최고라는 평. 그릇 가격대는 공방마다 차이가 큽니다.",reviews:3500,approx:true,rating:4.3,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["도자기골목","일정포함"],q:"壺屋やちむん通り"},
+{id:104,region:"naha",cat:"tour",icon:"⛩️",name:"나미노우에 비치·신사",jp:"波の上ビーチ · 나하시",desc:"나하 유일 도심 비치 — 절벽 위 신사와 세트. 아침 산책 코스로 좋음.",review:"도심에서 5분 만에 바다를 만나는 게 매력이라는 평. 규모는 작아 물놀이보단 산책·사진용이라는 후기가 많아요.",reviews:4000,approx:true,rating:4.1,dist:{airport:12,hotel:33,naha:7,aqua:95},tags:["도심비치","신사"],q:"波の上ビーチ"},
+{id:105,region:"naha",cat:"tour",icon:"🏯",name:"후쿠슈엔",jp:"福州園 · 나하시",desc:"중국식 정원 — 조용하고 사진 잘 나오는 30분 코스.",review:"관광객이 적어 한적하게 사진 찍기 좋다는 평. 더운 날 그늘 쉼터로도 좋습니다.",reviews:2500,approx:true,rating:4.2,dist:{airport:13,hotel:34,naha:6,aqua:95},tags:["정원","포토스팟"],q:"福州園"},
+{id:106,region:"naha",cat:"food",icon:"🥩",name:"잭스 스테이크하우스",jp:"ジャッキーステーキハウス · 나하시",desc:"1953년 노포 — 오키나와 스테이크의 원조 감성. 테이블 회전 빠름.",review:"클래식한 분위기와 가성비에 대한 호평이 꾸준합니다. 식사시간대 웨이팅은 감안, 번호표 시스템이라 회전은 빠른 편이에요.",reviews:5000,approx:true,rating:4.2,dist:{airport:12,hotel:33,naha:7,aqua:95},tags:["노포","스테이크"],q:"ジャッキーステーキハウス"},
+{id:107,region:"naha",cat:"food",icon:"🍱",name:"유난기",jp:"ゆうなんぎい · 나하시",desc:"1970년부터 이어진 오키나와 가정식 노포 — 라후테(돼지조림) 명물.",review:"현지 할머니 손맛 그대로라는 극찬이 많고, 좌석이 적어 오픈 직후나 예약 방문을 추천하는 후기가 다수입니다.",reviews:2000,approx:true,rating:4.3,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["가정식","웨이팅필수"],q:"ゆうなんぎい 那覇"},
+{id:108,region:"naha",cat:"food",icon:"🍙",name:"포크타마고 오니기리 본점",jp:"ポークたまごおにぎり本店 · 나하시",desc:"스팸계란 주먹밥 원조 — 아침 대용으로 최고, 회전 빠름.",review:"갓 만들어주는 따뜻한 오니기리가 아침 웨이팅을 감수할 가치가 있다는 평. 아침 9시 전이 그나마 한산합니다.",reviews:6000,approx:true,rating:4.3,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["아침식사","일정포함"],q:"ポークたまごおにぎり本店"},
+{id:109,region:"naha",cat:"food",icon:"🥩",name:"스테이크하우스88 국제거리점",jp:"ステーキハウス88 · 나하시",desc:"얏빠리와 함께 국제거리 스테이크 양대산맥. 늦은 밤까지 영업.",review:"부위 선택폭이 넓고 늦게까지 열어 마지막 날 저녁으로 좋다는 평. 최고급 맛보다는 분위기+가성비로 접근하라는 후기.",reviews:3500,approx:true,rating:4.0,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["스테이크","심야영업"],q:"ステーキハウス88 国際通り"},
+{id:110,region:"naha",cat:"food",icon:"🍖",name:"얏빠리 스테이크",jp:"やっぱりステーキ · 나하시",desc:"용암석 철판에 나오는 캐주얼 스테이크 — 밥·샐러드 무한리필.",review:"가성비 스테이크의 대명사라는 평. 1,000엔대로 배부르게 먹을 수 있어 가족 점심으로 부담 없다는 후기가 많습니다.",reviews:2500,approx:true,rating:4.1,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["가성비","일정포함"],q:"やっぱりステーキ国際通り"},
+{id:111,region:"naha",cat:"food",icon:"🏮",name:"국제거리 야타이무라",jp:"国際通り屋台村 · 나하시",desc:"포장마차 골목 — 20여 개 미니 이자카야. 저녁 분위기 최고.",review:"규모는 작지만 오키나와 안주+로컬 분위기를 한 번에 즐긴다는 평. 최근 한국인 후기 언급이 크게 늘었습니다.",reviews:3000,approx:true,rating:4.0,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["포장마차","저녁핫플"],q:"国際通り屋台村"},
+{id:112,region:"naha",cat:"cafe",icon:"🍞",name:"C&C Breakfast Okinawa",jp:"C&C BREAKFAST · 나하시",desc:"마키시 시장 골목 아침 카페 — 과일 프렌치토스트가 시그니처.",review:"휴양지 감성 조식으로 만족도가 높고, 9시 이후엔 웨이팅이 급격히 길어진다는 후기가 공통적입니다.",reviews:2000,approx:true,rating:4.3,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["조식","일정포함"],q:"C&C BREAKFAST OKINAWA"},
+{id:113,region:"naha",cat:"cafe",icon:"🍰",name:"oHacorte 마츠오점",jp:"oHacorte 松尾店 · 나하시",desc:"과일 타르트 전문 — 골목 안 정원 딸린 예쁜 매장.",review:"타르트 맛과 아늑한 정원 분위기 모두 호평. 좌석이 적어 오후엔 대기가 생길 수 있습니다.",reviews:1800,approx:true,rating:4.4,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["과일타르트","일정포함"],q:"oHacorte 松尾店"},
+{id:114,region:"naha",cat:"cafe",icon:"🍧",name:"센니치",jp:"千日 · 나하시",desc:"젠자이(금시빙수) 노포 — 더운 오후 최고의 피난처.",review:"소박하지만 60년 넘게 사랑받는 맛이라는 평. 여름 오후엔 현지인 줄이 깁니다.",reviews:1500,approx:true,rating:4.2,dist:{airport:13,hotel:34,naha:6,aqua:95},tags:["빙수","노포"],q:"千日 那覇 ぜんざい"},
+{id:115,region:"naha",cat:"cafe",icon:"☕",name:"T&M Coffee",jp:"T&M Coffee · 나하시",desc:"우드톤 감성 로스터리 — 커피가 진심인 집.",review:"조용히 쉬어가기 좋은 분위기와 핸드드립 퀄리티에 대한 호평이 많습니다.",reviews:700,approx:true,rating:4.4,dist:{airport:14,hotel:34,naha:6,aqua:95},tags:["로스터리","감성"],q:"T&M Coffee 那覇"},
+{id:116,region:"naha",cat:"cafe",icon:"🍦",name:"블루씰 국제거리점",jp:"ブルーシール · 나하시",desc:"오키나와 국민 아이스크림 — 베니이모(자색고구마) 맛 필수.",review:"걷다가 들르는 필수 코스라는 평. 오키나와 한정 맛부터 시도하라는 후기가 많아요.",reviews:4000,approx:true,rating:4.2,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["아이스크림","오키나와한정"],q:"ブルーシール国際通り店"},
+{id:117,region:"naha",cat:"shop",icon:"🎁",name:"와시타숍 본점",jp:"わしたショップ · 나하시",desc:"오키나와 특산품 총집합 — 기념품 한 번에 끝내기.",review:"흩어져 있는 특산품을 한 곳에서 정가에 살 수 있어 효율적이라는 평이 많습니다.",reviews:3000,approx:true,rating:4.1,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["특산품","기념품"],q:"わしたショップ国際通り本店"},
+{id:118,region:"naha",cat:"shop",icon:"🛒",name:"돈키호테 국제거리점",jp:"ドン・キホーテ · 나하시",desc:"24시간·면세 — 위스키·산리오 잡화·과자 몰아사기.",review:"밤에 가면 한산해서 쇼핑이 편하다는 팁이 많습니다. 면세 카운터는 여권 필수, 피크 시간대엔 줄이 깁니다.",reviews:15000,approx:true,rating:3.9,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["24시간","일정포함"],q:"ドン・キホーテ国際通り店"},
+{id:119,region:"naha",cat:"shop",icon:"🥃",name:"리쿼마운틴 국제거리점",jp:"リカーマウンテン · 나하시",desc:"주류 전문점 — 위스키 1순위 체크. 돈키와 가격 비교 추천.",review:"돈키보다 위스키 구색·가격이 나은 경우가 많다는 후기. 재고는 그날그날 다르니 발견하면 바로 잡으라는 조언.",reviews:300,approx:true,rating:4.3,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["위스키","일정포함"],q:"リカーマウンテン那覇国際通り店"},
+{id:120,region:"naha",cat:"shop",icon:"🎀",name:"산에이 메인플레이스 (산리오)",jp:"サンエー那覇メインプレイス · 오모로마치",desc:"오모로마치 대형몰 — 2층 산리오 기프트게이트, 10:00~22:00.",review:"관광객보다 현지인 위주라 쾌적하다는 평. 산리오·식품관·패션까지 한 번에 해결됩니다.",reviews:9000,approx:true,rating:4.1,dist:{airport:20,hotel:40,naha:10,aqua:90},tags:["산리오","일정포함"],q:"サンエー那覇メインプレイス"},
+{id:121,region:"naha",cat:"shop",icon:"🍶",name:"야마야 나하신도심점",jp:"やまや那覇新都心店 · 오모로마치",desc:"전국 체인 주류 전문 — 위스키 최종 가격 비교처.",review:"프리미엄 위스키 재고가 종종 있고 가격이 합리적이라는 후기. 메인플레이스와 묶어 방문하기 좋습니다.",reviews:600,approx:true,rating:4.2,dist:{airport:20,hotel:40,naha:10,aqua:90},tags:["주류전문","일정포함"],q:"やまや那覇新都心店"},
+// 남부
+{id:130,region:"south",cat:"tour",icon:"✈️",name:"세나가지마 우미카지테라스",jp:"ウミカジテラス · 도미구스쿠시",desc:"하얀 지중해풍 테라스 — 선셋 + 비행기 이착륙 뷰. 7월 일몰 19:25.",review:"노을 시간대 만족도가 압도적. 계단이 많고 한낮엔 매우 더우니 늦은 오후 방문을 추천하는 후기가 많습니다.",reviews:22000,approx:true,rating:4.3,dist:{airport:10,hotel:15,naha:20,aqua:95},tags:["선셋","일정포함"],q:"瀬長島ウミカジテラス"},
+{id:131,region:"south",cat:"tour",icon:"🌉",name:"니라이카나이 다리",jp:"ニライカナイ橋 · 난조시",desc:"바다로 빨려드는 드라이브 명소 — 위 전망대에서 내려다보는 뷰가 포인트.",review:"운전하며 지나는 순간 자체가 하이라이트라는 평. 전망대 주차공간이 협소하니 주의하라는 후기가 있습니다.",reviews:1500,approx:true,rating:4.4,dist:{airport:45,hotel:40,naha:40,aqua:115},tags:["드라이브","전망"],q:"ニライカナイ橋"},
+{id:132,region:"south",cat:"tour",icon:"🌄",name:"치넨미사키 공원",jp:"知念岬公園 · 난조시",desc:"270도 바다 파노라마 곶 — 니라이카나이 다리와 세트 코스.",review:"넓은 잔디밭이 있어 아이와 산책하기 좋고 일출 명소로도 유명합니다.",reviews:6200,approx:true,rating:4.4,dist:{airport:50,hotel:35,naha:40,aqua:110},tags:["파노라마뷰","잔디밭"],q:"知念岬公園"},
+{id:133,region:"south",cat:"tour",icon:"🕳️",name:"오키나와월드·교쿠센도",jp:"おきなわワールド · 난조시",desc:"대형 종유동굴 + 류큐 문화촌 — 실내 위주라 우천·폭염 대체 1순위.",review:"동굴 규모에 놀랐다는 후기가 많고, 여름엔 동굴 안이 시원해 아이 동반 만족도가 높습니다.",reviews:12000,approx:true,rating:4.3,dist:{airport:30,hotel:20,naha:25,aqua:105},tags:["종유동굴","우천대체"],q:"おきなわワールド"},
+{id:134,region:"south",cat:"tour",icon:"🌿",name:"간가라 계곡",jp:"ガンガラーの谷 · 난조시",desc:"동굴 카페 + 가이드 투어(예약제) — 신비로운 정글 트레킹.",review:"동굴카페만 이용해도 분위기가 압권이라는 평. 투어는 사전 예약 필수입니다.",reviews:4100,approx:true,rating:4.5,dist:{airport:30,hotel:20,naha:25,aqua:100},tags:["예약제","동굴카페"],q:"ガンガラーの谷"},
+{id:135,region:"south",cat:"tour",icon:"🔮",name:"류큐가라스무라",jp:"琉球ガラス村 · 이토만시",desc:"류큐유리 공방 — 유리컵 만들기 체험, 호텔에서 차 5분.",review:"6세부터 체험 가능해 아이 기념품 만들기로 좋다는 평. 무료입장이라 부담 없이 들르기 좋아요.",reviews:4200,approx:true,rating:4.0,dist:{airport:20,hotel:5,naha:25,aqua:105},tags:["유리공예","호텔근처"],q:"琉球ガラス村"},
+{id:136,region:"south",cat:"food",icon:"🦐",name:"이토만 어협 오사카나센터",jp:"糸満漁協お魚センター · 이토만시",desc:"수산시장 — 사시미·해산덮밥, 포장해서 호텔에서 먹기 좋음.",review:"신선도 대비 가격이 착하다는 평. 오후 일찍 마감하는 점포가 많아 낮 방문이 안전합니다.",reviews:2500,approx:true,rating:4.2,dist:{airport:15,hotel:7,naha:20,aqua:105},tags:["사시미포장","호텔근처"],q:"糸満漁業協同組合お魚センター"},
+{id:137,region:"south",cat:"food",icon:"🍱",name:"와후테이 시오자키시티점",jp:"和風亭 · 이토만시",desc:"일식 패밀리레스토랑 — 가족 저녁 무난 픽. 산에이와 같은 건물.",review:"아이 메뉴·좌석이 잘 갖춰져 가족 외식으로 실패 없다는 평. 장보기와 묶어 해결하기 좋습니다.",reviews:800,approx:true,rating:3.9,dist:{airport:20,hotel:7,naha:25,aqua:105},tags:["패밀리레스토랑","일정포함"],q:"和風亭しおざきシティ店"},
+{id:138,region:"south",cat:"cafe",icon:"🌶️",name:"카페 쿠루쿠마",jp:"カフェくるくま · 난조시",desc:"절벽 위 오션뷰 테라스 + 태국 커리 — 난조 드라이브 코스.",review:"뷰 맛집으로 유명하며 식사도 수준급이라는 평. 주말 점심은 웨이팅 감안하세요.",reviews:2700,approx:true,rating:4.3,dist:{airport:35,hotel:35,naha:30,aqua:110},tags:["오션뷰","태국커리"],q:"カフェくるくま"},
+{id:139,region:"south",cat:"cafe",icon:"🌊",name:"하마베노차야",jp:"浜辺の茶屋 · 난조시",desc:"바다에 붙은 창가 좌석 — 밀물 시간에 가면 물 위에 뜬 기분.",review:"방문 전 물때 확인이 핵심이라는 후기가 공통적. 만조 시간대 창가 좌석이 베스트입니다.",reviews:2300,approx:true,rating:4.4,dist:{airport:40,hotel:30,naha:35,aqua:110},tags:["오션뷰카페","물때확인"],q:"浜辺の茶屋"},
+{id:140,region:"south",cat:"shop",icon:"🛒",name:"산에이 시오자키시티",jp:"サンエーしおざきシティ · 이토만시",desc:"호텔 근처 대형마트 — 장보기 베이스캠프. 식품관 9:00~22:00.",review:"물놀이 이틀치 장보기를 한 번에 끝낼 수 있는 규모라는 평. 초밥·반찬 코너 활용 추천.",reviews:3500,approx:true,rating:4.2,dist:{airport:20,hotel:7,naha:25,aqua:105},tags:["대형마트","일정포함"],q:"サンエーしおざきシティ"},
+{id:141,region:"south",cat:"shop",icon:"🐠",name:"미치노에키 이토만",jp:"道の駅いとまん · 이토만시",desc:"농산물 직판 + 수산센터 — 과일·사시미는 여기 (18시 전 마감).",review:"망고 등 제철 과일이 시내보다 싸고 신선하다는 평. 늦은 오후엔 좋은 물건이 빠집니다.",reviews:6000,approx:true,rating:4.2,dist:{airport:15,hotel:10,naha:20,aqua:105},tags:["직판장","제철과일"],q:"道の駅いとまん"},
+{id:142,region:"south",cat:"shop",icon:"👜",name:"아시비나 아울렛",jp:"あしびなー · 도미구스쿠시",desc:"공항 15분 아울렛 — 이번 일정엔 도착날 잠깐만 가능 (10시 오픈).",review:"규모가 아주 크진 않지만 구찌·꼼데 등 알짜 브랜드 할인이 좋다는 평입니다.",reviews:9000,approx:true,rating:3.9,dist:{airport:15,hotel:9,naha:20,aqua:100},tags:["아울렛","호텔근처"],q:"沖縄アウトレットモールあしびなー"},
+// 중부
+{id:150,region:"mid",cat:"tour",icon:"🎡",name:"아메리칸빌리지",jp:"美浜アメリカンビレッジ · 차탄초",desc:"미군기지 감성 쇼핑타운 — 선셋비치 노을 필수, 관람차 포토존.",review:"노을 + 야경 + 쇼핑을 한 번에 즐긴다는 평. 저녁 시간 주차장이 혼잡하니 조금 일찍 도착 추천.",reviews:25000,approx:true,rating:4.2,dist:{airport:40,hotel:45,naha:35,aqua:55},tags:["선셋비치","일정포함"],q:"美浜アメリカンビレッジ"},
+{id:151,region:"mid",cat:"tour",icon:"🐘",name:"만자모",jp:"万座毛 · 온나손",desc:"코끼리 코 절벽 — 오키나와 대표 절경, 30분이면 충분.",review:"입장료가 생겼지만 뷰는 여전히 값어치를 한다는 평. 한낮보다 늦은 오후 빛이 예쁩니다.",reviews:12000,approx:true,rating:4.4,dist:{airport:70,hotel:75,naha:60,aqua:35},tags:["절경","일정포함"],q:"万座毛"},
+{id:152,region:"mid",cat:"tour",icon:"🗼",name:"잔파곶",jp:"残波岬 · 요미탄손",desc:"하얀 등대 + 절벽 — 요미탄 서쪽 끝, 노을 명소.",review:"만자모보다 한산하게 절벽 절경을 즐길 수 있다는 평. 바람이 강하니 모자 주의.",reviews:1800,approx:true,rating:4.4,dist:{airport:50,hotel:55,naha:45,aqua:60},tags:["등대","일몰"],q:"残波岬"},
+{id:153,region:"mid",cat:"tour",icon:"🏺",name:"야치문노사토",jp:"やちむんの里 · 요미탄손",desc:"요미탄 도자기 마을 — 츠보야보다 한적, 가마 구경.",review:"장인 공방을 직접 둘러보는 재미가 있다는 평. 그릇 좋아하면 시간 순삭 주의.",reviews:2600,approx:true,rating:4.2,dist:{airport:50,hotel:55,naha:45,aqua:60},tags:["도예촌","공방"],q:"やちむんの里"},
+{id:154,region:"mid",cat:"tour",icon:"🚤",name:"부세나 해중공원",jp:"ブセナ海中公園 · 나고시",desc:"해중전망탑 + 유리보트 — 젖지 않고 바닷속 구경.",review:"수영 못하는 아이도 물고기를 실컷 본다는 평. 유리보트는 시간표 확인 필수.",reviews:5000,approx:true,rating:4.2,dist:{airport:75,hotel:80,naha:65,aqua:20},tags:["해중전망탑","아이동반OK"],q:"ブセナ海中公園"},
+{id:155,region:"mid",cat:"food",icon:"🌮",name:"킹타코스 킨 본점",jp:"キングタコス · 킨초",desc:"타코라이스 원조 — B급 감성 로컬 맛집. 양 많음.",review:"원조의 투박한 맛과 푸짐한 양이 매력이라는 평. 현금 결제 위주이니 참고하세요.",reviews:4000,approx:true,rating:4.2,dist:{airport:60,hotel:70,naha:55,aqua:60},tags:["타코라이스원조","현금"],q:"キングタコス金武本店"},
+{id:156,region:"mid",cat:"cafe",icon:"☕",name:"지바고 커피",jp:"ZHYVAGO COFFEE · 차탄초",desc:"아메리칸빌리지 씨사이드 — 바다 앞 브루클린 감성 로스터리.",review:"선셋 타임에 바다 보며 마시는 커피가 인생샷 포인트라는 후기가 많습니다.",reviews:2500,approx:true,rating:4.3,dist:{airport:40,hotel:45,naha:35,aqua:55},tags:["씨사이드","감성"],q:"ZHYVAGO COFFEE WORKS OKINAWA"},
+{id:157,region:"mid",cat:"cafe",icon:"🥭",name:"온나노에키 나카유쿠이 시장",jp:"おんなの駅 · 온나손",desc:"휴게소 시장 — 망고빙수·사탕수수주스·튀김 간식 타임.",review:"명물 망고빙수는 양이 커서 둘이 하나면 충분하다는 팁. 북부 이동 중 쉬어가기 최적.",reviews:8000,approx:true,rating:4.2,dist:{airport:60,hotel:65,naha:55,aqua:40},tags:["망고빙수","일정포함"],q:"おんなの駅なかゆくい市場"},
+{id:158,region:"mid",cat:"shop",icon:"🛍️",name:"이온몰 오키나와 라이캄",jp:"イオンモール沖縄ライカム · 기타나카구스쿠",desc:"오키나와 최대 몰 — 비 오는 날 반나절 대체 코스. 대형 수조도 있음.",review:"쇼핑+식사+아이 놀거리까지 한 번에 해결된다는 평. 규모가 커서 동선 계획 추천.",reviews:20000,approx:true,rating:4.2,dist:{airport:40,hotel:45,naha:30,aqua:65},tags:["최대몰","우천대체"],q:"イオンモール沖縄ライカム"},
+{id:159,region:"mid",cat:"shop",icon:"🏬",name:"파르코시티 (우라소에)",jp:"サンエー PARCO CITY · 우라소에시",desc:"산에이 초대형 몰 — 나하에서 차 20분, 캐릭터·패션 다양.",review:"라이캄보다 나하에서 가까워 접근성이 좋다는 평. 팝업스토어가 자주 열립니다.",reviews:15000,approx:true,rating:4.3,dist:{airport:20,hotel:30,naha:15,aqua:80},tags:["대형몰","팝업"],q:"サンエー浦添西海岸パルコシティ"},
+// 북부
+{id:170,region:"north",cat:"tour",icon:"🐋",name:"츄라우미 수족관",jp:"沖縄美ら海水族館 · 모토부초",desc:"고래상어 대수조 — 오전 방문이 한산. 약 2.5시간 코스.",review:"대수조 앞에서 다들 발이 멈춘다는 압도적 후기. 오키짱 돌고래쇼 시간을 미리 확인하고 동선을 짜라는 팁이 많습니다.",reviews:40000,approx:true,rating:4.5,dist:{airport:100,hotel:110,naha:95,aqua:2},tags:["필수코스","일정포함"],q:"沖縄美ら海水族館"},
+{id:171,region:"north",cat:"tour",icon:"🌳",name:"비세 후쿠기 가로수길",jp:"備瀬のフクギ並木 · 모토부초",desc:"초록 나무터널 — 수족관에서 차 5분, 30분 산책 코스.",review:"그늘이 많아 한여름에도 걷기 좋다는 평. 소달구지 체험은 아이들 만족도가 높습니다.",reviews:8000,approx:true,rating:4.4,dist:{airport:105,hotel:115,naha:100,aqua:5},tags:["나무터널","일정포함"],q:"備瀬のフクギ並木"},
+{id:172,region:"north",cat:"tour",icon:"🌉",name:"세소코대교·세소코비치",jp:"瀬底大橋 · 모토부초",desc:"투명한 바다 위 다리 — 포토스톱 5분, 다리 아래 비치도 유명.",review:"다리 위에서 보이는 바다색이 오키나와 최고라는 후기가 많습니다.",reviews:2000,approx:true,rating:4.4,dist:{airport:90,hotel:100,naha:85,aqua:15},tags:["바다뷰","일정포함"],q:"瀬底大橋"},
+{id:173,region:"north",cat:"tour",icon:"💙",name:"코우리대교·코우리섬",jp:"古宇利大橋 · 나키진손",desc:"2km 바다 위 드라이브 + 하트록 — 시간 여유 있으면 추가.",review:"드라이브 코스 중 만족도 최상위. 하트록은 주차 후 도보 이동이 필요하다는 점 참고.",reviews:6000,approx:true,rating:4.4,dist:{airport:105,hotel:115,naha:100,aqua:30},tags:["드라이브","하트록"],q:"古宇利大橋"},
+{id:174,region:"north",cat:"tour",icon:"🏯",name:"나키진 성터",jp:"今帰仁城跡 · 나키진손",desc:"세계유산 성곽 — 성벽 위 바다 전망.",review:"관광객이 적어 여유롭게 세계유산을 즐길 수 있다는 평. 오르막이 있어 편한 신발 추천.",reviews:6000,approx:true,rating:4.4,dist:{airport:100,hotel:110,naha:95,aqua:15},tags:["세계유산","전망"],q:"今帰仁城跡"},
+{id:175,region:"north",cat:"tour",icon:"🍺",name:"오리온 해피파크",jp:"オリオンハッピーパーク · 나고시",desc:"오리온 맥주공장 견학(시음 포함, 운전자는 논알콜).",review:"무료 견학+시음 2잔으로 가성비 최고라는 평. 견학은 예약 우선입니다.",reviews:4000,approx:true,rating:4.2,dist:{airport:80,hotel:90,naha:75,aqua:25},tags:["공장견학","시음"],q:"オリオンハッピーパーク"},
+{id:176,region:"north",cat:"tour",icon:"🍍",name:"나고 파인애플파크",jp:"ナゴパイナップルパーク · 나고시",desc:"파인애플 카트 타고 도는 테마파크 — 아이 취향 저격.",review:"자동운전 카트와 시식 코너 덕에 아이들 만족도가 특히 높다는 후기가 많습니다.",reviews:9000,approx:true,rating:4.1,dist:{airport:85,hotel:95,naha:80,aqua:25},tags:["카트","아이동반OK"],q:"ナゴパイナップルパーク"},
+{id:177,region:"north",cat:"food",icon:"🍜",name:"키시모토식당 본점",jp:"きしもと食堂 · 모토부초",desc:"1905년 모토부 소바 원조 — 웨이팅 필수.",review:"전통 가츠오 육수가 진해서 호불호가 갈린다는 최근 후기. 오픈 직후 방문이 그나마 대기가 짧습니다.",reviews:5000,approx:true,rating:4.0,dist:{airport:95,hotel:105,naha:90,aqua:10},tags:["원조소바","일정포함"],q:"きしもと食堂本店"},
+{id:178,region:"north",cat:"food",icon:"🍕",name:"카진호우",jp:"花人逢 · 모토부초",desc:"언덕 위 고민가 피자 — 바다뷰 테라스. 11:30 오픈.",review:"피자 맛보다 뷰+분위기가 메인이라는 평도 있지만 종합 만족도는 꾸준히 높습니다. 오픈 전 도착 추천.",reviews:3500,approx:true,rating:4.3,dist:{airport:95,hotel:105,naha:90,aqua:10},tags:["바다뷰피자","일정포함"],q:"花人逢"},
+{id:179,region:"north",cat:"food",icon:"🍲",name:"얀바루소바",jp:"山原そば · 모토부초",desc:"40년 전통 소바 — 키시모토 웨이팅 길거나 호불호 걱정되면 이쪽.",review:"진한 국물과 부드러운 소키(돼지갈비)가 한국인 입맛에 더 맞다는 후기가 많습니다.",reviews:1500,approx:true,rating:4.2,dist:{airport:90,hotel:100,naha:85,aqua:15},tags:["소바","대안픽"],q:"山原そば 本部町"},
+{id:180,region:"north",cat:"food",icon:"🏠",name:"우후야 (백년고가)",jp:"百年古家 大家 · 나고시",desc:"100년 고민가에서 아구돼지 샤브 — 분위기 갑.",review:"폭포 옆 고민가 분위기가 압권이라는 평. 점심 소바 메뉴는 가격 부담도 적습니다.",reviews:4000,approx:true,rating:4.2,dist:{airport:85,hotel:95,naha:80,aqua:25},tags:["고민가","아구돼지"],q:"百年古家大家"},
+{id:181,region:"north",cat:"cafe",icon:"🌴",name:"Fuu Cafe (세소코섬)",jp:"fuu cafe · 세소코지마",desc:"정글 속 숨은 카페 — 세소코대교 건너 5분.",review:"조용한 정원석에서 먹는 점심·디저트가 힐링이라는 후기. 영업일 변동이 있어 확인 후 방문 추천.",reviews:800,approx:true,rating:4.3,dist:{airport:95,hotel:105,naha:90,aqua:15},tags:["숨은카페","정원"],q:"fuu cafe 瀬底島"},
+{id:182,region:"north",cat:"cafe",icon:"🍠",name:"오카시고텐 나고점",jp:"御菓子御殿 名護店 · 나고시",desc:"홍임자(베니이모) 타르트 본가 — 바다뷰 카페 병설.",review:"갓 구운 타르트를 바다 보며 먹을 수 있어 드라이브 중 쉼터로 좋다는 평입니다.",reviews:4000,approx:true,rating:4.2,dist:{airport:85,hotel:95,naha:80,aqua:25},tags:["베니이모타르트","바다뷰"],q:"御菓子御殿名護店"}
+];
+
+function setKBase(btn){
+  KSTATE.base = btn.dataset.b;
+  document.querySelectorAll('#pk-korean .lbar [data-b]').forEach(b => b.classList.toggle('sel', b === btn));
+  renderKorean();
 }
+function toggleKRegion(btn){
+  const v = btn.dataset.v;
+  KSTATE.regions.has(v) ? KSTATE.regions.delete(v) : KSTATE.regions.add(v);
+  btn.classList.toggle('sel');
+  renderKorean();
+}
+function toggleKCat(btn){
+  const v = btn.dataset.v;
+  KSTATE.cats.has(v) ? KSTATE.cats.delete(v) : KSTATE.cats.add(v);
+  btn.classList.toggle('sel');
+  renderKorean();
+}
+function renderKorean(){
+  const list = KOREAN_SPOTS
+    .filter(s => (KSTATE.regions.size === 0 || KSTATE.regions.has(s.region))
+              && (KSTATE.cats.size === 0 || KSTATE.cats.has(s.cat)))
+    .sort((a, b) => a.dist[KSTATE.base] - b.dist[KSTATE.base]);
+  document.getElementById('kgrid').innerHTML = list.map(s => cardHTML(s, KSTATE.base)).join('');
+  document.getElementById('fempty').style.display = list.length === 0 ? 'block' : 'none';
+}
+
+function openSheet(id){
+  const s = LOCAL_SPOTS.concat(KOREAN_SPOTS).find(x => x.id === id);
+  if(!s) return;
+  document.getElementById('sh-name').textContent = s.icon + ' ' + s.name;
+  const rsub = '구글 리뷰 ' + fmtReviews(s.reviews) + '개';
+  document.getElementById('sh-rate').innerHTML = '★' + s.rating.toFixed(1) + ' <small>· ' + rsub + ' · ' + s.jp + '</small>';
+  document.getElementById('sh-txt').textContent = s.review;
+  document.getElementById('sh-map').href = lMapUrl(s);
+  document.getElementById('lovl').classList.add('on');
+  document.getElementById('lsheet').classList.add('on');
+}
+function closeSheet(){
+  document.getElementById('lovl').classList.remove('on');
+  document.getElementById('lsheet').classList.remove('on');
+}
+document.addEventListener('DOMContentLoaded', () => { renderLocal(); renderKorean(); });
 
 async function loadFx(){
   const st = document.getElementById('fxstate');
