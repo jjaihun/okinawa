@@ -428,6 +428,60 @@
   .cki.on .ckn{color:#b9c2cb;text-decoration:line-through;}
   .cki.on .ckd{color:#ccd4db;}
 
+  /* ── 소이 전용 체크리스트 ── */
+  .soi-intro{
+    background:linear-gradient(135deg,#fff1f6,#fff8e8);
+    border:2px dashed #ffb3cd;border-radius:20px;
+    padding:18px 18px;margin-bottom:14px;text-align:center;
+  }
+  .soi-intro .big{font-size:30px;}
+  .soi-intro b{display:block;font-size:15.5px;font-weight:800;letter-spacing:-.02em;margin-top:6px;color:#e5487e;}
+  .soi-intro p{font-size:12.5px;color:#a06478;margin-top:4px;}
+  .soi-add{
+    display:flex;gap:8px;margin-bottom:10px;
+  }
+  .soi-add input{
+    flex:1;min-width:0;border:2px solid #ffd3e2;border-radius:999px;
+    padding:11px 16px;font-size:14px;font-family:inherit;outline:none;
+    background:#fff;
+  }
+  .soi-add input:focus{border-color:#ff7eb0;}
+  .soi-add button{
+    flex:0 0 auto;border:none;cursor:pointer;font-family:inherit;
+    background:linear-gradient(135deg,#ff7eb0,#ffb056);color:#fff;
+    font-size:14px;font-weight:800;padding:0 20px;border-radius:999px;
+    box-shadow:0 3px 10px rgba(255,126,176,.35);
+  }
+  .soi-add button:active{transform:scale(.94);}
+  .soi-item{
+    display:flex;align-items:center;gap:11px;
+    background:var(--card);border-radius:16px;padding:13px 14px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(255,126,176,.08);
+  }
+  .soi-item + .soi-item{margin-top:8px;}
+  .soi-item .box{
+    flex:0 0 auto;width:26px;height:26px;border-radius:9px;
+    border:2.5px solid #ffc2d8;background:#fff;position:relative;transition:all .15s;
+    cursor:pointer;
+  }
+  .soi-item.on .box{background:linear-gradient(135deg,#ff7eb0,#ffb056);border-color:transparent;}
+  .soi-item.on .box::after{
+    content:"";position:absolute;left:7.5px;top:3px;width:6px;height:12px;
+    border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg);
+  }
+  .soi-item .nm{flex:1;font-size:14.5px;font-weight:700;letter-spacing:-.01em;cursor:pointer;}
+  .soi-item.on .nm{color:#c9b2bc;text-decoration:line-through;}
+  .soi-item .del{
+    flex:0 0 auto;border:none;background:#fff0f5;color:#e5487e;cursor:pointer;
+    width:26px;height:26px;border-radius:50%;font-size:14px;font-weight:800;font-family:inherit;line-height:1;
+  }
+  .soi-cheer{
+    text-align:center;font-size:13px;font-weight:800;color:#e5487e;
+    padding:12px 0 4px;letter-spacing:-.01em;
+  }
+  #view-check .seg{margin-bottom:14px;}
+  .seg button#ckseg-soi.on{color:#e5487e;}
+
   /* ── bottom tab bar ── */
   .tabbar{
     position:fixed;left:0;right:0;bottom:0;z-index:100;
@@ -1023,13 +1077,37 @@
   <div class="dates">체크하면 자동 저장됩니다</div>
 </div>
 
-<div class="ckprog">
-  <div class="cktxt"><b id="ckcount">0 / 0 완료</b><span id="ckpct">0%</span></div>
-  <div class="ckbar"><i id="ckfill"></i></div>
-  <button class="ckreset" onclick="resetCheck()">전체 초기화</button>
+<div class="seg">
+  <button id="ckseg-family" class="on" onclick="showCk('family')">👨‍👩‍👧 가족 공통</button>
+  <button id="ckseg-soi" onclick="showCk('soi')">🎀 소이 전용</button>
 </div>
 
-<div id="ckgrid"></div>
+<div id="ck-family">
+  <div class="ckprog">
+    <div class="cktxt"><b id="ckcount">0 / 0 완료</b><span id="ckpct">0%</span></div>
+    <div class="ckbar"><i id="ckfill"></i></div>
+    <button class="ckreset" onclick="resetCheck()">전체 초기화</button>
+  </div>
+  <div id="ckgrid"></div>
+</div>
+
+<div id="ck-soi" style="display:none;">
+  <div class="soi-intro" id="soi-intro">
+    <div class="big">🎒✨</div>
+    <b>소이의 여행 가방 목록 만들기!</b>
+    <p>소이가 챙겨야 할 물건을 직접 적어보자.<br>아래 빈칸에 원하는 물건을 쓰고 <b style="display:inline;color:#e5487e;">추가</b>를 누르면 돼!</p>
+  </div>
+  <div class="soi-add">
+    <input type="text" id="soi-input" maxlength="30" placeholder="예: 내 수영복 🩱" enterkeyhint="done">
+    <button onclick="addSoi()">추가 ＋</button>
+  </div>
+  <div class="ckprog" id="soi-prog" style="display:none;">
+    <div class="cktxt"><b id="soicount">0 / 0 완료</b><span id="soipct">0%</span></div>
+    <div class="ckbar"><i id="soifill" style="background:linear-gradient(90deg,#ff7eb0,#ffb056);"></i></div>
+  </div>
+  <div id="soigrid"></div>
+  <div class="soi-cheer" id="soi-cheer"></div>
+</div>
 
 <footer>Okinawa Family Trip · Checklist<br>© jjaihun</footer>
 </div>
@@ -1542,6 +1620,77 @@ function resetCheck(){
   try{ localStorage.removeItem('oki_ck'); }catch(e){}
   renderCheck();
 }
+
+/* ── 소이 전용 리스트 ── */
+function showCk(which){
+  document.getElementById('ck-family').style.display = which === 'family' ? '' : 'none';
+  document.getElementById('ck-soi').style.display = which === 'soi' ? '' : 'none';
+  document.getElementById('ckseg-family').classList.toggle('on', which === 'family');
+  document.getElementById('ckseg-soi').classList.toggle('on', which === 'soi');
+}
+function soiList(){
+  try{ return JSON.parse(localStorage.getItem('oki_ck_soi') || '[]'); }catch(e){ return []; }
+}
+function soiSave(list){
+  try{ localStorage.setItem('oki_ck_soi', JSON.stringify(list)); }catch(e){}
+}
+function escHtml(t){
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function renderSoi(){
+  const list = soiList();
+  const grid = document.getElementById('soigrid');
+  grid.innerHTML = list.map((it, i) =>
+    '<div class="soi-item' + (it.d ? ' on' : '') + '">'
+    + '<span class="box" onclick="toggleSoi(' + i + ')"></span>'
+    + '<span class="nm" onclick="toggleSoi(' + i + ')">' + escHtml(it.n) + '</span>'
+    + '<button class="del" onclick="delSoi(' + i + ')" aria-label="삭제">×</button>'
+    + '</div>'
+  ).join('');
+  const total = list.length, done = list.filter(it => it.d).length;
+  document.getElementById('soi-prog').style.display = total ? '' : 'none';
+  document.getElementById('soi-intro').style.display = total ? 'none' : '';
+  if(total){
+    document.getElementById('soicount').textContent = done + ' / ' + total + ' 완료';
+    const pct = Math.round(done / total * 100);
+    document.getElementById('soipct').textContent = pct + '%';
+    document.getElementById('soifill').style.width = pct + '%';
+  }
+  const cheer = document.getElementById('soi-cheer');
+  if(total && done === total) cheer.textContent = '🎉 와! 소이 가방 완성! 오키나와 갈 준비 끝! 🌺';
+  else if(done > 0) cheer.textContent = '잘하고 있어! ' + (total - done) + '개만 더 챙기면 돼 💪';
+  else cheer.textContent = '';
+}
+function addSoi(){
+  const inp = document.getElementById('soi-input');
+  const v = inp.value.trim();
+  if(!v) return;
+  const list = soiList();
+  list.push({n: v, d: 0});
+  soiSave(list);
+  inp.value = '';
+  renderSoi();
+}
+function toggleSoi(i){
+  const list = soiList();
+  if(!list[i]) return;
+  list[i].d = list[i].d ? 0 : 1;
+  soiSave(list);
+  renderSoi();
+}
+function delSoi(i){
+  const list = soiList();
+  if(!list[i]) return;
+  if(!confirm('"' + list[i].n + '" 지울까?')) return;
+  list.splice(i, 1);
+  soiSave(list);
+  renderSoi();
+}
+document.addEventListener('DOMContentLoaded', () => {
+  renderSoi();
+  const inp = document.getElementById('soi-input');
+  if(inp) inp.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); addSoi(); } });
+});
 
 async function loadFx(){
   const st = document.getElementById('fxstate');
