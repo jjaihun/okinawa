@@ -382,6 +382,52 @@
   .place .pnote{font-size:12px;color:var(--sub);margin-top:2px;letter-spacing:-.01em;}
   .place .btn{flex:0 0 auto;}
 
+  /* ── 체크리스트 ── */
+  #view-check .hero{background:linear-gradient(150deg,#af7aff 0%,#7aa8ff 90%);padding-bottom:24px;}
+  #view-check .hero h1{font-size:26px;}
+  .ckprog{
+    background:var(--card);border-radius:18px;padding:15px 18px;margin-bottom:14px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(20,60,100,.05);
+  }
+  .ckprog .cktxt{display:flex;align-items:baseline;justify-content:space-between;}
+  .ckprog .cktxt b{font-size:15px;font-weight:800;letter-spacing:-.02em;}
+  .ckprog .cktxt span{font-size:12.5px;color:var(--sub);font-weight:700;}
+  .ckbar{height:8px;background:#eef1f4;border-radius:99px;margin-top:10px;overflow:hidden;}
+  .ckbar i{display:block;height:100%;width:0%;border-radius:99px;
+    background:linear-gradient(90deg,#af7aff,#7aa8ff);transition:width .3s;}
+  .ckreset{
+    margin-top:11px;border:none;cursor:pointer;font-family:inherit;
+    font-size:11px;font-weight:700;color:var(--sub);background:#f0f3f6;
+    padding:5px 12px;border-radius:999px;
+  }
+  .ckcat{
+    background:var(--card);border-radius:18px;padding:6px 18px 10px;margin-bottom:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(20,60,100,.05);
+  }
+  .ckcat h3{
+    font-size:14px;font-weight:800;letter-spacing:-.02em;padding:12px 0 6px;
+    display:flex;align-items:center;gap:7px;
+  }
+  .ckcat h3 small{font-size:11px;color:var(--sub);font-weight:700;margin-left:auto;}
+  .cki{
+    display:flex;align-items:flex-start;gap:11px;padding:10px 0;
+    border-top:1px solid var(--hair);cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+  .cki .box{
+    flex:0 0 auto;width:22px;height:22px;border-radius:7px;margin-top:1px;
+    border:2px solid #c9d3db;background:#fff;position:relative;transition:all .15s;
+  }
+  .cki.on .box{background:linear-gradient(135deg,#af7aff,#7aa8ff);border-color:transparent;}
+  .cki.on .box::after{
+    content:"";position:absolute;left:6px;top:2.5px;width:5px;height:10px;
+    border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg);
+  }
+  .cki .ckt{flex:1;min-width:0;}
+  .cki .ckn{font-size:13.5px;font-weight:700;letter-spacing:-.01em;transition:color .15s;}
+  .cki .ckd{font-size:11.5px;color:var(--sub);margin-top:1px;letter-spacing:-.01em;}
+  .cki.on .ckn{color:#b9c2cb;text-decoration:line-through;}
+  .cki.on .ckd{color:#ccd4db;}
+
   /* ── bottom tab bar ── */
   .tabbar{
     position:fixed;left:0;right:0;bottom:0;z-index:100;
@@ -966,6 +1012,29 @@
 </div>
 </div>
 
+<!-- ═══════════════════ VIEW · 체크리스트 ═══════════════════ -->
+<div class="view" id="view-check">
+<div class="wrap">
+
+<div class="hero">
+  <div class="glow"></div>
+  <div class="eyebrow">PACKING · CHECKLIST</div>
+  <h1>준비물 체크리스트</h1>
+  <div class="dates">7월 오키나와 · 물놀이 2일 · 렌터카 · 6살 딸 기준 — 체크 상태는 자동 저장</div>
+</div>
+
+<div class="ckprog">
+  <div class="cktxt"><b id="ckcount">0 / 0 완료</b><span id="ckpct">0%</span></div>
+  <div class="ckbar"><i id="ckfill"></i></div>
+  <button class="ckreset" onclick="resetCheck()">전체 초기화</button>
+</div>
+
+<div id="ckgrid"></div>
+
+<footer>Okinawa Family Trip · Checklist<br>© jjaihun</footer>
+</div>
+</div>
+
 <!-- ═══════════════════ VIEW 3 · 정보 ═══════════════════ -->
 <div class="view" id="view-info">
 <div class="wrap">
@@ -1069,18 +1138,6 @@
   </ul>
 </div>
 
-<!-- 체크리스트 -->
-<div class="card">
-  <h3>짐 체크리스트</h3>
-  <ul>
-    <li><span class="k">서류</span>여권 · 국제운전면허증 + 한국면허증 · Visit Japan Web QR</li>
-    <li><span class="k">물놀이</span>수영복 · 래시가드 · 물안경 · 아쿠아슈즈 · 방수팩</li>
-    <li><span class="k">더위</span>선크림(SPF50+) · 모자 · 선글라스 · 휴대 선풍기</li>
-    <li><span class="k">전자</span>돼지코 어댑터 · 보조배터리 · 차량용 충전 케이블</li>
-    <li><span class="k">기타</span>상비약(해열·소화·멀미) · 우산(스콜) · 에코백(장보기)</li>
-  </ul>
-</div>
-
 <footer>Okinawa Family Trip · Info<br>© jjaihun</footer>
 </div>
 </div>
@@ -1107,6 +1164,10 @@
   <button id="tab-places" onclick="showView('places')">
     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
     추천 장소
+  </button>
+  <button id="tab-check" onclick="showView('check')">
+    <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-8.29 13.29L6.7 12.28l1.42-1.42 2.59 2.59 5.17-5.17 1.42 1.41-6.59 6.6z"/></svg>
+    체크리스트
   </button>
   <button id="tab-info" onclick="showView('info')">
     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
@@ -1386,7 +1447,101 @@ function closeSheet(){
   document.getElementById('lovl').classList.remove('on');
   document.getElementById('lsheet').classList.remove('on');
 }
-document.addEventListener('DOMContentLoaded', () => { renderLocal(); renderKorean(); });
+document.addEventListener('DOMContentLoaded', () => { renderLocal(); renderKorean(); renderCheck(); });
+
+/* ── 준비물 체크리스트 ── */
+const CK_DATA = [
+{cat:"📄 서류·필수", items:[
+ ["여권 + 항공권","가족 전원 · 여권 유효기간 확인"],
+ ["국제운전면허증 + 한국 면허증","둘 다 있어야 렌트 가능 · 여권과 3종 세트"],
+ ["Visit Japan Web 등록·QR 캡처","가족 전원 · 입국심사+세관 사전등록"],
+ ["여행자보험 가입","아이 동반 필수 — 현지 병원비 대비"],
+ ["예약확인서 캡처","오달렌터카 바우처 · 호텔 2곳 · 오프라인 저장"],
+ ["여권 사본·증명사진","분실 대비 — 원본과 분리 보관"],
+ ["아이 미아방지 연락처 카드","이름·부모 연락처 적어 주머니에"]
+]},
+{cat:"💳 결제", items:[
+ ["트래블카드 엔화 충전","트래블월렛/트래블로그 — 기준환율 근접"],
+ ["현금 1~2만엔","소바집·주유소·시장 현금 온리 대비"],
+ ["신용카드 1장 백업","렌터카 보증 등 — 해외결제 활성화 확인"]
+]},
+{cat:"🏊 물놀이", items:[
+ ["수영복 + 래시가드","지퍼형이 입고 벗기 편함 · 자외선 차단 필수"],
+ ["아쿠아슈즈","산호조각·바위에 발 다침 방지 — 슬리퍼만은 금물"],
+ ["산호안전 선크림 SPF50+","옥시벤존·옥티녹세이트 무첨가 권장 · 수시로 덧바르기"],
+ ["물안경 · 방수팩","아이 물안경 여분 있으면 좋음"],
+ ["비치타월/비치가운","물놀이 직후 아이 감쌀 큰 타월"],
+ ["여벌옷 (아이 2벌)","젖은 옷 담을 지퍼백·비닐 같이"],
+ ["아이 튜브/암링 (선택)","호텔 대여 가능 여부 먼저 확인"],
+ ["방수 폰케이스 (선택)","풀사이드 사진용"]
+]},
+{cat:"☀️ 더위 대비", items:[
+ ["챙 넓은 모자 + 선글라스","아이 것 포함"],
+ ["휴대용 선풍기·쿨토시","7월 체감온도 35도+"],
+ ["쿨링시트·알로에젤","일광화상 진정용"],
+ ["접이식 양산/우산","자외선 + 스콜 겸용"],
+ ["물병/보냉병","수분 보충 — 차에 상비"]
+]},
+{cat:"🔌 전자", items:[
+ ["돼지코 어댑터 2개+","일본 110V A타입"],
+ ["보조배터리","기내 휴대만 가능 — 위탁 절대 금지"],
+ ["eSIM/유심 개통","출발 전 설치·테스트"],
+ ["차량용 충전케이블·거치대","구글맵 내비 쓰면 배터리 순삭"],
+ ["카메라·메모리 (선택)","수족관·선셋 대비"]
+]},
+{cat:"💊 상비약", items:[
+ ["해열제·진통제","아이용 따로"],
+ ["소화제·지사제","현지식 대비"],
+ ["멀미약","해안도로 드라이브 대비"],
+ ["밴드·연고","물놀이 상처 대비"],
+ ["모기기피제 + 버물리","7월 오키나와 모기 많음"],
+ ["감기약 성분 확인","슈도에페드린 등 일부 성분 일본 반입 제한"]
+]},
+{cat:"🧺 기타", items:[
+ ["에코백/장바구니","일본 마트 봉투 유료 — 산에이 장보기용"],
+ ["지퍼백 여러 장","간식·젖은 것·모래 묻은 것 분리"],
+ ["아이 간식","이동 1시간+ 구간 대비"],
+ ["차량용 목쿠션 (선택)","북부 왕복 4시간 대비"],
+ ["물티슈·손소독제","식사·간식 필수템"],
+ ["캐리어 여유 공간","위스키·기념품·산리오 쇼핑 감안 — 완충재 겸 옷으로"]
+]}];
+
+function ckState(){
+  try{ return JSON.parse(localStorage.getItem('oki_ck') || '{}'); }catch(e){ return {}; }
+}
+function renderCheck(){
+  const st = ckState();
+  let total = 0, done = 0, html = '';
+  CK_DATA.forEach((c, ci) => {
+    let catDone = 0;
+    let rows = '';
+    c.items.forEach((it, ii) => {
+      const key = ci + '-' + ii;
+      const on = !!st[key];
+      total++; if(on){ done++; catDone++; }
+      rows += '<div class="cki' + (on ? ' on' : '') + '" onclick="toggleCheck(\'' + key + '\')">'
+        + '<span class="box"></span><div class="ckt"><div class="ckn">' + it[0] + '</div>'
+        + (it[1] ? '<div class="ckd">' + it[1] + '</div>' : '') + '</div></div>';
+    });
+    html += '<div class="ckcat"><h3>' + c.cat + '<small>' + catDone + '/' + c.items.length + '</small></h3>' + rows + '</div>';
+  });
+  document.getElementById('ckgrid').innerHTML = html;
+  document.getElementById('ckcount').textContent = done + ' / ' + total + ' 완료';
+  const pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById('ckpct').textContent = pct + '%';
+  document.getElementById('ckfill').style.width = pct + '%';
+}
+function toggleCheck(key){
+  const st = ckState();
+  if(st[key]) delete st[key]; else st[key] = 1;
+  try{ localStorage.setItem('oki_ck', JSON.stringify(st)); }catch(e){}
+  renderCheck();
+}
+function resetCheck(){
+  if(!confirm('체크 상태를 전부 초기화할까요?')) return;
+  try{ localStorage.removeItem('oki_ck'); }catch(e){}
+  renderCheck();
+}
 
 async function loadFx(){
   const st = document.getElementById('fxstate');
