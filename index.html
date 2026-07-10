@@ -480,6 +480,7 @@
     padding:12px 0 4px;letter-spacing:-.01em;
   }
   #view-check .seg{margin-bottom:14px;}
+  #ck-soi{min-height:60vh;} /* 콘텐츠가 짧아도 페이지 높이 유지 — 전환 시 레이아웃 점프 방지 */
   .seg button#ckseg-soi.on{color:#e5487e;}
 
   /* ── bottom tab bar ── */
@@ -490,7 +491,9 @@
     border-top:1px solid var(--hair);
     padding:8px 8px calc(8px + env(safe-area-inset-bottom));
     display:flex;justify-content:space-around;
+    transition:transform .25s ease;
   }
+  body.kb-open .tabbar{transform:translateY(120%);}
   .tabbar button{
     flex:1;max-width:180px;border:none;background:none;cursor:pointer;
     display:flex;flex-direction:column;align-items:center;gap:3px;
@@ -599,7 +602,7 @@
     <div class="time">13:40</div>
     <div class="body">
       <div class="title">산에이 시오자키시티 — 장보기</div>
-      <div class="note">이틀치 물·간식·과일·주류 한 번에 · 식품관 9:00–22:00 · 푸드코트에서 간단히 늦은 점심 가능</div>
+      <div class="note">이틀치 물·간식·과일·주류 한 번에 · 식품관 9:00–22:00 · 푸드코트에서 간단히 늦은 점심 가능 · 심야·이른 아침엔 맥스밸류 이토만키타점(24시간, 차 8분)이 백업</div>
       <div class="tags"><span class="tag shop">쇼핑</span><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=サンエーしおざきシティ" target="_blank" aria-label="구글맵에서 보기"></a></div>
     </div>
   </div>
@@ -801,10 +804,19 @@
     </div>
   </div>
 
+  <div class="item" style="margin-top:8px;">
+    <div class="time">20:50</div>
+    <div class="body">
+      <div class="title">이온 북탄점 — 숙소용 장보기 (30분)</div>
+      <div class="note">아메빌 단지 안이라 도보 이동 · 식품매장 23시까지 · 과일·간식·음료 + 오키나와 기념품 코너까지 한 번에 · 나하 이동 전 마지막 대형마트 찬스</div>
+      <div class="tags"><span class="tag shop">쇼핑</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=イオン北谷店" target="_blank" aria-label="구글맵에서 보기"></a></div>
+    </div>
+  </div>
+
   <div class="go">차량 <b>약 40분</b></div>
 
   <div class="item">
-    <div class="time">21:30</div>
+    <div class="time">22:00</div>
     <div class="body">
       <div class="title">네스트호텔 나하 니시 체크인</div>
       <div class="note">니시 1-6-1 · 국제거리 도보 12~15분 · 주차장 만차 시 제휴 주차장 안내받기</div>
@@ -827,7 +839,7 @@
     </div>
   </div>
 
-  <div class="go">차량 <b>약 7분</b> · 마키시 시장 주변 코인파킹 (도보는 25분)</div>
+  <div class="go">차량 <b>약 7분</b> · 마키시 시장 주변 코인파킹 (도보는 25분) · 팁: 맥스밸류 마키시점 주차장(30분 무료+구매 영수증 30분 추가)도 선택지</div>
 
   <div class="item">
     <div class="time">10:00</div>
@@ -855,8 +867,8 @@
     <div class="time">12:30</div>
     <div class="body">
       <div class="title">점심 — 국제거리 스테이크 or 시장 2층 해산물</div>
-      <div class="note">얏빠리 스테이크 / 스테이크하우스88 · 시장 2층은 1층에서 산 해산물 조리 가능</div>
-      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=やっぱりステーキ国際通り" target="_blank" aria-label="구글맵에서 보기"></a></div>
+      <div class="note">얏빠리 스테이크 / 스테이크하우스88 · 시장 2층은 1층에서 산 해산물 조리 가능 · 돈까스가 당기면 톤톤 재키(구메, 차 5분·일요일 영업·현금 전용)도 강력 옵션</div>
+      <div class="tags"><span class="tag food">식사</span><a class="btn" href="https://www.google.com/maps/search/?api=1&query=やっぱりステーキ国際通り" target="_blank" aria-label="구글맵에서 보기"></a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=豚々ジャッキー" target="_blank">톤톤재키</a></div>
     </div>
   </div>
 
@@ -930,7 +942,7 @@
     <div class="time">08:30</div>
     <div class="body">
       <div class="title">체크아웃 · 지정 주유소에서 만땅 주유</div>
-      <div class="note">오달 근처 지정 주유소 이용 · 레귤러(빨간 노즐) · 일부 주유소 카드 불가 — 현금 준비 · 영수증 반납 시 확인함</div>
+      <div class="note">오달 근처 지정 주유소 이용 · 레귤러(빨간 노즐) · 일부 주유소 카드 불가 — 현금 준비 · 영수증 반납 시 확인함 · 시간 여유 있으면 이온 나하점(식품매장 8시~, 반납 동선 인근)에서 마지막 쇼핑도 선택 가능</div>
       <div class="tags"><span class="tag move">이동</span><a class="btn" href="https://maps.app.goo.gl/vRdJVk4t3JaWi6cz9" target="_blank">오달 근처 주유소</a><a class="btn" href="https://maps.app.goo.gl/x3qimRQ2yk4NkJCg6" target="_blank">일요일 영업 주유소</a></div>
     </div>
   </div>
@@ -1433,12 +1445,17 @@ const KOREAN_SPOTS = [
 {id:109,region:"naha",cat:"food",icon:"🥩",name:"스테이크하우스88 국제거리점",jp:"ステーキハウス88 · 나하시",desc:"얏빠리와 함께 국제거리 스테이크 양대산맥. 늦은 밤까지 영업.",review:"부위 선택폭이 넓고 늦게까지 열어 마지막 날 저녁으로 좋다는 평. 최고급 맛보다는 분위기+가성비로 접근하라는 후기.",reviews:3500,approx:true,rating:4.0,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["스테이크","심야영업"],q:"ステーキハウス88 国際通り"},
 {id:110,region:"naha",cat:"food",icon:"🍖",name:"얏빠리 스테이크",jp:"やっぱりステーキ · 나하시",desc:"용암석 철판에 나오는 캐주얼 스테이크 — 밥·샐러드 무한리필.",review:"가성비 스테이크의 대명사라는 평. 1,000엔대로 배부르게 먹을 수 있어 가족 점심으로 부담 없다는 후기가 많습니다.",reviews:2500,approx:true,rating:4.1,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["가성비","일정포함"],q:"やっぱりステーキ国際通り"},
 {id:111,region:"naha",cat:"food",icon:"🏮",name:"국제거리 야타이무라",jp:"国際通り屋台村 · 나하시",desc:"포장마차 골목 — 20여 개 미니 이자카야. 저녁 분위기 최고.",review:"규모는 작지만 오키나와 안주+로컬 분위기를 한 번에 즐긴다는 평. 최근 한국인 후기 언급이 크게 늘었습니다.",reviews:3000,approx:true,rating:4.0,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["포장마차","저녁핫플"],q:"国際通り屋台村"},
+{id:122,region:"naha",cat:"food",icon:"🐷",name:"톤톤 재키",jp:"豚々ジャッキー · 나하시 구메",desc:"나하 돈까스 1티어 — 아구·현산돼지 카츠. 네스트호텔·아사히바시역 도보권.",review:"두툼한데 부드러운 아구 카츠에 밥·양배추 리필까지 무료라 만족도가 높습니다. 주문 후 튀겨 15~20분 대기, 현금 전용, 월·화 휴무이니 7/19(일) 방문이 정답.",reviews:1500,approx:true,rating:4.4,dist:{airport:15,hotel:35,naha:3,aqua:95},tags:["아구돈까스","현금전용","월화휴무"],q:"豚々ジャッキー"},
+{id:123,region:"naha",cat:"food",icon:"🍱",name:"아구 돈까스 코숑 (우키시마도리)",jp:"アグーとんかつ コション · 나하시",desc:"아구 돈까스 전문점 — 마키시·국제거리 쇼핑 동선에서 도보 5분.",review:"희소 브랜드 '금아구' 로스카츠가 시그니처라는 평. 소금·참깨로 먹는 담백한 스타일이며 보리밥·양배추·돈지루 리필 가능. 주차장은 없어 도보 방문 추천.",reviews:1200,approx:true,rating:4.3,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["아구돈까스","국제거리도보"],q:"アグーとんかつ コション 浮島通り店"},
 {id:112,region:"naha",cat:"cafe",icon:"🍞",name:"C&C Breakfast Okinawa",jp:"C&C BREAKFAST · 나하시",desc:"마키시 시장 골목 아침 카페 — 과일 프렌치토스트가 시그니처.",review:"휴양지 감성 조식으로 만족도가 높고, 9시 이후엔 웨이팅이 급격히 길어진다는 후기가 공통적입니다.",reviews:2000,approx:true,rating:4.3,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["조식","일정포함"],q:"C&C BREAKFAST OKINAWA"},
 {id:113,region:"naha",cat:"cafe",icon:"🍰",name:"oHacorte 마츠오점",jp:"oHacorte 松尾店 · 나하시",desc:"과일 타르트 전문 — 골목 안 정원 딸린 예쁜 매장.",review:"타르트 맛과 아늑한 정원 분위기 모두 호평. 좌석이 적어 오후엔 대기가 생길 수 있습니다.",reviews:1800,approx:true,rating:4.4,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["과일타르트","일정포함"],q:"oHacorte 松尾店"},
 {id:114,region:"naha",cat:"cafe",icon:"🍧",name:"센니치",jp:"千日 · 나하시",desc:"젠자이(금시빙수) 노포 — 더운 오후 최고의 피난처.",review:"소박하지만 60년 넘게 사랑받는 맛이라는 평. 여름 오후엔 현지인 줄이 깁니다.",reviews:1500,approx:true,rating:4.2,dist:{airport:13,hotel:34,naha:6,aqua:95},tags:["빙수","노포"],q:"千日 那覇 ぜんざい"},
 {id:115,region:"naha",cat:"cafe",icon:"☕",name:"T&M Coffee",jp:"T&M Coffee · 나하시",desc:"우드톤 감성 로스터리 — 커피가 진심인 집.",review:"조용히 쉬어가기 좋은 분위기와 핸드드립 퀄리티에 대한 호평이 많습니다.",reviews:700,approx:true,rating:4.4,dist:{airport:14,hotel:34,naha:6,aqua:95},tags:["로스터리","감성"],q:"T&M Coffee 那覇"},
 {id:116,region:"naha",cat:"cafe",icon:"🍦",name:"블루씰 국제거리점",jp:"ブルーシール · 나하시",desc:"오키나와 국민 아이스크림 — 베니이모(자색고구마) 맛 필수.",review:"걷다가 들르는 필수 코스라는 평. 오키나와 한정 맛부터 시도하라는 후기가 많아요.",reviews:4000,approx:true,rating:4.2,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["아이스크림","오키나와한정"],q:"ブルーシール国際通り店"},
 {id:117,region:"naha",cat:"shop",icon:"🎁",name:"와시타숍 본점",jp:"わしたショップ · 나하시",desc:"오키나와 특산품 총집합 — 기념품 한 번에 끝내기.",review:"흩어져 있는 특산품을 한 곳에서 정가에 살 수 있어 효율적이라는 평이 많습니다.",reviews:3000,approx:true,rating:4.1,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["특산품","기념품"],q:"わしたショップ国際通り本店"},
+{id:124,region:"naha",cat:"shop",icon:"🛒",name:"맥스밸류 마키시점 (이온계열)",jp:"マックスバリュ牧志店 · 나하시",desc:"국제거리 옆 24시간 이온계열 마트 — 마키시역 도보 3분, 주차 93대.",review:"관광지 물가가 아닌 현지 가격으로 오키나와 과자·오리온·아와모리를 살 수 있다는 평. 주차 30분 무료 + 구매 영수증으로 30분 추가라 Day4 마키시 동선의 주차 거점으로도 활용 가능합니다.",reviews:3000,approx:true,rating:4.1,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["24시간","현지가격","선택"],q:"マックスバリュ牧志店"},
+{id:125,region:"naha",cat:"shop",icon:"🛒",name:"맥스밸류 와카사점 (이온계열)",jp:"マックスバリュ若狭店 · 나하시",desc:"네스트호텔 도보권(와카사 1초메) 동네 이온계열 마트.",review:"7/18~19 나하 숙박 중 밤 간식·음료·아침거리 조달용 최근접 마트. 영업시간은 방문 전 지도에서 한 번 확인 추천.",reviews:800,approx:true,rating:4.0,dist:{airport:15,hotel:35,naha:4,aqua:95},tags:["호텔도보권","선택"],q:"マックスバリュ若狭店"},
+{id:126,region:"naha",cat:"shop",icon:"🛒",name:"이온 나하점 (오로쿠)",jp:"イオン那覇店 · 나하시 긴조",desc:"공항·렌터카 반납 동선의 대형 이온 — 식품매장 8:00~23:00, 주차 1,860대.",review:"아카미네역 근처라 마지막 날 반납 전 자투리 시간에 들르기 좋은 위치. 규모가 커서 못 산 기념품·식품을 한 번에 정리할 수 있다는 평. 7/20은 반납 10시라 8시 오픈 식품매장만 현실적.",reviews:8000,approx:true,rating:4.1,dist:{airport:7,hotel:25,naha:12,aqua:100},tags:["대형마트","마지막날","선택"],q:"イオン那覇店"},
 {id:118,region:"naha",cat:"shop",icon:"🛒",name:"돈키호테 국제거리점",jp:"ドン・キホーテ · 나하시",desc:"24시간·면세 — 위스키·산리오 잡화·과자 몰아사기.",review:"밤에 가면 한산해서 쇼핑이 편하다는 팁이 많습니다. 면세 카운터는 여권 필수, 피크 시간대엔 줄이 깁니다.",reviews:15000,approx:true,rating:3.9,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["24시간","일정포함"],q:"ドン・キホーテ国際通り店"},
 {id:119,region:"naha",cat:"shop",icon:"🥃",name:"리쿼마운틴 국제거리점",jp:"リカーマウンテン · 나하시",desc:"주류 전문점 — 위스키 1순위 체크. 돈키와 가격 비교 추천.",review:"돈키보다 위스키 구색·가격이 나은 경우가 많다는 후기. 재고는 그날그날 다르니 발견하면 바로 잡으라는 조언.",reviews:300,approx:true,rating:4.3,dist:{airport:15,hotel:35,naha:5,aqua:95},tags:["위스키","일정포함"],q:"リカーマウンテン那覇国際通り店"},
 {id:120,region:"naha",cat:"shop",icon:"🎀",name:"산에이 메인플레이스 (산리오)",jp:"サンエー那覇メインプレイス · 오모로마치",desc:"오모로마치 대형몰 — 2층 산리오 기프트게이트, 10:00~22:00.",review:"관광객보다 현지인 위주라 쾌적하다는 평. 산리오·식품관·패션까지 한 번에 해결됩니다.",reviews:9000,approx:true,rating:4.1,dist:{airport:20,hotel:40,naha:10,aqua:90},tags:["산리오","일정포함"],q:"サンエー那覇メインプレイス"},
@@ -1454,6 +1471,7 @@ const KOREAN_SPOTS = [
 {id:137,region:"south",cat:"food",icon:"🍱",name:"와후테이 시오자키시티점",jp:"和風亭 · 이토만시",desc:"일식 패밀리레스토랑 — 가족 저녁 무난 픽. 산에이와 같은 건물.",review:"아이 메뉴·좌석이 잘 갖춰져 가족 외식으로 실패 없다는 평. 장보기와 묶어 해결하기 좋습니다.",reviews:800,approx:true,rating:3.9,dist:{airport:20,hotel:7,naha:25,aqua:105},tags:["패밀리레스토랑","일정포함"],q:"和風亭しおざきシティ店"},
 {id:138,region:"south",cat:"cafe",icon:"🌶️",name:"카페 쿠루쿠마",jp:"カフェくるくま · 난조시",desc:"절벽 위 오션뷰 테라스 + 태국 커리 — 난조 드라이브 코스.",review:"뷰 맛집으로 유명하며 식사도 수준급이라는 평. 주말 점심은 웨이팅 감안하세요.",reviews:2700,approx:true,rating:4.3,dist:{airport:35,hotel:35,naha:30,aqua:110},tags:["오션뷰","태국커리"],q:"カフェくるくま"},
 {id:139,region:"south",cat:"cafe",icon:"🌊",name:"하마베노차야",jp:"浜辺の茶屋 · 난조시",desc:"바다에 붙은 창가 좌석 — 밀물 시간에 가면 물 위에 뜬 기분.",review:"방문 전 물때 확인이 핵심이라는 후기가 공통적. 만조 시간대 창가 좌석이 베스트입니다.",reviews:2300,approx:true,rating:4.4,dist:{airport:40,hotel:30,naha:35,aqua:110},tags:["오션뷰카페","물때확인"],q:"浜辺の茶屋"},
+{id:143,region:"south",cat:"shop",icon:"🛒",name:"맥스밸류 이토만키타점 (이온계열)",jp:"マックスバリュ糸満北店 · 이토만시",desc:"류큐호텔 차 8분, 24시간 이온계열 마트 — 주차 80대.",review:"산에이 시오자키(9~22시)가 닫은 심야·이른 아침에도 열려 있어 7/16~18 이토만 숙박의 보험용 마트로 좋다는 평. 급하게 필요한 물놀이 간식·음료·상비품 조달에 유용합니다.",reviews:900,approx:true,rating:4.0,dist:{airport:18,hotel:8,naha:23,aqua:103},tags:["24시간","호텔근처","선택"],q:"マックスバリュ糸満北店"},
 {id:140,region:"south",cat:"shop",icon:"🛒",name:"산에이 시오자키시티",jp:"サンエーしおざきシティ · 이토만시",desc:"호텔 근처 대형마트 — 장보기 베이스캠프. 식품관 9:00~22:00.",review:"물놀이 이틀치 장보기를 한 번에 끝낼 수 있는 규모라는 평. 초밥·반찬 코너 활용 추천.",reviews:3500,approx:true,rating:4.2,dist:{airport:20,hotel:7,naha:25,aqua:105},tags:["대형마트","일정포함"],q:"サンエーしおざきシティ"},
 {id:141,region:"south",cat:"shop",icon:"🐠",name:"미치노에키 이토만",jp:"道の駅いとまん · 이토만시",desc:"농산물 직판 + 수산센터 — 과일·사시미는 여기 (18시 전 마감).",review:"망고 등 제철 과일이 시내보다 싸고 신선하다는 평. 늦은 오후엔 좋은 물건이 빠집니다.",reviews:6000,approx:true,rating:4.2,dist:{airport:15,hotel:10,naha:20,aqua:105},tags:["직판장","제철과일"],q:"道の駅いとまん"},
 {id:142,region:"south",cat:"shop",icon:"👜",name:"아시비나 아울렛",jp:"あしびなー · 도미구스쿠시",desc:"공항 15분 아울렛 — 이번 일정엔 도착날 잠깐만 가능 (10시 오픈).",review:"규모가 아주 크진 않지만 구찌·꼼데 등 알짜 브랜드 할인이 좋다는 평입니다.",reviews:9000,approx:true,rating:3.9,dist:{airport:15,hotel:9,naha:20,aqua:100},tags:["아울렛","호텔근처"],q:"沖縄アウトレットモールあしびなー"},
@@ -1466,6 +1484,8 @@ const KOREAN_SPOTS = [
 {id:155,region:"mid",cat:"food",icon:"🌮",name:"킹타코스 킨 본점",jp:"キングタコス · 킨초",desc:"타코라이스 원조 — B급 감성 로컬 맛집. 양 많음.",review:"원조의 투박한 맛과 푸짐한 양이 매력이라는 평. 현금 결제 위주이니 참고하세요.",reviews:4000,approx:true,rating:4.2,dist:{airport:60,hotel:70,naha:55,aqua:60},tags:["타코라이스원조","현금"],q:"キングタコス金武本店"},
 {id:156,region:"mid",cat:"cafe",icon:"☕",name:"지바고 커피",jp:"ZHYVAGO COFFEE · 차탄초",desc:"아메리칸빌리지 씨사이드 — 바다 앞 브루클린 감성 로스터리.",review:"선셋 타임에 바다 보며 마시는 커피가 인생샷 포인트라는 후기가 많습니다.",reviews:2500,approx:true,rating:4.3,dist:{airport:40,hotel:45,naha:35,aqua:55},tags:["씨사이드","감성"],q:"ZHYVAGO COFFEE WORKS OKINAWA"},
 {id:157,region:"mid",cat:"cafe",icon:"🥭",name:"온나노에키 나카유쿠이 시장",jp:"おんなの駅 · 온나손",desc:"휴게소 시장 — 망고빙수·사탕수수주스·튀김 간식 타임.",review:"명물 망고빙수는 양이 커서 둘이 하나면 충분하다는 팁. 북부 이동 중 쉬어가기 최적.",reviews:8000,approx:true,rating:4.2,dist:{airport:60,hotel:65,naha:55,aqua:40},tags:["망고빙수","일정포함"],q:"おんなの駅なかゆくい市場"},
+{id:161,region:"mid",cat:"food",icon:"🍜",name:"시마부타야 마에가네쿠점",jp:"沖縄とんかつ食堂 しまぶた屋 · 온나손",desc:"얀바루 섬돼지·아구 돈까스 식당 — 만자모 차 5분, 북부↔중부 이동 동선.",review:"천연효모 자가제 빵가루 + 아구 라드로 튀겨 가볍고 고소하다는 평. 유시도후·절임 리필이 후하고, 여러 소금을 곁들여 먹는 방식이 재미있다는 후기가 많습니다.",reviews:1000,approx:true,rating:4.3,dist:{airport:70,hotel:75,naha:60,aqua:35},tags:["아구돈까스","만자모근처"],q:"沖縄とんかつ食堂 しまぶた屋 前兼久店"},
+{id:160,region:"mid",cat:"shop",icon:"🛒",name:"이온 북탄점",jp:"イオン北谷店 · 차탄초",desc:"아메리칸빌리지 단지 안 대형마트 — 식품매장 9:00~23:00, 기념품 코너 충실.",review:"아메빌 일정과 자연스럽게 묶기 좋고, 저녁 이후에도 열어 숙소용 간식·음료 조달에 최적이라는 평. 오키나와 한정 과자·식품 선물도 여기서 해결 가능합니다.",reviews:6000,approx:true,rating:4.0,dist:{airport:40,hotel:45,naha:35,aqua:55},tags:["대형마트","일정포함"],q:"イオン北谷店"},
 {id:158,region:"mid",cat:"shop",icon:"🛍️",name:"이온몰 오키나와 라이캄",jp:"イオンモール沖縄ライカム · 기타나카구스쿠",desc:"오키나와 최대 몰 — 비 오는 날 반나절 대체 코스. 대형 수조도 있음.",review:"쇼핑+식사+아이 놀거리까지 한 번에 해결된다는 평. 규모가 커서 동선 계획 추천.",reviews:20000,approx:true,rating:4.2,dist:{airport:40,hotel:45,naha:30,aqua:65},tags:["최대몰","우천대체"],q:"イオンモール沖縄ライカム"},
 {id:159,region:"mid",cat:"shop",icon:"🏬",name:"파르코시티 (우라소에)",jp:"サンエー PARCO CITY · 우라소에시",desc:"산에이 초대형 몰 — 나하에서 차 20분, 캐릭터·패션 다양.",review:"라이캄보다 나하에서 가까워 접근성이 좋다는 평. 팝업스토어가 자주 열립니다.",reviews:15000,approx:true,rating:4.3,dist:{airport:20,hotel:30,naha:15,aqua:80},tags:["대형몰","팝업"],q:"サンエー浦添西海岸パルコシティ"},
 // 북부
@@ -1627,7 +1647,20 @@ function showCk(which){
   document.getElementById('ck-soi').style.display = which === 'soi' ? '' : 'none';
   document.getElementById('ckseg-family').classList.toggle('on', which === 'family');
   document.getElementById('ckseg-soi').classList.toggle('on', which === 'soi');
+  window.scrollTo(0, 0); /* 긴 목록에서 스크롤된 상태로 전환 시 고정 탭바가 튀는 현상 방지 */
 }
+/* 모바일 키보드가 열리면 하단 탭바가 키보드 위로 밀려 올라오는 문제 → 입력 중엔 탭바 숨김 */
+document.addEventListener('focusin', function(e){
+  if(e.target && e.target.matches && e.target.matches('input[type="text"]')) document.body.classList.add('kb-open');
+});
+document.addEventListener('focusout', function(e){
+  if(e.target && e.target.matches && e.target.matches('input[type="text"]')){
+    setTimeout(function(){
+      var a = document.activeElement;
+      if(!a || !(a.matches && a.matches('input[type="text"]'))) document.body.classList.remove('kb-open');
+    }, 120);
+  }
+});
 function soiList(){
   try{ return JSON.parse(localStorage.getItem('oki_ck_soi') || '[]'); }catch(e){ return []; }
 }
